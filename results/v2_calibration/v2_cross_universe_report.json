@@ -1,0 +1,1876 @@
+{
+  "config": {
+    "gamma": 0.97,
+    "ema_alpha": 0.1,
+    "theta_fr": 0.3,
+    "t_fr": 90,
+    "n1_min": 60,
+    "n2_min": 180,
+    "rqa_window": 60,
+    "rqa_epsilon_q": 0.1,
+    "rqa_min_line": 2,
+    "beta_0": -2.2534,
+    "beta_F": 1.0169,
+    "beta_rho": 0.0043,
+    "beta_eta": 0.5391,
+    "beta_A": 4.4152,
+    "csd_window": 40,
+    "beta60_0": -2.7906,
+    "beta60_F": 1.1308,
+    "beta60_rho": 0.0049,
+    "beta60_eta": 0.5489,
+    "beta60_A": 4.8312,
+    "kf_threshold": 2.0,
+    "theta_a_threshold": 1.0,
+    "csd_threshold": 2.0,
+    "h_warn": 0.02,
+    "h_emerg": 0.1,
+    "t_warn": 90,
+    "t_emerg": 30,
+    "kf_warn": 1.5,
+    "ema_alpha_eta": 0.1
+  },
+  "engine_version": "v5.4",
+  "universes": {
+    "ai_ecosystem": {
+      "n_steps": 1031,
+      "phi_star": 0.2311549397839933,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.2311539397839933,
+      "C_norm_now": 0.9999956738973395,
+      "kappa_F_now": 4.3261120181611516e-06,
+      "rho_bar_now": -3.47534788122848e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 201,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.428544340745426,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9635200066306293,
+          "sigma": 0.04875414910060914,
+          "n": 352
+        },
+        "LAM": {
+          "mu": 0.9824701499569926,
+          "sigma": 0.047470791731601875,
+          "n": 352
+        },
+        "TT": {
+          "mu": 4.974610206785701,
+          "sigma": 5.392897884645734,
+          "n": 352
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-17 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 48,
+        "currently_active": false,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 43,
+        "effective_t_G": 60,
+        "effective_t_G_date": "2022-05-17 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.5353861118451403,
+      "h60_now": 0.448187019233757,
+      "P_collapse_30d": 0.9999999998970169,
+      "P_collapse_60d": 0.9999999999999997,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.9042443114001815,
+      "T_half_60_now": 1.1658426295918194,
+      "CSD_now": -0.3513415686107405,
+      "PCS_now": 9.269654114068676e-07,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.2865931936967631,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 0,
+          "n_valid": 3,
+          "consensus": "NONE"
+        }
+      }
+    },
+    "asia_pacific": {
+      "n_steps": 1042,
+      "phi_star": 0.2436621661477824,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.2436611661477824,
+      "C_norm_now": 0.9999958959570301,
+      "kappa_F_now": 4.104051391473256e-06,
+      "rho_bar_now": -3.00000088708921e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 65,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 1.807706294747383,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9879995377455894,
+          "sigma": 0.01844379351587912,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9844590556723147,
+          "sigma": 0.040988808804931706,
+          "n": 356
+        },
+        "TT": {
+          "mu": 3.585605056432881,
+          "sigma": 2.694098143812431,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 86,
+        "currently_active": true,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 86,
+        "effective_t_G": 956,
+        "effective_t_G_date": "2025-11-25 00:00:00",
+        "current_run": 86
+      },
+      "h_now": 0.9982218352003326,
+      "h60_now": 0.9985806710857151,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.10946433877119052,
+      "T_half_60_now": 0.10570181679177772,
+      "CSD_now": -4.158535512260338,
+      "PCS_now": 2.052025695736628e-06,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.08190235313881569,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 0,
+          "n_valid": 3,
+          "consensus": "NONE"
+        }
+      }
+    },
+    "brazil_sectors": {
+      "n_steps": 1042,
+      "phi_star": 0.3991933427475131,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.39322735140517684,
+      "C_norm_now": 0.9850548826759625,
+      "kappa_F_now": 0.015057920909509555,
+      "rho_bar_now": -0.0002556834647974098,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 46,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9949999999999999,
+          "sigma": 1.1102230246251565e-16,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 1.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "TT": {
+          "mu": 20.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.13936044694279995,
+      "h60_now": 0.08718444515820406,
+      "P_collapse_30d": 0.9889174667724987,
+      "P_collapse_60d": 0.9958025848632923,
+      "P_collapse_90d": 0.999998638815089,
+      "T_half_now": 4.618533388063531,
+      "T_half_60_now": 7.598511733995813,
+      "CSD_now": 1004113031023.3221,
+      "PCS_now": 0.007528960454754778,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.03344017933450297,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.3891654846261813,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.7375368921066876,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "china_property": {
+      "n_steps": 1042,
+      "phi_star": 0.3165498536403233,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.2825008151002526,
+      "C_norm_now": 0.8924370422272929,
+      "kappa_F_now": 0.11379930873827142,
+      "rho_bar_now": -0.0014399038750779812,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 119,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.3847125166998434,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.970516488539855,
+          "sigma": 0.04867537272763908,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9770491370361273,
+          "sigma": 0.056399976007828846,
+          "n": 356
+        },
+        "TT": {
+          "mu": 5.020933716985697,
+          "sigma": 5.349405996608794,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 47,
+        "currently_active": false,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 42,
+        "effective_t_G": 60,
+        "effective_t_G_date": "2022-05-02 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.5583485438126188,
+      "h60_now": 0.47066093192219477,
+      "P_collapse_30d": 0.9999999999774892,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.8481621576027057,
+      "T_half_60_now": 1.0896380281758278,
+      "CSD_now": 0.228654545491146,
+      "PCS_now": 0.02189000923170144,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 1.1961690447793594,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.8705120818537105,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.26074894036133994,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 2,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "commodities": {
+      "n_steps": 1042,
+      "phi_star": 0.0398059275854984,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": -4.352502406787146,
+      "C_norm_now": -109.34307201957517,
+      "kappa_F_now": 20.0,
+      "rho_bar_now": 0.21760529738495665,
+      "T_exhaust_now": 4.595476360260388e-12,
+      "n_false_recovery_days": 12,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9970735198785671,
+          "sigma": 0.004675064444697873,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9969635965495892,
+          "sigma": 0.016920006005836104,
+          "n": 356
+        },
+        "TT": {
+          "mu": 15.926202617607112,
+          "sigma": 10.952456861649937,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.999999986434797,
+      "h60_now": 0.9999999976225513,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.038262113199043844,
+      "T_half_60_now": 0.034906525460670884,
+      "CSD_now": 309.8750942984468,
+      "PCS_now": 1.0,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0029007007026350426,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.35430396569841804,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 0,
+          "n_valid": 3,
+          "consensus": "NONE"
+        }
+      }
+    },
+    "energy": {
+      "n_steps": 1042,
+      "phi_star": 0.4605577997145251,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": -6.902503225437191,
+      "C_norm_now": -14.987268112092945,
+      "kappa_F_now": 20.0,
+      "rho_bar_now": 0.436137220863129,
+      "T_exhaust_now": 2.292856358420795e-12,
+      "n_false_recovery_days": 20,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9837332649830942,
+          "sigma": 0.01978372112926557,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9787442164627062,
+          "sigma": 0.046398673705891784,
+          "n": 356
+        },
+        "TT": {
+          "mu": 4.645256045177558,
+          "sigma": 4.690094103775538,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 38,
+        "currently_active": false,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 32,
+        "effective_t_G": 60,
+        "effective_t_G_date": "2022-05-02 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.9999999873350928,
+      "h60_now": 0.9999999977833598,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.03811761749411338,
+      "T_half_60_now": 0.034783844899362495,
+      "CSD_now": 52.45423271562826,
+      "PCS_now": 0.0,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.1657286533653498,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 0,
+          "n_valid": 3,
+          "consensus": "NONE"
+        }
+      }
+    },
+    "europe": {
+      "n_steps": 1042,
+      "phi_star": 0.2448155325404968,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": -0.1167791277830438,
+      "C_norm_now": -0.4770086545212424,
+      "kappa_F_now": 20.0,
+      "rho_bar_now": 0.010068862805380429,
+      "T_exhaust_now": 9.931608160016213e-11,
+      "n_false_recovery_days": 58,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 4.002450597274595,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.988860906625339,
+          "sigma": 0.019500496257402754,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9880860131731886,
+          "sigma": 0.040804758140608216,
+          "n": 356
+        },
+        "TT": {
+          "mu": 3.002191350511827,
+          "sigma": 0.4370952544831671,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 217,
+        "t_G_date": "2022-12-14 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 44,
+        "currently_active": true,
+        "ramp_growth_steps": 60,
+        "persistence_steps": 44,
+        "effective_t_G": 998,
+        "effective_t_G_date": "2026-01-28 00:00:00",
+        "current_run": 44
+      },
+      "h_now": 0.9999999979388463,
+      "h60_now": 0.9999999979388463,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.034657359086620494,
+      "T_half_60_now": 0.034657359086620494,
+      "CSD_now": 4.362086649470507,
+      "PCS_now": 1.0,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.06499596946294742,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.38637820753772095,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.8883716024869002,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "financials": {
+      "n_steps": 1042,
+      "phi_star": 0.2420567472081567,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.0705499210673663,
+      "C_norm_now": 0.29146025418038396,
+      "kappa_F_now": 1.2328516317834242,
+      "rho_bar_now": -0.005407599772617126,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 56,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9949999999999999,
+          "sigma": 1.1102230246251565e-16,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 1.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "TT": {
+          "mu": 20.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.329674127133172,
+      "h60_now": 0.24952171539122034,
+      "P_collapse_30d": 0.9999938541851673,
+      "P_collapse_60d": 0.9999999668649358,
+      "P_collapse_90d": 0.9999999999999998,
+      "T_half_now": 1.7329056099207023,
+      "T_half_60_now": 2.4147720255533063,
+      "CSD_now": 1031350826097.0085,
+      "PCS_now": 0.6164258158917121,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 1.720346051444406,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "global_macro": {
+      "n_steps": 1042,
+      "phi_star": 0.9193932245329506,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.9009452537304887,
+      "C_norm_now": 0.9799346239343526,
+      "kappa_F_now": 0.020269419813817288,
+      "rho_bar_now": -0.0007903729781777314,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 112,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.40833913641651964,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9847097685707492,
+          "sigma": 0.02432380290541192,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9790523685131322,
+          "sigma": 0.046729977073159575,
+          "n": 356
+        },
+        "TT": {
+          "mu": 3.0664944903515443,
+          "sigma": 0.6983589221646854,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "SPIKE",
+        "crystallization_duration": 6,
+        "currently_active": false,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 5,
+        "effective_t_G": 60,
+        "effective_t_G_date": "2022-05-02 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.5343808514765569,
+      "h60_now": 0.44597106619322296,
+      "P_collapse_30d": 0.9999999998901185,
+      "P_collapse_60d": 0.9999999999999996,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.9068010675769325,
+      "T_half_60_now": 1.1737546954919302,
+      "CSD_now": -0.4474994129982243,
+      "PCS_now": 0.004138398691219022,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.8817068100137103,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 2.7638193765210985,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.2678600170861853,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 3,
+          "n_valid": 3,
+          "consensus": "ALIGNED"
+        }
+      }
+    },
+    "iran_war": {
+      "n_steps": 1042,
+      "phi_star": 0.2437350019170998,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.24372606069493458,
+      "C_norm_now": 0.9999633158057116,
+      "kappa_F_now": 3.6684867170003085e-05,
+      "rho_bar_now": -3.831952356355417e-07,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 80,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.3160401998148147,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9865897159710834,
+          "sigma": 0.027129680723198952,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9878976453662319,
+          "sigma": 0.035800039708269095,
+          "n": 356
+        },
+        "TT": {
+          "mu": 6.364011527827969,
+          "sigma": 6.640787944259594,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 73,
+        "currently_active": false,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 66,
+        "effective_t_G": 60,
+        "effective_t_G_date": "2022-05-02 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.6428134495000514,
+      "h60_now": 0.5518508304655196,
+      "P_collapse_30d": 0.9999999999999614,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.6732871727640705,
+      "T_half_60_now": 0.86359583892219,
+      "CSD_now": 0.08818152367413823,
+      "PCS_now": 5.796946375293855e-06,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.23472542149297287,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.4003296493529358,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "latam": {
+      "n_steps": 1042,
+      "phi_star": 0.0001,
+      "phi_star_estimated": true,
+      "phi_star_status": "no_damage_history",
+      "C_now": 9.900000000000001e-05,
+      "C_norm_now": 0.99,
+      "kappa_F_now": 0.010050335853501506,
+      "rho_bar_now": -3e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 0,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9949999999999999,
+          "sigma": 1.1102230246251565e-16,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 1.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "TT": {
+          "mu": 20.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.1348591277738241,
+      "h60_now": 0.08411337918027835,
+      "P_collapse_30d": 0.9870400029717209,
+      "P_collapse_60d": 0.9948654439857465,
+      "P_collapse_90d": 0.9999978232191614,
+      "T_half_now": 4.784848640994692,
+      "T_half_60_now": 7.888981256501801,
+      "CSD_now": 0.0,
+      "PCS_now": 0.005025167926750753,
+      "alert_level": "BASELINE_INSUFFICIENT",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.07916801923191323,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.14715843640292925,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.8502000670853015,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "mena": {
+      "n_steps": 545,
+      "phi_star": 0.1591210082585962,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.1371479630475367,
+      "C_norm_now": 0.8619098417516944,
+      "kappa_F_now": 0.14860460572395123,
+      "rho_bar_now": -0.0009173265552869303,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 22,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.29079880627235827,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9893059799214318,
+          "sigma": 0.018156383182708912,
+          "n": 158
+        },
+        "LAM": {
+          "mu": 0.9977084242688783,
+          "sigma": 0.014529713119253768,
+          "n": 158
+        },
+        "TT": {
+          "mu": 2.918348037335379,
+          "sigma": 0.1345197695623743,
+          "n": 158
+        }
+      },
+      "geo_activation": {
+        "t_G": 481,
+        "t_G_date": "2024-01-04 00:00:00",
+        "activation_type": "SPIKE",
+        "crystallization_duration": 15,
+        "currently_active": false,
+        "ramp_growth_steps": 60,
+        "persistence_steps": 14,
+        "effective_t_G": 481,
+        "effective_t_G_date": "2024-01-04 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.5385908078942946,
+      "h60_now": 0.4435065583487877,
+      "P_collapse_30d": 0.9999999999163266,
+      "P_collapse_60d": 0.9999999999999994,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.8961526245251362,
+      "T_half_60_now": 1.1826434170164377,
+      "CSD_now": 0.2196402644526686,
+      "PCS_now": 0.02160702097554974,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 1.3095207796240733,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 1.4813482851606468,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.7447256908428391,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 3,
+          "n_valid": 3,
+          "consensus": "ALIGNED"
+        }
+      }
+    },
+    "tech_ai": {
+      "n_steps": 1042,
+      "phi_star": 0.1148567717350693,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.11485577173506929,
+      "C_norm_now": 0.9999912935042062,
+      "kappa_F_now": 8.706533695486528e-06,
+      "rho_bar_now": -3.000000000000006e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 19,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.696541413540971,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9929574029141286,
+          "sigma": 0.025787806120944032,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.984459055672315,
+          "sigma": 0.062272310060963565,
+          "n": 356
+        },
+        "TT": {
+          "mu": 5.727532255130895,
+          "sigma": 6.178442255821324,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 481,
+        "currently_active": true,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 53,
+        "effective_t_G": 561,
+        "effective_t_G_date": "2024-04-30 00:00:00",
+        "current_run": 481
+      },
+      "h_now": 0.7275759348116061,
+      "h60_now": 0.6765224971886896,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.5330280313031879,
+      "T_half_60_now": 0.6141515066356927,
+      "CSD_now": -2.5648563791253274,
+      "PCS_now": 3.0322306436481397e-06,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.058173802374351415,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.3933871210614768,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.0725583760530228,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "us_sectors": {
+      "n_steps": 1042,
+      "phi_star": 0.5810263227110063,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.059687663449129014,
+      "C_norm_now": 0.1027279851464092,
+      "kappa_F_now": 2.275670705044628,
+      "rho_bar_now": 0.013766888281832135,
+      "T_exhaust_now": 4.335595831622861,
+      "n_false_recovery_days": 209,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.1223737410257699,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9608678806664084,
+          "sigma": 0.06021400802837594,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9698275862068964,
+          "sigma": 0.04946937167295758,
+          "n": 356
+        },
+        "TT": {
+          "mu": 3.0140766455143826,
+          "sigma": 0.34900520290828785,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 282,
+        "t_G_date": "2023-03-21 00:00:00",
+        "activation_type": "SPIKE",
+        "crystallization_duration": 11,
+        "currently_active": false,
+        "ramp_growth_steps": 60,
+        "persistence_steps": 11,
+        "effective_t_G": 282,
+        "effective_t_G_date": "2023-03-21 00:00:00",
+        "current_run": 0
+      },
+      "h_now": 0.7680166472074228,
+      "h60_now": 0.7272859131858067,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.4744042731388351,
+      "T_half_60_now": 0.5334645310325735,
+      "CSD_now": 0.24418291391213548,
+      "PCS_now": 0.1223737410257699,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.4525733071536654,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.4612278735671522,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.5503040543942874,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "x_brazil_vuln": {
+      "n_steps": 1042,
+      "phi_star": 0.2215295339100682,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.2215285339100682,
+      "C_norm_now": 0.9999954859292016,
+      "kappa_F_now": 4.514080986821641e-06,
+      "rho_bar_now": -3.000000000000386e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 46,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 5.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9872142580395196,
+          "sigma": 0.02952867720328923,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9927353738860906,
+          "sigma": 0.02796854846567398,
+          "n": 356
+        },
+        "TT": {
+          "mu": 2.96706329994086,
+          "sigma": 0.3274083352344164,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 238,
+        "t_G_date": "2023-01-17 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 231,
+        "currently_active": true,
+        "ramp_growth_steps": 60,
+        "persistence_steps": 231,
+        "effective_t_G": 811,
+        "effective_t_G_date": "2025-04-30 00:00:00",
+        "current_run": 231
+      },
+      "h_now": 0.9999999978888376,
+      "h60_now": 0.9999999979388463,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.03469895064500246,
+      "T_half_60_now": 0.034657359086620494,
+      "CSD_now": -13.790230066388139,
+      "PCS_now": 2.2570404934108207e-06,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 1.492059394576531,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.694823993873612,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 2,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "x_commodity_chain": {
+      "n_steps": 1042,
+      "phi_star": 0.228276061527451,
+      "phi_star_estimated": true,
+      "phi_star_status": "estimated_fallback",
+      "C_now": 0.1208835883818617,
+      "C_norm_now": 0.5295500000000001,
+      "kappa_F_now": 0.6357276896924587,
+      "rho_bar_now": 0.008799163269277257,
+      "T_exhaust_now": 13.738077665172224,
+      "n_false_recovery_days": 0,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.99875,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 1.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "TT": {
+          "mu": 40.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.18105001736573761,
+      "h60_now": 0.12214634189816846,
+      "P_collapse_30d": 0.9975012584347893,
+      "P_collapse_60d": 0.9995969792625466,
+      "P_collapse_90d": 0.9999999843985837,
+      "T_half_now": 3.4703815592901583,
+      "T_half_60_now": 5.32063083329981,
+      "CSD_now": 710962318507.8209,
+      "PCS_now": 0.31786384484622937,
+      "alert_level": "BASELINE_INSUFFICIENT",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.14257621649859945,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.4718064686641892,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.45559115433044106,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 0,
+          "n_valid": 3,
+          "consensus": "NONE"
+        }
+      }
+    },
+    "x_energy_geopolitics": {
+      "n_steps": 1042,
+      "phi_star": 0.926339064310531,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": -3.3008539275492805,
+      "C_norm_now": -3.5633323204458485,
+      "kappa_F_now": 20.0,
+      "rho_bar_now": 0.19777719555826692,
+      "T_exhaust_now": 5.056194659739682e-12,
+      "n_false_recovery_days": 102,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 2.5384727419882798,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9841146842309182,
+          "sigma": 0.023149739242603103,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9848411468423091,
+          "sigma": 0.027683595584652346,
+          "n": 356
+        },
+        "TT": {
+          "mu": 3.0054384611679716,
+          "sigma": 0.21831864927944197,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 92,
+        "t_G_date": "2022-06-16 00:00:00",
+        "activation_type": "BUILDING",
+        "crystallization_duration": 7,
+        "currently_active": true,
+        "ramp_growth_steps": 4,
+        "persistence_steps": 9,
+        "effective_t_G": 1035,
+        "effective_t_G_date": "2026-03-23 00:00:00",
+        "current_run": 7
+      },
+      "h_now": 0.9999999979388463,
+      "h60_now": 0.9999999979388463,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.034657359086620494,
+      "T_half_60_now": 0.034657359086620494,
+      "CSD_now": 11.909719554791389,
+      "PCS_now": 1.0,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 1.2986573603902747,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.6979499096314415,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.02210542005512828,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 2,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "x_energy_tech": {
+      "n_steps": 1042,
+      "phi_star": 0.3159090136457495,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.31531428846872445,
+      "C_norm_now": 0.9981174162453877,
+      "kappa_F_now": 0.0018843580425889832,
+      "rho_bar_now": -2.5488219660552938e-05,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 114,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 0.33088586597819547,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9877307465793745,
+          "sigma": 0.021785509257620374,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9922079901938182,
+          "sigma": 0.02582280488165382,
+          "n": 356
+        },
+        "TT": {
+          "mu": 17.644789753078445,
+          "sigma": 5.695145189246899,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.47802710022463957,
+      "h60_now": 0.38354868926509295,
+      "P_collapse_30d": 0.9999999966159352,
+      "P_collapse_60d": 0.9999999999997523,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 1.066151287209091,
+      "T_half_60_now": 1.4327855695104774,
+      "CSD_now": 2.1266633577517338,
+      "PCS_now": 0.0003117537213675165,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.3147202691672319,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.2962481101273656,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.1513918635020535,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "x_europe_vuln": {
+      "n_steps": 1042,
+      "phi_star": 0.13789651509894,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": -0.214961554885212,
+      "C_norm_now": -1.55886140219699,
+      "kappa_F_now": 20.0,
+      "rho_bar_now": 0.026639305945335357,
+      "T_exhaust_now": 3.753851553235019e-11,
+      "n_false_recovery_days": 7,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9949999999999999,
+          "sigma": 1.1102230246251565e-16,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 1.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "TT": {
+          "mu": 20.0,
+          "sigma": 0.0,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.9999999911587899,
+      "h60_now": 0.9999999979388463,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.03737883322878156,
+      "T_half_60_now": 0.034657359086620494,
+      "CSD_now": 992456405325.4998,
+      "PCS_now": 1.0,
+      "alert_level": "EMERGENCY",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.12266172154345314,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.07449733751356041,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.2624326436959612,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "x_global_contagion": {
+      "n_steps": 1042,
+      "phi_star": 0.1073924731455893,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.1073914731455893,
+      "C_norm_now": 0.9999906883604529,
+      "kappa_F_now": 9.311682900659034e-06,
+      "rho_bar_now": -3.000000000000006e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 13,
+      "layer2_status": "FULL",
+      "geo_reliability": "CALM_SATURATED",
+      "theta_A_now": 0.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9972878729174739,
+          "sigma": 0.010305645934343572,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9998547074777218,
+          "sigma": 0.0015760499898559677,
+          "n": 356
+        },
+        "TT": {
+          "mu": 2.9008426966292125,
+          "sigma": 0.0091410899411646,
+          "n": 356
+        },
+        "_fallback": "global_corpus_reference",
+        "_note": "Layer2 blind; defer to SIG Layer 0 (SCR/lam1)"
+      },
+      "geo_activation": {
+        "t_G": null,
+        "t_G_date": null,
+        "activation_type": "NONE",
+        "crystallization_duration": 0,
+        "currently_active": false,
+        "ramp_growth_steps": 0,
+        "persistence_steps": 0,
+        "effective_t_G": null,
+        "effective_t_G_date": null,
+        "current_run": 0
+      },
+      "h_now": 0.12402871674883388,
+      "h60_now": 0.07680352231512948,
+      "P_collapse_30d": 0.98117668669147,
+      "P_collapse_60d": 0.9917272799148791,
+      "P_collapse_90d": 0.9999933305777661,
+      "T_half_now": 5.23438202286153,
+      "T_half_60_now": 8.67375093199253,
+      "CSD_now": -28.369349800170514,
+      "PCS_now": 4.655841450329517e-06,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.5964604109949143,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.06429842858446681,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 0.8219759885149408,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 2,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    },
+    "x_us_systemic": {
+      "n_steps": 1042,
+      "phi_star": 0.2304563910239223,
+      "phi_star_estimated": false,
+      "phi_star_status": "measured",
+      "C_now": 0.2304553910239223,
+      "C_norm_now": 0.9999956607842571,
+      "kappa_F_now": 4.339225157430689e-06,
+      "rho_bar_now": -3.000000000000006e-08,
+      "T_exhaust_now": Infinity,
+      "n_false_recovery_days": 22,
+      "layer2_status": "FULL",
+      "geo_reliability": "HIGH",
+      "theta_A_now": 5.0,
+      "calm_rqa_stats": {
+        "DET": {
+          "mu": 0.9988376598217745,
+          "sigma": 0.0067386776950507845,
+          "n": 356
+        },
+        "LAM": {
+          "mu": 0.9969488570321581,
+          "sigma": 0.010492740323508167,
+          "n": 356
+        },
+        "TT": {
+          "mu": 2.918978115590805,
+          "sigma": 0.06570291027284056,
+          "n": 356
+        }
+      },
+      "geo_activation": {
+        "t_G": 60,
+        "t_G_date": "2022-05-02 00:00:00",
+        "activation_type": "RAMP",
+        "crystallization_duration": 556,
+        "currently_active": true,
+        "ramp_growth_steps": 1,
+        "persistence_steps": 556,
+        "effective_t_G": 486,
+        "effective_t_G_date": "2024-01-11 00:00:00",
+        "current_run": 556
+      },
+      "h_now": 0.9999999979388463,
+      "h60_now": 0.9999999979388463,
+      "P_collapse_30d": 1.0,
+      "P_collapse_60d": 1.0,
+      "P_collapse_90d": 1.0,
+      "T_half_now": 0.034657359086620494,
+      "T_half_60_now": 0.034657359086620494,
+      "CSD_now": -86.28730422506416,
+      "PCS_now": 2.1696125787153444e-06,
+      "alert_level": "WARNING",
+      "multi_observable": {
+        "Oh": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "eta": {
+          "theta_A": 0.0,
+          "geo": "HIGH",
+          "activated": false,
+          "status": "ok"
+        },
+        "mean_corr": {
+          "theta_A": 1.7096594256899622,
+          "geo": "HIGH",
+          "activated": true,
+          "status": "ok"
+        },
+        "_agreement": {
+          "n_active": 1,
+          "n_valid": 3,
+          "consensus": "PARTIAL"
+        }
+      }
+    }
+  },
+  "anomalies": [
+    {
+      "universe": "ai_ecosystem",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=1.000"
+    },
+    {
+      "universe": "ai_ecosystem",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "ai_ecosystem",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=0.9"
+    },
+    {
+      "universe": "asia_pacific",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=1.000"
+    },
+    {
+      "universe": "asia_pacific",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "asia_pacific",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=0.1"
+    },
+    {
+      "universe": "brazil_sectors",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=0.985 P30=0.989"
+    },
+    {
+      "universe": "brazil_sectors",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0151"
+    },
+    {
+      "universe": "brazil_sectors",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=0.985 T1/2=4.6"
+    },
+    {
+      "universe": "china_property",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=0.892 T1/2=0.8"
+    },
+    {
+      "universe": "global_macro",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=0.980 P30=1.000"
+    },
+    {
+      "universe": "global_macro",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0203"
+    },
+    {
+      "universe": "global_macro",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=0.980 T1/2=0.9"
+    },
+    {
+      "universe": "iran_war",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=1.000"
+    },
+    {
+      "universe": "iran_war",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "iran_war",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=0.7"
+    },
+    {
+      "universe": "mena",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=0.862 T1/2=0.9"
+    },
+    {
+      "universe": "tech_ai",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=1.000"
+    },
+    {
+      "universe": "tech_ai",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "tech_ai",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=0.5"
+    },
+    {
+      "universe": "x_brazil_vuln",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=1.000"
+    },
+    {
+      "universe": "x_brazil_vuln",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "x_brazil_vuln",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=0.0"
+    },
+    {
+      "universe": "x_energy_tech",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=0.998 P30=1.000"
+    },
+    {
+      "universe": "x_energy_tech",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0019"
+    },
+    {
+      "universe": "x_energy_tech",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=0.998 T1/2=1.1"
+    },
+    {
+      "universe": "x_global_contagion",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=0.981"
+    },
+    {
+      "universe": "x_global_contagion",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "x_global_contagion",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=5.2"
+    },
+    {
+      "universe": "x_us_systemic",
+      "type": "HIGH_P30_INTACT_CAPACITY",
+      "detail": "C/Phi*=1.000 P30=1.000"
+    },
+    {
+      "universe": "x_us_systemic",
+      "type": "WARNING_WITHOUT_FRAGILITY",
+      "detail": "alert=WR kF=0.0000"
+    },
+    {
+      "universe": "x_us_systemic",
+      "type": "SHORT_THALF_HIGH_CAPACITY",
+      "detail": "C/Phi*=1.000 T1/2=0.0"
+    }
+  ],
+  "errors": [],
+  "n_measured": 19,
+  "n_insufficient": 2,
+  "n_geo_high": 14,
+  "n_geo_low": 0
+}

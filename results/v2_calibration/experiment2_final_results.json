@@ -1,0 +1,381 @@
+{
+  "metadata": {
+    "note": "Taxonomy labels are audit-derived from prior manual episode analysis and are not inferred by this script.",
+    "thresholds": {
+      "theta_a": 0.5,
+      "theta_persist": 5,
+      "kf": 0.5,
+      "oh": 0.8,
+      "oh_persist": 5,
+      "c_norm": 0.9,
+      "rqa_warmup": 60
+    },
+    "ap_split_step": 653
+  },
+  "taxonomy": {
+    "commodities": {
+      "class": "GEO_PRECEDED",
+      "geo": "HIGH"
+    },
+    "energy": {
+      "class": "GEO_PRECEDED",
+      "geo": "HIGH"
+    },
+    "europe": {
+      "class": "LEFT_CENSORED",
+      "geo": "HIGH"
+    },
+    "x_energy_geopolitics": {
+      "class": "LEFT_CENSORED",
+      "geo": "HIGH"
+    },
+    "us_sectors": {
+      "class": "LEFT_CENSORED",
+      "geo": "HIGH"
+    },
+    "x_us_systemic": {
+      "class": "PROSPECTIVE",
+      "geo": "HIGH"
+    },
+    "x_brazil_vuln": {
+      "class": "PROSPECTIVE",
+      "geo": "HIGH"
+    },
+    "x_europe_vuln": {
+      "class": "ALREADY_CRYSTAL",
+      "geo": "LOW"
+    },
+    "financials": {
+      "class": "ALREADY_CRYSTAL",
+      "geo": "LOW"
+    },
+    "asia_pacific": {
+      "class": "SPLIT",
+      "geo": "HIGH"
+    }
+  },
+  "part_a": {
+    "valid_universes": [
+      "commodities",
+      "energy"
+    ],
+    "horizons": {
+      "30": {
+        "Theta_A": {
+          "auc": 0.7222222222222222,
+          "ap": 0.5879851143009038,
+          "n": 209
+        },
+        "kappa_F": {
+          "auc": 0.2777777777777778,
+          "ap": 0.20492262597525757,
+          "n": 209
+        },
+        "Oh_EMA": {
+          "auc": 0.673715651135006,
+          "ap": 0.6543779014168792,
+          "n": 209
+        },
+        "Random": {
+          "auc": 0.5593787335722821,
+          "ap": 0.34261600184001656,
+          "n": 209
+        }
+      },
+      "60": {
+        "Theta_A": {
+          "auc": 0.6428571428571428,
+          "ap": 0.5727956254272044,
+          "n": 209
+        },
+        "kappa_F": {
+          "auc": 0.35714285714285715,
+          "ap": 0.34649276754539915,
+          "n": 209
+        },
+        "Oh_EMA": {
+          "auc": 0.7587619047619047,
+          "ap": 0.7612527646988942,
+          "n": 209
+        },
+        "Random": {
+          "auc": 0.555142857142857,
+          "ap": 0.4650646697333747,
+          "n": 209
+        }
+      },
+      "90": {
+        "Theta_A": {
+          "auc": 0.6052631578947368,
+          "ap": 0.6411483253588517,
+          "n": 209
+        },
+        "kappa_F": {
+          "auc": 0.39473684210526316,
+          "ap": 0.4989008146902884,
+          "n": 209
+        },
+        "Oh_EMA": {
+          "auc": 0.6823638042474608,
+          "ap": 0.7660551558498898,
+          "n": 209
+        },
+        "Random": {
+          "auc": 0.531117266851339,
+          "ap": 0.5753011748294778,
+          "n": 209
+        }
+      }
+    }
+  },
+  "part_a2": {
+    "commodities": {
+      "class": "GEO_PRECEDED",
+      "geo": "HIGH",
+      "auc_Theta_A": 0.5,
+      "auc_kappa_F": 0.5,
+      "auc_Oh_EMA": 0.6622666666666666
+    },
+    "energy": {
+      "class": "GEO_PRECEDED",
+      "geo": "HIGH",
+      "auc_Theta_A": NaN,
+      "auc_kappa_F": NaN,
+      "auc_Oh_EMA": NaN
+    },
+    "europe": {
+      "class": "LEFT_CENSORED",
+      "geo": "HIGH"
+    },
+    "x_energy_geopolitics": {
+      "class": "LEFT_CENSORED",
+      "geo": "HIGH"
+    },
+    "us_sectors": {
+      "class": "LEFT_CENSORED",
+      "geo": "HIGH"
+    },
+    "x_us_systemic": {
+      "class": "PROSPECTIVE",
+      "geo": "HIGH"
+    },
+    "x_brazil_vuln": {
+      "class": "PROSPECTIVE",
+      "geo": "HIGH"
+    },
+    "x_europe_vuln": {
+      "class": "ALREADY_CRYSTAL",
+      "geo": "LOW",
+      "auc_Theta_A": 0.5,
+      "auc_kappa_F": 0.5,
+      "auc_Oh_EMA": 0.3598196881091618
+    },
+    "financials": {
+      "class": "ALREADY_CRYSTAL",
+      "geo": "LOW",
+      "auc_Theta_A": 0.5,
+      "auc_kappa_F": 0.5,
+      "auc_Oh_EMA": 0.43258088788562826
+    },
+    "asia_pacific": {
+      "class": "SPLIT",
+      "geo": "HIGH"
+    }
+  },
+  "part_b": {
+    "commodities": {
+      "class": "GEO_PRECEDED",
+      "t_theta_a": 60,
+      "t_kappa_f": 245,
+      "t_oh_ema": 1029,
+      "delta_kf_ta": 185,
+      "verdict": "THETA_A PRECEDED kF"
+    },
+    "energy": {
+      "class": "GEO_PRECEDED",
+      "t_theta_a": 60,
+      "t_kappa_f": 252,
+      "t_oh_ema": 90,
+      "delta_kf_ta": 192,
+      "verdict": "THETA_A PRECEDED kF"
+    },
+    "europe": {
+      "class": "LEFT_CENSORED",
+      "t_theta_a": 217,
+      "t_kappa_f": 223,
+      "t_oh_ema": 225,
+      "delta_kf_ta": 6,
+      "verdict": "SIMULTANEOUS"
+    },
+    "x_energy_geopolitics": {
+      "class": "LEFT_CENSORED",
+      "t_theta_a": 92,
+      "t_kappa_f": 90,
+      "t_oh_ema": null,
+      "delta_kf_ta": -2,
+      "verdict": "SIMULTANEOUS"
+    },
+    "us_sectors": {
+      "class": "LEFT_CENSORED",
+      "t_theta_a": 283,
+      "t_kappa_f": 60,
+      "t_oh_ema": null,
+      "delta_kf_ta": -223,
+      "verdict": "kF preceded Theta_A"
+    },
+    "x_us_systemic": {
+      "class": "PROSPECTIVE",
+      "t_theta_a": 60,
+      "t_kappa_f": 60,
+      "t_oh_ema": null,
+      "delta_kf_ta": 0,
+      "verdict": "SIMULTANEOUS"
+    },
+    "x_brazil_vuln": {
+      "class": "PROSPECTIVE",
+      "t_theta_a": 238,
+      "t_kappa_f": 60,
+      "t_oh_ema": null,
+      "delta_kf_ta": -178,
+      "verdict": "kF preceded Theta_A"
+    },
+    "x_europe_vuln": {
+      "class": "ALREADY_CRYSTAL",
+      "excluded": true,
+      "reason": "LOW geo"
+    },
+    "financials": {
+      "class": "ALREADY_CRYSTAL",
+      "excluded": true,
+      "reason": "LOW geo"
+    }
+  },
+  "part_c": {
+    "commodities": {
+      "t_S": 245,
+      "t_S_date": "2023-01-26",
+      "t_Theta_A": 60,
+      "t_Theta_A_date": "2022-05-02",
+      "lead_Theta_A": 185,
+      "t_kappa_F": 245,
+      "t_kappa_F_date": "2023-01-26",
+      "lead_kappa_F": null,
+      "t_Oh_EMA": 1029,
+      "t_Oh_EMA_date": "2026-03-13",
+      "lead_Oh_EMA": null
+    },
+    "energy": {
+      "t_S": 84,
+      "t_S_date": "2022-06-06",
+      "t_Theta_A": 60,
+      "t_Theta_A_date": "2022-05-02",
+      "lead_Theta_A": 24,
+      "t_kappa_F": 252,
+      "t_kappa_F_date": "2023-02-06",
+      "lead_kappa_F": null,
+      "t_Oh_EMA": 90,
+      "t_Oh_EMA_date": "2022-06-14",
+      "lead_Oh_EMA": null
+    }
+  },
+  "part_d": {
+    "configurations": [
+      {
+        "thresh": 0.3,
+        "persist": 3,
+        "lt_commodities": 185,
+        "lt_energy": 24,
+        "ordering_preserved": true
+      },
+      {
+        "thresh": 0.3,
+        "persist": 5,
+        "lt_commodities": 185,
+        "lt_energy": 24,
+        "ordering_preserved": true
+      },
+      {
+        "thresh": 0.3,
+        "persist": 7,
+        "lt_commodities": 185,
+        "lt_energy": 24,
+        "ordering_preserved": true
+      },
+      {
+        "thresh": 0.5,
+        "persist": 3,
+        "lt_commodities": 185,
+        "lt_energy": 24,
+        "ordering_preserved": true
+      },
+      {
+        "thresh": 0.5,
+        "persist": 5,
+        "lt_commodities": 185,
+        "lt_energy": 24,
+        "ordering_preserved": true
+      },
+      {
+        "thresh": 0.5,
+        "persist": 7,
+        "lt_commodities": 185,
+        "lt_energy": 24,
+        "ordering_preserved": true
+      },
+      {
+        "thresh": 0.7,
+        "persist": 3,
+        "lt_commodities": null,
+        "lt_energy": 24,
+        "ordering_preserved": false
+      },
+      {
+        "thresh": 0.7,
+        "persist": 5,
+        "lt_commodities": null,
+        "lt_energy": 24,
+        "ordering_preserved": false
+      },
+      {
+        "thresh": 0.7,
+        "persist": 7,
+        "lt_commodities": null,
+        "lt_energy": 24,
+        "ordering_preserved": false
+      }
+    ]
+  },
+  "asia_pacific_episodes": {
+    "episode_1": {
+      "class": "AMBIGUOUS",
+      "reason": "Type 1 spike concurrent with Ukraine shock (Section 3.10)",
+      "steps": "0-653",
+      "t_theta_a": 60,
+      "t_kappa_f": 63,
+      "t_S": 63,
+      "lead_theta_a": 3,
+      "counted_as_evidence": false
+    },
+    "episode_2": {
+      "class": "PROSPECTIVE",
+      "reason": "Type 2 ramp Nov 2025, clean second cycle on recovered system",
+      "steps": "653-1040",
+      "t_theta_a_abs": 956,
+      "t_theta_a_date": "2025-11-25",
+      "t_kappa_f": null,
+      "t_S": null,
+      "days_theta_a_active": 84,
+      "damage_detected": false
+    }
+  },
+  "supplementary": {
+    "commodities": {
+      "t_phi_slope": 246,
+      "lead_phi_slope": null
+    },
+    "energy": {
+      "t_phi_slope": 85,
+      "lead_phi_slope": null
+    }
+  }
+}

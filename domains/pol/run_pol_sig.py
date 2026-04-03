@@ -13,7 +13,7 @@ import numpy as np
 from pathlib import Path
 from scipy.stats import entropy as sp_entropy
 
-DATA_FILE = Path(r"C:\Users\ohiod\Projects\katashi-radiante-3d\political\polblogs.gml")
+DATA_FILE = Path(__file__).parent / "data" / "polblogs.gml"
 OUT_DIR = Path(__file__).parent / "results"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 

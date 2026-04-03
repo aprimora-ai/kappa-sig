@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02T17:27:57",
+  "timestamp": "2026-04-03T14:25:28",
   "domain": "MET",
   "substrate": "Atmospheric dynamics",
   "method": "Pearson correlation between 30 US station daily temperatures, rolling 30-day window, eigenstructure -> Kappa state. Same pipeline as FIN (asset correlations).",

@@ -1,0 +1,2409 @@
+{
+  "epsilon_values": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "results": {
+    "0.1": {
+      "ai_ecosystem": {
+        "n_steps": 1029,
+        "phi_star": 0.7350208280732061,
+        "phi_star_estimated": false,
+        "C_now": 0.7350198280732061,
+        "C_norm_now": 0.9999986394943357,
+        "kappa_F_now": 1.3605065898238482e-06,
+        "rho_bar_now": -3.3467062757890754e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 39,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.4272805966139165,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.95919169149086,
+            "sigma": 0.05375638301930912,
+            "n": 351
+          },
+          "LAM": {
+            "mu": 0.9819781207152942,
+            "sigma": 0.0510217176409003,
+            "n": 351
+          },
+          "TT": {
+            "mu": 4.978406435548678,
+            "sigma": 5.400072896485343,
+            "n": 351
+          }
+        },
+        "h_now": 0.00405549796126111,
+        "P_collapse_30d": 0.11477401283227406,
+        "P_collapse_90d": 0.3063147429987515,
+        "T_half_now": 170.56862233140146,
+        "CSD_now": -0.34012304510198776,
+        "PCS_now": 2.906590336985494e-07,
+        "alert_level": "NOMINAL"
+      },
+      "asia_pacific": {
+        "n_steps": 1040,
+        "phi_star": 0.2339711140902387,
+        "phi_star_estimated": false,
+        "C_now": 0.2339701140902387,
+        "C_norm_now": 0.9999957259681227,
+        "kappa_F_now": 4.274041010966215e-06,
+        "rho_bar_now": -3.000001159016401e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 83,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 1.8439480668691308,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9833501770326875,
+            "sigma": 0.025843684149965494,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9832482846533299,
+            "sigma": 0.04175751685358396,
+            "n": 356
+          },
+          "TT": {
+            "mu": 3.5813190163085364,
+            "sigma": 2.6947187585071855,
+            "n": 356
+          }
+        },
+        "h_now": 0.008928199866999678,
+        "P_collapse_30d": 0.23589407353115388,
+        "P_collapse_90d": 0.5538707437131374,
+        "T_half_now": 77.2886234063008,
+        "CSD_now": -4.07505059179608,
+        "PCS_now": 2.1370205054831076e-06,
+        "alert_level": "WARNING"
+      },
+      "brazil_sectors": {
+        "n_steps": 1040,
+        "phi_star": 0.3991933427475131,
+        "phi_star_estimated": false,
+        "C_now": 0.3928526143573161,
+        "C_norm_now": 0.98411614696138,
+        "kappa_F_now": 0.016011353365671065,
+        "rho_bar_now": -0.00027174318336840067,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 46,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.002939234145638688,
+        "P_collapse_30d": 0.08452009541313232,
+        "P_collapse_90d": 0.23273312833966087,
+        "T_half_now": 235.47903487303253,
+        "CSD_now": 1004371379555.024,
+        "PCS_now": 0.008005676682835533,
+        "alert_level": "NOMINAL"
+      },
+      "china_property": {
+        "n_steps": 1040,
+        "phi_star": 0.3492217867263074,
+        "phi_star_estimated": false,
+        "C_now": 0.3130340531632545,
+        "C_norm_now": 0.896376071200237,
+        "kappa_F_now": 0.10939523174428792,
+        "rho_bar_now": -0.0015270255413309545,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 75,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.4189414992367342,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.973712924029975,
+            "sigma": 0.044155278462619296,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9799549874816909,
+            "sigma": 0.03880213427834629,
+            "n": 356
+          },
+          "TT": {
+            "mu": 5.071223109511671,
+            "sigma": 5.330946945623974,
+            "n": 356
+          }
+        },
+        "h_now": 0.004980763752676879,
+        "P_collapse_30d": 0.13911665622040192,
+        "P_collapse_90d": 0.361982022968277,
+        "T_half_now": 138.81797595109933,
+        "CSD_now": 0.22137883348321202,
+        "PCS_now": 0.02291510119815098,
+        "alert_level": "NOMINAL"
+      },
+      "commodities": {
+        "n_steps": 1040,
+        "phi_star": 0.0398059275854982,
+        "phi_star_estimated": false,
+        "C_now": -4.031778816819589,
+        "C_norm_now": -101.28589035288343,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.2289829436294283,
+        "T_exhaust_now": 4.367137500067854e-12,
+        "n_false_recovery_days": 12,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.020110402162125673,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9920898325385394,
+            "sigma": 0.007506023449778985,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9969713362085808,
+            "sigma": 0.016194065580179644,
+            "n": 356
+          },
+          "TT": {
+            "mu": 18.434863582325807,
+            "sigma": 12.65713798507891,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999992797394771,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04900764942142799,
+        "CSD_now": 260.002513579625,
+        "PCS_now": 0.020110402162125673,
+        "alert_level": "EMERGENCY"
+      },
+      "energy": {
+        "n_steps": 1040,
+        "phi_star": 0.4605577997145251,
+        "phi_star_estimated": false,
+        "C_now": -5.844838279671684,
+        "C_norm_now": -12.69078122940179,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.4119159364090594,
+        "T_exhaust_now": 2.427679804568024e-12,
+        "n_false_recovery_days": 20,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9837332649830942,
+            "sigma": 0.01978372112926557,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9787442164627062,
+            "sigma": 0.046398673705891784,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.645256045177558,
+            "sigma": 4.690094103775538,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999993600354758,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04860148088983293,
+        "CSD_now": 38.635006306335775,
+        "PCS_now": 0.0,
+        "alert_level": "EMERGENCY"
+      },
+      "europe": {
+        "n_steps": 1040,
+        "phi_star": 0.2448155325404968,
+        "phi_star_estimated": false,
+        "C_now": -0.1394916842982115,
+        "C_norm_now": -0.5697828191319402,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.01509237813808097,
+        "T_exhaust_now": 6.625861019720992e-11,
+        "n_false_recovery_days": 56,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.988860906625339,
+            "sigma": 0.019500496257402754,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9880860131731886,
+            "sigma": 0.040804758140608216,
+            "n": 356
+          },
+          "TT": {
+            "mu": 3.002191350511827,
+            "sigma": 0.4370952544831671,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999999442751635,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04149876219074743,
+        "CSD_now": 3.9746170272376125,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "financials": {
+        "n_steps": 1040,
+        "phi_star": 0.2414410214291061,
+        "phi_star_estimated": false,
+        "C_now": 0.05916183435167499,
+        "C_norm_now": 0.24503638197640154,
+        "kappa_F_now": 1.406348581599263,
+        "rho_bar_now": -0.005413578659319674,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 43,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.011736741600024107,
+        "P_collapse_30d": 0.29825474519438666,
+        "P_collapse_90d": 0.6544280736997451,
+        "T_half_now": 58.710633283834404,
+        "CSD_now": 1058602865315.2854,
+        "PCS_now": 0.7031742907996315,
+        "alert_level": "WARNING"
+      },
+      "global_macro": {
+        "n_steps": 1040,
+        "phi_star": 0.8539889985285999,
+        "phi_star_estimated": false,
+        "C_now": 0.8423405842645124,
+        "C_norm_now": 0.9863599949365186,
+        "kappa_F_now": 0.01373388458814468,
+        "rho_bar_now": -0.00049921481223205,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 128,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.4107721090347139,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9850972152968244,
+            "sigma": 0.02330717763545921,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9790523685131324,
+            "sigma": 0.04729832645022998,
+            "n": 356
+          },
+          "TT": {
+            "mu": 3.067588752223452,
+            "sigma": 0.7046045564061333,
+            "n": 356
+          }
+        },
+        "h_now": 0.004286828351310132,
+        "P_collapse_30d": 0.12092168906486023,
+        "P_collapse_90d": 0.32066702611013487,
+        "T_half_now": 161.34548869522902,
+        "CSD_now": -0.5167666643335802,
+        "PCS_now": 0.0028207483687557717,
+        "alert_level": "NOMINAL"
+      },
+      "iran_war": {
+        "n_steps": 1040,
+        "phi_star": 0.2437350019170998,
+        "phi_star_estimated": false,
+        "C_now": 0.24372549907709,
+        "C_norm_now": 0.9999610115907234,
+        "kappa_F_now": 3.8989169344423665e-05,
+        "rho_bar_now": -4.072645718279401e-07,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 80,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.3160401998148147,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9865897159710834,
+            "sigma": 0.027129680723198952,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9878976453662319,
+            "sigma": 0.035800039708269095,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.364011527827969,
+            "sigma": 6.640787944259594,
+            "n": 356
+          }
+        },
+        "h_now": 0.007334103090632406,
+        "P_collapse_30d": 0.19815013991247055,
+        "P_collapse_90d": 0.48444004954413067,
+        "T_half_now": 94.16315085308273,
+        "CSD_now": 0.08818532893423037,
+        "PCS_now": 6.161072435112651e-06,
+        "alert_level": "NOMINAL"
+      },
+      "latam": {
+        "n_steps": 1040,
+        "phi_star": 0.0001,
+        "phi_star_estimated": true,
+        "C_now": 9.900000000000001e-05,
+        "C_norm_now": 0.99,
+        "kappa_F_now": 0.010050335853501506,
+        "rho_bar_now": -3e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 0,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.00313882376268732,
+        "P_collapse_30d": 0.09000193520581712,
+        "P_collapse_90d": 0.2464338076215875,
+        "T_half_now": 220.48347708620375,
+        "CSD_now": 0.0,
+        "PCS_now": 0.005025167926750753,
+        "alert_level": "BASELINE_INSUFFICIENT"
+      },
+      "mena": {
+        "n_steps": 545,
+        "phi_star": 0.1591210082585962,
+        "phi_star_estimated": false,
+        "C_now": 0.1371479630475367,
+        "C_norm_now": 0.8619098417516944,
+        "kappa_F_now": 0.14860460572395123,
+        "rho_bar_now": -0.0009173265552869303,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 22,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.29079880627235827,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9893059799214318,
+            "sigma": 0.018156383182708912,
+            "n": 158
+          },
+          "LAM": {
+            "mu": 0.9977084242688783,
+            "sigma": 0.014529713119253768,
+            "n": 158
+          },
+          "TT": {
+            "mu": 2.918348037335379,
+            "sigma": 0.1345197695623743,
+            "n": 158
+          }
+        },
+        "h_now": 0.005682387554799219,
+        "P_collapse_30d": 0.15714286902430963,
+        "P_collapse_90d": 0.40122743056985555,
+        "T_half_now": 121.63477728395458,
+        "CSD_now": 0.2196402644526686,
+        "PCS_now": 0.02160702097554974,
+        "alert_level": "NOMINAL"
+      },
+      "tech_ai": {
+        "n_steps": 1040,
+        "phi_star": 0.2511719782253274,
+        "phi_star_estimated": false,
+        "C_now": 0.2511709782253274,
+        "C_norm_now": 0.9999960186641558,
+        "kappa_F_now": 3.981343769655117e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 18,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.7098552019850164,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9926668178695722,
+            "sigma": 0.02703654518866706,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9831998538125707,
+            "sigma": 0.06011100360264959,
+            "n": 356
+          },
+          "TT": {
+            "mu": 5.738921035100419,
+            "sigma": 6.173452124451222,
+            "n": 356
+          }
+        },
+        "h_now": 0.003853496457432465,
+        "P_collapse_30d": 0.109371788047256,
+        "P_collapse_90d": 0.29353712597258264,
+        "T_half_now": 179.52807501082185,
+        "CSD_now": -2.5719091893572106,
+        "PCS_now": 1.4130887928901597e-06,
+        "alert_level": "NOMINAL"
+      },
+      "us_sectors": {
+        "n_steps": 1040,
+        "phi_star": 0.5810261469617916,
+        "phi_star_estimated": false,
+        "C_now": 0.24729687506001524,
+        "C_norm_now": 0.4256209059663498,
+        "kappa_F_now": 0.8542062209995709,
+        "rho_bar_now": 0.004958314552117081,
+        "T_exhaust_now": 49.87518892975949,
+        "n_false_recovery_days": 185,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.2585895314870063,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9624176675707091,
+            "sigma": 0.05964540693534812,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9681325067803176,
+            "sigma": 0.050048816073949745,
+            "n": 356
+          },
+          "TT": {
+            "mu": 3.0344701042257523,
+            "sigma": 0.35799600646624813,
+            "n": 356
+          }
+        },
+        "h_now": 0.008964667213011226,
+        "P_collapse_30d": 0.23673710185449048,
+        "P_collapse_90d": 0.5553457413251799,
+        "T_half_now": 76.97280716133719,
+        "CSD_now": 0.10973420674691253,
+        "PCS_now": 0.1104443932407826,
+        "alert_level": "WARNING"
+      },
+      "x_brazil_vuln": {
+        "n_steps": 1040,
+        "phi_star": 0.2215295339100682,
+        "phi_star_estimated": false,
+        "C_now": 0.2215285339100682,
+        "C_norm_now": 0.9999954859292016,
+        "kappa_F_now": 4.514080986821641e-06,
+        "rho_bar_now": -3.000000000000476e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 46,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9872142580395196,
+            "sigma": 0.02952867720328923,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9927353738860906,
+            "sigma": 0.02796854846567398,
+            "n": 356
+          },
+          "TT": {
+            "mu": 2.96706329994086,
+            "sigma": 0.3274083352344164,
+            "n": 356
+          }
+        },
+        "h_now": 0.03238523539941676,
+        "P_collapse_30d": 0.6275443248478297,
+        "P_collapse_90d": 0.9483317457285436,
+        "T_half_now": 21.05470971624943,
+        "CSD_now": -13.790230066388139,
+        "PCS_now": 2.2570404934108207e-06,
+        "alert_level": "WARNING"
+      },
+      "x_commodity_chain": {
+        "n_steps": 1040,
+        "phi_star": 0.228276061527451,
+        "phi_star_estimated": true,
+        "C_now": 0.1141380307637255,
+        "C_norm_now": 0.5,
+        "kappa_F_now": 0.6931471805599453,
+        "rho_bar_now": 0.01165367607637254,
+        "T_exhaust_now": 9.79416537886588,
+        "n_false_recovery_days": 0,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9994054696789535,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 58.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.005275146905986152,
+        "P_collapse_30d": 0.1467249118320656,
+        "P_collapse_90d": 0.3787488594503484,
+        "T_half_now": 131.05177062625185,
+        "CSD_now": 0.0,
+        "PCS_now": 0.34657359027997264,
+        "alert_level": "BASELINE_INSUFFICIENT"
+      },
+      "x_energy_geopolitics": {
+        "n_steps": 1040,
+        "phi_star": 0.7045970028001328,
+        "phi_star_estimated": false,
+        "C_now": -3.7023250570837756,
+        "C_norm_now": -5.254528535276758,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.26442966141077023,
+        "T_exhaust_now": 3.781724011840639e-12,
+        "n_false_recovery_days": 130,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 1.4715802069370432,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9829523440526927,
+            "sigma": 0.024175868512935923,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9845989926385122,
+            "sigma": 0.028982368293499143,
+            "n": 356
+          },
+          "TT": {
+            "mu": 3.009951784922868,
+            "sigma": 0.24541538116861686,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999996855218923,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04629514518346902,
+        "CSD_now": 13.017471103992927,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "x_energy_tech": {
+        "n_steps": 1040,
+        "phi_star": 0.3159090136457495,
+        "phi_star_estimated": false,
+        "C_now": 0.31527693247131544,
+        "C_norm_now": 0.9979991670160355,
+        "kappa_F_now": 0.0020028373242924704,
+        "rho_bar_now": -2.7089190459231558e-05,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 114,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.33088586597819547,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9877307465793745,
+            "sigma": 0.021785509257620374,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9922079901938182,
+            "sigma": 0.02582280488165382,
+            "n": 356
+          },
+          "TT": {
+            "mu": 17.644789753078445,
+            "sigma": 5.695145189246899,
+            "n": 356
+          }
+        },
+        "h_now": 0.0046297159360340805,
+        "P_collapse_30d": 0.12995816991343245,
+        "P_collapse_90d": 0.34140201185549435,
+        "T_half_now": 149.37015831515552,
+        "CSD_now": 2.1269532978562347,
+        "PCS_now": 0.000331355281230983,
+        "alert_level": "NOMINAL"
+      },
+      "x_europe_vuln": {
+        "n_steps": 1040,
+        "phi_star": 0.0807209957146336,
+        "phi_star_estimated": false,
+        "C_now": -0.03769543382627989,
+        "C_norm_now": -0.4669842522698989,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.003604465397715128,
+        "T_exhaust_now": 2.7743365233410213e-10,
+        "n_false_recovery_days": 25,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999993665939453,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04856640235072023,
+        "CSD_now": 984723145488.4407,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "x_global_contagion": {
+        "n_steps": 1040,
+        "phi_star": 0.1073924731455893,
+        "phi_star_estimated": false,
+        "C_now": 0.1073914731455893,
+        "C_norm_now": 0.9999906883604529,
+        "kappa_F_now": 9.311682900659034e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 13,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9972878729174739,
+            "sigma": 0.010305645934343572,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9998547074777218,
+            "sigma": 0.0015760499898559677,
+            "n": 356
+          },
+          "TT": {
+            "mu": 2.9008426966292125,
+            "sigma": 0.0091410899411646,
+            "n": 356
+          }
+        },
+        "h_now": 0.0029986771773431974,
+        "P_collapse_30d": 0.08615606041533408,
+        "P_collapse_90d": 0.23683910596297864,
+        "T_half_now": 230.8042370454306,
+        "CSD_now": -28.369349800170514,
+        "PCS_now": 4.655841450329517e-06,
+        "alert_level": "NOMINAL"
+      },
+      "x_us_systemic": {
+        "n_steps": 1040,
+        "phi_star": 0.2304563910239223,
+        "phi_star_estimated": false,
+        "C_now": 0.2304553910239223,
+        "C_norm_now": 0.9999956607842571,
+        "kappa_F_now": 4.339225157430689e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 22,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9988376598217745,
+            "sigma": 0.0067386776950507845,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9969488570321581,
+            "sigma": 0.010492740323508167,
+            "n": 356
+          },
+          "TT": {
+            "mu": 2.918978115590805,
+            "sigma": 0.06570291027284056,
+            "n": 356
+          }
+        },
+        "h_now": 0.07038099258189709,
+        "P_collapse_30d": 0.888017580242181,
+        "P_collapse_90d": 0.9985957334758334,
+        "T_half_now": 9.4977109144573,
+        "CSD_now": -86.28730422506416,
+        "PCS_now": 2.1696125787153444e-06,
+        "alert_level": "WARNING"
+      }
+    },
+    "0.2": {
+      "ai_ecosystem": {
+        "n_steps": 1029,
+        "phi_star": 0.7350208280732061,
+        "phi_star_estimated": false,
+        "C_now": 0.7350198280732061,
+        "C_norm_now": 0.9999986394943357,
+        "kappa_F_now": 1.3605065898238482e-06,
+        "rho_bar_now": -3.3467062757890754e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 39,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.40702058403197455,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.97356727617976,
+            "sigma": 0.03835659751840924,
+            "n": 351
+          },
+          "LAM": {
+            "mu": 0.9944652167464098,
+            "sigma": 0.014746147846287212,
+            "n": 351
+          },
+          "TT": {
+            "mu": 6.5245213863177955,
+            "sigma": 4.805628089964274,
+            "n": 351
+          }
+        },
+        "h_now": 0.004014787225908595,
+        "P_collapse_30d": 0.11368782070564631,
+        "P_collapse_90d": 0.30375810643971124,
+        "T_half_now": 172.30174091343952,
+        "CSD_now": -0.34012304510198776,
+        "PCS_now": 2.7687709338472635e-07,
+        "alert_level": "NOMINAL"
+      },
+      "asia_pacific": {
+        "n_steps": 1040,
+        "phi_star": 0.2339711140902387,
+        "phi_star_estimated": false,
+        "C_now": 0.2339701140902387,
+        "C_norm_now": 0.9999957259681227,
+        "kappa_F_now": 4.274041010966215e-06,
+        "rho_bar_now": -3.000001159016401e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 83,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 1.7861947232166682,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9911108069450256,
+            "sigma": 0.02225440859201619,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9928165947883609,
+            "sigma": 0.01851084343607872,
+            "n": 356
+          },
+          "TT": {
+            "mu": 5.359436636142465,
+            "sigma": 2.315859098781293,
+            "n": 356
+          }
+        },
+        "h_now": 0.008676274940355014,
+        "P_collapse_30d": 0.23004560142286634,
+        "P_collapse_90d": 0.5435481064473259,
+        "T_half_now": 79.54287414441488,
+        "CSD_now": -4.07505059179608,
+        "PCS_now": 2.1370205054831076e-06,
+        "alert_level": "WARNING"
+      },
+      "brazil_sectors": {
+        "n_steps": 1040,
+        "phi_star": 0.3991933427475131,
+        "phi_star_estimated": false,
+        "C_now": 0.3928526143573161,
+        "C_norm_now": 0.98411614696138,
+        "kappa_F_now": 0.016011353365671065,
+        "rho_bar_now": -0.00027174318336840067,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 46,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.002939234145638688,
+        "P_collapse_30d": 0.08452009541313232,
+        "P_collapse_90d": 0.23273312833966087,
+        "T_half_now": 235.47903487303253,
+        "CSD_now": 1004371379555.024,
+        "PCS_now": 0.008005676682835533,
+        "alert_level": "NOMINAL"
+      },
+      "china_property": {
+        "n_steps": 1040,
+        "phi_star": 0.3492217867263074,
+        "phi_star_estimated": false,
+        "C_now": 0.3130340531632545,
+        "C_norm_now": 0.896376071200237,
+        "kappa_F_now": 0.10939523174428792,
+        "rho_bar_now": -0.0015270255413309545,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 75,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.38864756646066334,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9782690466454,
+            "sigma": 0.039464929185369965,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.990943935612331,
+            "sigma": 0.018822911933800923,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.648893993207246,
+            "sigma": 4.726984645906968,
+            "n": 356
+          }
+        },
+        "h_now": 0.004906256143123463,
+        "P_collapse_30d": 0.1371806518654517,
+        "P_collapse_90d": 0.3576679002411727,
+        "T_half_now": 140.93137164995892,
+        "CSD_now": 0.22137883348321202,
+        "PCS_now": 0.021258095299908904,
+        "alert_level": "NOMINAL"
+      },
+      "commodities": {
+        "n_steps": 1040,
+        "phi_star": 0.0398059275854982,
+        "phi_star_estimated": false,
+        "C_now": -4.031778816819589,
+        "C_norm_now": -101.28589035288343,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.2289829436294283,
+        "T_exhaust_now": 4.367137500067854e-12,
+        "n_false_recovery_days": 12,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9976299898765848,
+            "sigma": 0.0034226409619381097,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9987142010112514,
+            "sigma": 0.007235424430929657,
+            "n": 356
+          },
+          "TT": {
+            "mu": 19.589228138739617,
+            "sigma": 11.32815488207294,
+            "n": 356
+          }
+        },
+        "h_now": 0.999999272460584,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.049042515378731805,
+        "CSD_now": 260.002513579625,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "energy": {
+        "n_steps": 1040,
+        "phi_star": 0.4605577997145251,
+        "phi_star_estimated": false,
+        "C_now": -5.844838279671684,
+        "C_norm_now": -12.69078122940179,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.4119159364090594,
+        "T_exhaust_now": 2.427679804568024e-12,
+        "n_false_recovery_days": 20,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9942685784806061,
+            "sigma": 0.009517694908614507,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9928165947883609,
+            "sigma": 0.01598374222183731,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.284570999243833,
+            "sigma": 4.130737188326883,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999993600354758,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04860148088983293,
+        "CSD_now": 38.635006306335775,
+        "PCS_now": 0.0,
+        "alert_level": "EMERGENCY"
+      },
+      "europe": {
+        "n_steps": 1040,
+        "phi_star": 0.2448155325404968,
+        "phi_star_estimated": false,
+        "C_now": -0.1394916842982115,
+        "C_norm_now": -0.5697828191319402,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.01509237813808097,
+        "T_exhaust_now": 6.625861019720992e-11,
+        "n_false_recovery_days": 56,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 4.468919501838469,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9909293071161048,
+            "sigma": 0.018722476578507737,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9958450374531836,
+            "sigma": 0.013695195639815791,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.863173778334207,
+            "sigma": 0.3992478617443083,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999999273272726,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04216916372032573,
+        "CSD_now": 3.9746170272376125,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "financials": {
+        "n_steps": 1040,
+        "phi_star": 0.2414410214291061,
+        "phi_star_estimated": false,
+        "C_now": 0.05916183435167499,
+        "C_norm_now": 0.24503638197640154,
+        "kappa_F_now": 1.406348581599263,
+        "rho_bar_now": -0.005413578659319674,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 43,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.011736741600024107,
+        "P_collapse_30d": 0.29825474519438666,
+        "P_collapse_90d": 0.6544280736997451,
+        "T_half_now": 58.710633283834404,
+        "CSD_now": 1058602865315.2854,
+        "PCS_now": 0.7031742907996315,
+        "alert_level": "WARNING"
+      },
+      "global_macro": {
+        "n_steps": 1040,
+        "phi_star": 0.8539889985285999,
+        "phi_star_estimated": false,
+        "C_now": 0.8423405842645124,
+        "C_norm_now": 0.9863599949365186,
+        "kappa_F_now": 0.01373388458814468,
+        "rho_bar_now": -0.00049921481223205,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 128,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.35061791700419503,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9884788900238338,
+            "sigma": 0.023832780973968508,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.99087876659857,
+            "sigma": 0.020301354897124518,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.881354533134203,
+            "sigma": 0.5596515715448128,
+            "n": 356
+          }
+        },
+        "h_now": 0.00416034113767177,
+        "P_collapse_30d": 0.11756538454046261,
+        "P_collapse_90d": 0.3128562387231484,
+        "T_half_now": 166.26144141688658,
+        "CSD_now": -0.5167666643335802,
+        "PCS_now": 0.0024076730033356524,
+        "alert_level": "NOMINAL"
+      },
+      "iran_war": {
+        "n_steps": 1040,
+        "phi_star": 0.2437350019170998,
+        "phi_star_estimated": false,
+        "C_now": 0.24372549907709,
+        "C_norm_now": 0.9999610115907234,
+        "kappa_F_now": 3.8989169344423665e-05,
+        "rho_bar_now": -4.072645718279401e-07,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 80,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.2663396747400543,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9904577170573852,
+            "sigma": 0.026286260058180067,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9936944037771248,
+            "sigma": 0.018219145894609174,
+            "n": 356
+          },
+          "TT": {
+            "mu": 7.837938038826392,
+            "sigma": 5.8893560305302,
+            "n": 356
+          }
+        },
+        "h_now": 0.007155382625561094,
+        "P_collapse_30d": 0.19380784128020367,
+        "P_collapse_90d": 0.4760187950420375,
+        "T_half_now": 96.52374750979014,
+        "CSD_now": 0.08818532893423037,
+        "PCS_now": 5.192181340789348e-06,
+        "alert_level": "NOMINAL"
+      },
+      "latam": {
+        "n_steps": 1040,
+        "phi_star": 0.0001,
+        "phi_star_estimated": true,
+        "C_now": 9.900000000000001e-05,
+        "C_norm_now": 0.99,
+        "kappa_F_now": 0.010050335853501506,
+        "rho_bar_now": -3e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 0,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.00313882376268732,
+        "P_collapse_30d": 0.09000193520581712,
+        "P_collapse_90d": 0.2464338076215875,
+        "T_half_now": 220.48347708620375,
+        "CSD_now": 0.0,
+        "PCS_now": 0.005025167926750753,
+        "alert_level": "BASELINE_INSUFFICIENT"
+      },
+      "mena": {
+        "n_steps": 545,
+        "phi_star": 0.1591210082585962,
+        "phi_star_estimated": false,
+        "C_now": 0.1371479630475367,
+        "C_norm_now": 0.8619098417516944,
+        "kappa_F_now": 0.14860460572395123,
+        "rho_bar_now": -0.0009173265552869303,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 22,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9973628691983121,
+            "sigma": 0.007679440811477346,
+            "n": 158
+          },
+          "LAM": {
+            "mu": 0.9996703586497891,
+            "sigma": 0.0018234858499392513,
+            "n": 158
+          },
+          "TT": {
+            "mu": 4.8063291139240505,
+            "sigma": 0.035010928318833776,
+            "n": 158
+          }
+        },
+        "h_now": 0.004917210212512434,
+        "P_collapse_30d": 0.13746554586524862,
+        "P_collapse_90d": 0.3583039643648307,
+        "T_half_now": 140.61664549691145,
+        "CSD_now": 0.2196402644526686,
+        "PCS_now": 0.07430230286197562,
+        "alert_level": "NOMINAL"
+      },
+      "tech_ai": {
+        "n_steps": 1040,
+        "phi_star": 0.2511719782253274,
+        "phi_star_estimated": false,
+        "C_now": 0.2511709782253274,
+        "C_norm_now": 0.9999960186641558,
+        "kappa_F_now": 3.981343769655117e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 18,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.8413287036535048,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.984013428667872,
+            "sigma": 0.037086080142101824,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9897442633276868,
+            "sigma": 0.02524783045874481,
+            "n": 356
+          },
+          "TT": {
+            "mu": 7.193187082520353,
+            "sigma": 5.513906366759749,
+            "n": 356
+          }
+        },
+        "h_now": 0.004114247147266705,
+        "P_collapse_30d": 0.11633921595033025,
+        "P_collapse_90d": 0.30998783789917006,
+        "T_half_now": 168.12804059527505,
+        "CSD_now": -2.5719091893572106,
+        "PCS_now": 1.6748093962614486e-06,
+        "alert_level": "NOMINAL"
+      },
+      "us_sectors": {
+        "n_steps": 1040,
+        "phi_star": 0.5810261469617916,
+        "phi_star_estimated": false,
+        "C_now": 0.24729687506001524,
+        "C_norm_now": 0.4256209059663498,
+        "kappa_F_now": 0.8542062209995709,
+        "rho_bar_now": 0.004958314552117081,
+        "T_exhaust_now": 49.87518892975949,
+        "n_false_recovery_days": 185,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.17589569987719736,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9689255617977528,
+            "sigma": 0.05051446467326171,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9881495786516854,
+            "sigma": 0.02358015275419362,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.900048154754761,
+            "sigma": 0.41239915568374935,
+            "n": 356
+          }
+        },
+        "h_now": 0.008604688583501259,
+        "P_collapse_30d": 0.22837583458156407,
+        "P_collapse_90d": 0.5405719991060826,
+        "T_half_now": 80.2075195155953,
+        "CSD_now": 0.10973420674691253,
+        "PCS_now": 0.07512560054108772,
+        "alert_level": "WARNING"
+      },
+      "x_brazil_vuln": {
+        "n_steps": 1040,
+        "phi_star": 0.2215295339100682,
+        "phi_star_estimated": false,
+        "C_now": 0.2215285339100682,
+        "C_norm_now": 0.9999954859292016,
+        "kappa_F_now": 4.514080986821641e-06,
+        "rho_bar_now": -3.000000000000476e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 46,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9929190074906368,
+            "sigma": 0.021969088148944053,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9965765449438202,
+            "sigma": 0.012620215188919986,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.876592826735885,
+            "sigma": 0.36711671042273963,
+            "n": 356
+          }
+        },
+        "h_now": 0.03238523539941676,
+        "P_collapse_30d": 0.6275443248478297,
+        "P_collapse_90d": 0.9483317457285436,
+        "T_half_now": 21.05470971624943,
+        "CSD_now": -13.790230066388139,
+        "PCS_now": 2.2570404934108207e-06,
+        "alert_level": "WARNING"
+      },
+      "x_commodity_chain": {
+        "n_steps": 1040,
+        "phi_star": 0.228276061527451,
+        "phi_star_estimated": true,
+        "C_now": 0.1141380307637255,
+        "C_norm_now": 0.5,
+        "kappa_F_now": 0.6931471805599453,
+        "rho_bar_now": 0.01165367607637254,
+        "T_exhaust_now": 9.79416537886588,
+        "n_false_recovery_days": 0,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9994054696789535,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 58.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.005275146905986152,
+        "P_collapse_30d": 0.1467249118320656,
+        "P_collapse_90d": 0.3787488594503484,
+        "T_half_now": 131.05177062625185,
+        "CSD_now": 0.0,
+        "PCS_now": 0.34657359027997264,
+        "alert_level": "BASELINE_INSUFFICIENT"
+      },
+      "x_energy_geopolitics": {
+        "n_steps": 1040,
+        "phi_star": 0.7045970028001328,
+        "phi_star_estimated": false,
+        "C_now": -3.7023250570837756,
+        "C_norm_now": -5.254528535276758,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.26442966141077023,
+        "T_exhaust_now": 3.781724011840639e-12,
+        "n_false_recovery_days": 130,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 3.595149174761292,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.987066947565543,
+            "sigma": 0.02326111006581865,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9938260767790263,
+            "sigma": 0.013040610112460849,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.9005171312562075,
+            "sigma": 0.19656733688972788,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999998912414613,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04322946964904505,
+        "CSD_now": 13.017471103992927,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "x_energy_tech": {
+        "n_steps": 1040,
+        "phi_star": 0.3159090136457495,
+        "phi_star_estimated": false,
+        "C_now": 0.31527693247131544,
+        "C_norm_now": 0.9979991670160355,
+        "kappa_F_now": 0.0020028373242924704,
+        "rho_bar_now": -2.7089190459231558e-05,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 114,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.34911873647060154,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9872601515143138,
+            "sigma": 0.02117872367753541,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9965033925411699,
+            "sigma": 0.0112790925546646,
+            "n": 356
+          },
+          "TT": {
+            "mu": 17.837985803637153,
+            "sigma": 5.195254571942506,
+            "n": 356
+          }
+        },
+        "h_now": 0.004671917327115993,
+        "P_collapse_30d": 0.13106412252276656,
+        "P_collapse_90d": 0.343910348766312,
+        "T_half_now": 148.01776342762523,
+        "CSD_now": 2.1269532978562347,
+        "PCS_now": 0.00034961401800657387,
+        "alert_level": "NOMINAL"
+      },
+      "x_europe_vuln": {
+        "n_steps": 1040,
+        "phi_star": 0.0807209957146336,
+        "phi_star_estimated": false,
+        "C_now": -0.03769543382627989,
+        "C_norm_now": -0.4669842522698989,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.003604465397715128,
+        "T_exhaust_now": 2.7743365233410213e-10,
+        "n_false_recovery_days": 25,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999993665939453,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04856640235072023,
+        "CSD_now": 984723145488.4407,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "x_global_contagion": {
+        "n_steps": 1040,
+        "phi_star": 0.1073924731455893,
+        "phi_star_estimated": false,
+        "C_now": 0.1073914731455893,
+        "C_norm_now": 0.9999906883604529,
+        "kappa_F_now": 9.311682900659034e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 13,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9992977528089888,
+            "sigma": 0.004071284440759855,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9999122191011236,
+            "sigma": 0.000952196868871309,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.801685393258426,
+            "sigma": 0.01828217988232921,
+            "n": 356
+          }
+        },
+        "h_now": 0.0029986771773431974,
+        "P_collapse_30d": 0.08615606041533408,
+        "P_collapse_90d": 0.23683910596297864,
+        "T_half_now": 230.8042370454306,
+        "CSD_now": -28.369349800170514,
+        "PCS_now": 4.655841450329517e-06,
+        "alert_level": "NOMINAL"
+      },
+      "x_us_systemic": {
+        "n_steps": 1040,
+        "phi_star": 0.2304563910239223,
+        "phi_star_estimated": false,
+        "C_now": 0.2304553910239223,
+        "C_norm_now": 0.9999956607842571,
+        "kappa_F_now": 4.339225157430689e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 22,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9987125468164793,
+            "sigma": 0.0066836570858002054,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9981566011235955,
+            "sigma": 0.0063393639454528625,
+            "n": 356
+          },
+          "TT": {
+            "mu": 4.837956231181611,
+            "sigma": 0.1314058205456811,
+            "n": 356
+          }
+        },
+        "h_now": 0.07038099258189709,
+        "P_collapse_30d": 0.888017580242181,
+        "P_collapse_90d": 0.9985957334758334,
+        "T_half_now": 9.4977109144573,
+        "CSD_now": -86.28730422506416,
+        "PCS_now": 2.1696125787153444e-06,
+        "alert_level": "WARNING"
+      }
+    },
+    "0.3": {
+      "ai_ecosystem": {
+        "n_steps": 1029,
+        "phi_star": 0.7350208280732061,
+        "phi_star_estimated": false,
+        "C_now": 0.7350198280732061,
+        "C_norm_now": 0.9999986394943357,
+        "kappa_F_now": 1.3605065898238482e-06,
+        "rho_bar_now": -3.3467062757890754e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 39,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.44548794529273805,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9797010921872843,
+            "sigma": 0.025871274818233637,
+            "n": 351
+          },
+          "LAM": {
+            "mu": 0.9962387651282627,
+            "sigma": 0.008442953652676126,
+            "n": 351
+          },
+          "TT": {
+            "mu": 8.0890536640478,
+            "sigma": 4.2177879212658,
+            "n": 351
+          }
+        },
+        "h_now": 0.004092434676384831,
+        "P_collapse_30d": 0.1157583978867941,
+        "P_collapse_90d": 0.30862633692153185,
+        "T_half_now": 169.026004345142,
+        "CSD_now": -0.34012304510198776,
+        "PCS_now": 3.0304464262892805e-07,
+        "alert_level": "NOMINAL"
+      },
+      "asia_pacific": {
+        "n_steps": 1040,
+        "phi_star": 0.2339711140902387,
+        "phi_star_estimated": false,
+        "C_now": 0.2339701140902387,
+        "C_norm_now": 0.9999957259681227,
+        "kappa_F_now": 4.274041010966215e-06,
+        "rho_bar_now": -3.000001159016401e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 83,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 1.8556320139833273,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9906094073858948,
+            "sigma": 0.020634604376130152,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9957884889955289,
+            "sigma": 0.011925155520604783,
+            "n": 356
+          },
+          "TT": {
+            "mu": 7.143622499038283,
+            "sigma": 1.9515859439463248,
+            "n": 356
+          }
+        },
+        "h_now": 0.008980041070823147,
+        "P_collapse_30d": 0.23709223519174927,
+        "P_collapse_90d": 0.5559661229355415,
+        "T_half_now": 76.8404343581532,
+        "CSD_now": -4.07505059179608,
+        "PCS_now": 2.1370205054831076e-06,
+        "alert_level": "WARNING"
+      },
+      "brazil_sectors": {
+        "n_steps": 1040,
+        "phi_star": 0.3991933427475131,
+        "phi_star_estimated": false,
+        "C_now": 0.3928526143573161,
+        "C_norm_now": 0.98411614696138,
+        "kappa_F_now": 0.016011353365671065,
+        "rho_bar_now": -0.00027174318336840067,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 46,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.002939234145638688,
+        "P_collapse_30d": 0.08452009541313232,
+        "P_collapse_90d": 0.23273312833966087,
+        "T_half_now": 235.47903487303253,
+        "CSD_now": 1004371379555.024,
+        "PCS_now": 0.008005676682835533,
+        "alert_level": "NOMINAL"
+      },
+      "china_property": {
+        "n_steps": 1040,
+        "phi_star": 0.3492217867263074,
+        "phi_star_estimated": false,
+        "C_now": 0.3130340531632545,
+        "C_norm_now": 0.896376071200237,
+        "kappa_F_now": 0.10939523174428792,
+        "rho_bar_now": -0.0015270255413309545,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 75,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.4105654555321663,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9763806215398442,
+            "sigma": 0.04109098399469458,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.990694576535358,
+            "sigma": 0.018029501468699187,
+            "n": 356
+          },
+          "TT": {
+            "mu": 8.144782041044381,
+            "sigma": 4.193478912517121,
+            "n": 356
+          }
+        },
+        "h_now": 0.004960051072513027,
+        "P_collapse_30d": 0.1385788801491037,
+        "P_collapse_90d": 0.36078560588415687,
+        "T_half_now": 139.3991156814116,
+        "CSD_now": 0.22137883348321202,
+        "PCS_now": 0.022456951577070235,
+        "alert_level": "NOMINAL"
+      },
+      "commodities": {
+        "n_steps": 1040,
+        "phi_star": 0.0398059275854982,
+        "phi_star_estimated": false,
+        "C_now": -4.031778816819589,
+        "C_norm_now": -101.28589035288343,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.2289829436294283,
+        "T_exhaust_now": 4.367137500067854e-12,
+        "n_false_recovery_days": 12,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9976339324347543,
+            "sigma": 0.003268095668753548,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9993315395389278,
+            "sigma": 0.003968889969106482,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.812536207819043,
+            "sigma": 9.939363478413021,
+            "n": 356
+          }
+        },
+        "h_now": 0.999999272460584,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.049042515378731805,
+        "CSD_now": 260.002513579625,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "energy": {
+        "n_steps": 1040,
+        "phi_star": 0.4605577997145251,
+        "phi_star_estimated": false,
+        "C_now": -5.844838279671684,
+        "C_norm_now": -12.69078122940179,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.4119159364090594,
+        "T_exhaust_now": 2.427679804568024e-12,
+        "n_false_recovery_days": 20,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.004969333952916526,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9928299758916804,
+            "sigma": 0.009278092614020853,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9971929833775512,
+            "sigma": 0.0062670167711487415,
+            "n": 356
+          },
+          "TT": {
+            "mu": 7.928798232776257,
+            "sigma": 3.5820578722604237,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999993616235997,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04859301513310456,
+        "CSD_now": 38.635006306335775,
+        "PCS_now": 0.004969333952916526,
+        "alert_level": "EMERGENCY"
+      },
+      "europe": {
+        "n_steps": 1040,
+        "phi_star": 0.2448155325404968,
+        "phi_star_estimated": false,
+        "C_now": -0.1394916842982115,
+        "C_norm_now": -0.5697828191319402,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.01509237813808097,
+        "T_exhaust_now": 6.625861019720992e-11,
+        "n_false_recovery_days": 56,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 2.511654622044591,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9901895019285594,
+            "sigma": 0.018145624135686593,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9969604226060708,
+            "sigma": 0.007968960373858218,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.612808660651459,
+            "sigma": 0.5362193603437346,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999998066313452,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04483874096234858,
+        "CSD_now": 3.9746170272376125,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "financials": {
+        "n_steps": 1040,
+        "phi_star": 0.2414410214291061,
+        "phi_star_estimated": false,
+        "C_now": 0.05916183435167499,
+        "C_norm_now": 0.24503638197640154,
+        "kappa_F_now": 1.406348581599263,
+        "rho_bar_now": -0.005413578659319674,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 43,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.011736741600024107,
+        "P_collapse_30d": 0.29825474519438666,
+        "P_collapse_90d": 0.6544280736997451,
+        "T_half_now": 58.710633283834404,
+        "CSD_now": 1058602865315.2854,
+        "PCS_now": 0.7031742907996315,
+        "alert_level": "WARNING"
+      },
+      "global_macro": {
+        "n_steps": 1040,
+        "phi_star": 0.8539889985285999,
+        "phi_star_estimated": false,
+        "C_now": 0.8423405842645124,
+        "C_norm_now": 0.9863599949365186,
+        "kappa_F_now": 0.01373388458814468,
+        "rho_bar_now": -0.00049921481223205,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 128,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.44888860208894504,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9827687405668287,
+            "sigma": 0.02628957774557974,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9925582760355526,
+            "sigma": 0.014100759260090558,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.695571422946108,
+            "sigma": 0.5539540407708153,
+            "n": 356
+          }
+        },
+        "h_now": 0.004368950912374128,
+        "P_collapse_30d": 0.12309417897055408,
+        "P_collapse_90d": 0.32569115099704116,
+        "T_half_now": 158.30617611925342,
+        "CSD_now": -0.5167666643335802,
+        "PCS_now": 0.003082492127011586,
+        "alert_level": "NOMINAL"
+      },
+      "iran_war": {
+        "n_steps": 1040,
+        "phi_star": 0.2437350019170998,
+        "phi_star_estimated": false,
+        "C_now": 0.24372549907709,
+        "C_norm_now": 0.9999610115907234,
+        "kappa_F_now": 3.8989169344423665e-05,
+        "rho_bar_now": -4.072645718279401e-07,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 80,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.28781373813155575,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9879779718668609,
+            "sigma": 0.02980899072361043,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9944678450243735,
+            "sigma": 0.01530721631697011,
+            "n": 356
+          },
+          "TT": {
+            "mu": 9.30071838440603,
+            "sigma": 5.15306465215135,
+            "n": 356
+          }
+        },
+        "h_now": 0.007232065510178642,
+        "P_collapse_30d": 0.19567375125194375,
+        "P_collapse_90d": 0.4796486020040557,
+        "T_half_now": 95.49660530281103,
+        "CSD_now": 0.08818532893423037,
+        "PCS_now": 5.610809287831417e-06,
+        "alert_level": "NOMINAL"
+      },
+      "latam": {
+        "n_steps": 1040,
+        "phi_star": 0.0001,
+        "phi_star_estimated": true,
+        "C_now": 9.900000000000001e-05,
+        "C_norm_now": 0.99,
+        "kappa_F_now": 0.010050335853501506,
+        "rho_bar_now": -3e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 0,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.00313882376268732,
+        "P_collapse_30d": 0.09000193520581712,
+        "P_collapse_90d": 0.2464338076215875,
+        "T_half_now": 220.48347708620375,
+        "CSD_now": 0.0,
+        "PCS_now": 0.005025167926750753,
+        "alert_level": "BASELINE_INSUFFICIENT"
+      },
+      "mena": {
+        "n_steps": 545,
+        "phi_star": 0.1591210082585962,
+        "phi_star_estimated": false,
+        "C_now": 0.1371479630475367,
+        "C_norm_now": 0.8619098417516944,
+        "kappa_F_now": 0.14860460572395123,
+        "rho_bar_now": -0.0009173265552869303,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 22,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9965992820706592,
+            "sigma": 0.008035582965477704,
+            "n": 158
+          },
+          "LAM": {
+            "mu": 0.9997638390326845,
+            "sigma": 0.0013063779223445467,
+            "n": 158
+          },
+          "TT": {
+            "mu": 6.709493670886078,
+            "sigma": 0.05251639247825059,
+            "n": 158
+          }
+        },
+        "h_now": 0.004917210212512434,
+        "P_collapse_30d": 0.13746554586524862,
+        "P_collapse_90d": 0.3583039643648307,
+        "T_half_now": 140.61664549691145,
+        "CSD_now": 0.2196402644526686,
+        "PCS_now": 0.07430230286197562,
+        "alert_level": "NOMINAL"
+      },
+      "tech_ai": {
+        "n_steps": 1040,
+        "phi_star": 0.2511719782253274,
+        "phi_star_estimated": false,
+        "C_now": 0.2511709782253274,
+        "C_norm_now": 0.9999960186641558,
+        "kappa_F_now": 3.981343769655117e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 18,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.8232276502690361,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9875595583166346,
+            "sigma": 0.028721679239944498,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.994342069408073,
+            "sigma": 0.014504359875981317,
+            "n": 356
+          },
+          "TT": {
+            "mu": 8.704406993571832,
+            "sigma": 4.843099110605154,
+            "n": 356
+          }
+        },
+        "h_now": 0.004077330178531415,
+        "P_collapse_30d": 0.11535598213692566,
+        "P_collapse_90d": 0.307681980922379,
+        "T_half_now": 169.6534479853751,
+        "CSD_now": -2.5719091893572106,
+        "PCS_now": 1.638776138203224e-06,
+        "alert_level": "NOMINAL"
+      },
+      "us_sectors": {
+        "n_steps": 1040,
+        "phi_star": 0.5810261469617916,
+        "phi_star_estimated": false,
+        "C_now": 0.24729687506001524,
+        "C_norm_now": 0.4256209059663498,
+        "kappa_F_now": 0.8542062209995709,
+        "rho_bar_now": 0.004958314552117081,
+        "T_exhaust_now": 49.87518892975949,
+        "n_false_recovery_days": 185,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.2861833001192652,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9693107496226733,
+            "sigma": 0.040605075513629525,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9898331376823746,
+            "sigma": 0.015812237269242472,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.545901133087009,
+            "sigma": 0.7285006341241737,
+            "n": 356
+          }
+        },
+        "h_now": 0.009088077013179388,
+        "P_collapse_30d": 0.2395833446623491,
+        "P_collapse_90d": 0.5603016237467779,
+        "T_half_now": 75.92284919119089,
+        "CSD_now": 0.10973420674691253,
+        "PCS_now": 0.12222977765403178,
+        "alert_level": "WARNING"
+      },
+      "x_brazil_vuln": {
+        "n_steps": 1040,
+        "phi_star": 0.2215295339100682,
+        "phi_star_estimated": false,
+        "C_now": 0.2215285339100682,
+        "C_norm_now": 0.9999954859292016,
+        "kappa_F_now": 4.514080986821641e-06,
+        "rho_bar_now": -3.000000000000476e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 46,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9937531443904074,
+            "sigma": 0.01686680767362974,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9971700486332384,
+            "sigma": 0.009341397726753539,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.733353058131553,
+            "sigma": 0.3792338482212851,
+            "n": 356
+          }
+        },
+        "h_now": 0.03238523539941676,
+        "P_collapse_30d": 0.6275443248478297,
+        "P_collapse_90d": 0.9483317457285436,
+        "T_half_now": 21.05470971624943,
+        "CSD_now": -13.790230066388139,
+        "PCS_now": 2.2570404934108207e-06,
+        "alert_level": "WARNING"
+      },
+      "x_commodity_chain": {
+        "n_steps": 1040,
+        "phi_star": 0.228276061527451,
+        "phi_star_estimated": true,
+        "C_now": 0.1141380307637255,
+        "C_norm_now": 0.5,
+        "kappa_F_now": 0.6931471805599453,
+        "rho_bar_now": 0.01165367607637254,
+        "T_exhaust_now": 9.79416537886588,
+        "n_false_recovery_days": 0,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9994054696789535,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 58.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.005275146905986152,
+        "P_collapse_30d": 0.1467249118320656,
+        "P_collapse_90d": 0.3787488594503484,
+        "T_half_now": 131.05177062625185,
+        "CSD_now": 0.0,
+        "PCS_now": 0.34657359027997264,
+        "alert_level": "BASELINE_INSUFFICIENT"
+      },
+      "x_energy_geopolitics": {
+        "n_steps": 1040,
+        "phi_star": 0.7045970028001328,
+        "phi_star_estimated": false,
+        "C_now": -3.7023250570837756,
+        "C_norm_now": -5.254528535276758,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.26442966141077023,
+        "T_exhaust_now": 3.781724011840639e-12,
+        "n_false_recovery_days": 130,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 2.661621480186954,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9820140868690256,
+            "sigma": 0.02902202507804133,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9937950695958411,
+            "sigma": 0.01449945513713723,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.7524764335837455,
+            "sigma": 0.21450427158436838,
+            "n": 356
+          }
+        },
+        "h_now": 0.999999826549203,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04452563903522419,
+        "CSD_now": 13.017471103992927,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "x_energy_tech": {
+        "n_steps": 1040,
+        "phi_star": 0.3159090136457495,
+        "phi_star_estimated": false,
+        "C_now": 0.31527693247131544,
+        "C_norm_now": 0.9979991670160355,
+        "kappa_F_now": 0.0020028373242924704,
+        "rho_bar_now": -2.7089190459231558e-05,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 114,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 0.3615144350006218,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9874246622219154,
+            "sigma": 0.02091680715167707,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9962504889268591,
+            "sigma": 0.010842870184302918,
+            "n": 356
+          },
+          "TT": {
+            "mu": 17.990219472344755,
+            "sigma": 4.8078656046234265,
+            "n": 356
+          }
+        },
+        "h_now": 0.00470082654505571,
+        "P_collapse_30d": 0.1318209487552835,
+        "P_collapse_90d": 0.3456231799967191,
+        "T_half_now": 147.10534672417376,
+        "CSD_now": 2.1269532978562347,
+        "PCS_now": 0.0003620273018448748,
+        "alert_level": "NOMINAL"
+      },
+      "x_europe_vuln": {
+        "n_steps": 1040,
+        "phi_star": 0.0807209957146336,
+        "phi_star_estimated": false,
+        "C_now": -0.03769543382627989,
+        "C_norm_now": -0.4669842522698989,
+        "kappa_F_now": 20.0,
+        "rho_bar_now": 0.003604465397715128,
+        "T_exhaust_now": 2.7743365233410213e-10,
+        "n_false_recovery_days": 25,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9949999999999999,
+            "sigma": 1.1102230246251565e-16,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 1.0,
+            "sigma": 0.0,
+            "n": 356
+          },
+          "TT": {
+            "mu": 20.0,
+            "sigma": 0.0,
+            "n": 356
+          }
+        },
+        "h_now": 0.9999993665939453,
+        "P_collapse_30d": 1.0,
+        "P_collapse_90d": 1.0,
+        "T_half_now": 0.04856640235072023,
+        "CSD_now": 984723145488.4407,
+        "PCS_now": 1.0,
+        "alert_level": "EMERGENCY"
+      },
+      "x_global_contagion": {
+        "n_steps": 1040,
+        "phi_star": 0.1073924731455893,
+        "phi_star_estimated": false,
+        "C_now": 0.1073914731455893,
+        "C_norm_now": 0.9999906883604529,
+        "kappa_F_now": 9.311682900659034e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 13,
+        "layer2_status": "FULL",
+        "geo_reliability": "LOW",
+        "theta_A_now": 0.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.998993795069596,
+            "sigma": 0.004638375544504221,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9999371121918498,
+            "sigma": 0.0006821708911316883,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.702528089887643,
+            "sigma": 0.02742326982349378,
+            "n": 356
+          }
+        },
+        "h_now": 0.0029986771773431974,
+        "P_collapse_30d": 0.08615606041533408,
+        "P_collapse_90d": 0.23683910596297864,
+        "T_half_now": 230.8042370454306,
+        "CSD_now": -28.369349800170514,
+        "PCS_now": 4.655841450329517e-06,
+        "alert_level": "NOMINAL"
+      },
+      "x_us_systemic": {
+        "n_steps": 1040,
+        "phi_star": 0.2304563910239223,
+        "phi_star_estimated": false,
+        "C_now": 0.2304553910239223,
+        "C_norm_now": 0.9999956607842571,
+        "kappa_F_now": 4.339225157430689e-06,
+        "rho_bar_now": -3.000000000000006e-08,
+        "T_exhaust_now": Infinity,
+        "n_false_recovery_days": 22,
+        "layer2_status": "FULL",
+        "geo_reliability": "HIGH",
+        "theta_A_now": 5.0,
+        "calm_rqa_stats": {
+          "DET": {
+            "mu": 0.9958913298675164,
+            "sigma": 0.017349336927827905,
+            "n": 356
+          },
+          "LAM": {
+            "mu": 0.9977779641120241,
+            "sigma": 0.009363410600158415,
+            "n": 356
+          },
+          "TT": {
+            "mu": 6.722836309765383,
+            "sigma": 0.12788851005461402,
+            "n": 356
+          }
+        },
+        "h_now": 0.07038099258189709,
+        "P_collapse_30d": 0.888017580242181,
+        "P_collapse_90d": 0.9985957334758334,
+        "T_half_now": 9.4977109144573,
+        "CSD_now": -86.28730422506416,
+        "PCS_now": 2.1696125787153444e-06,
+        "alert_level": "WARNING"
+      }
+    }
+  }
+}

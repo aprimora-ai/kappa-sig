@@ -1,0 +1,472 @@
+"""
+Katashi Analyzer - Main class for educational regime detection.
+
+This module implements the core Katashi method for detecting structural
+regime transitions in educational systems via topological data analysis.
+"""
+
+from __future__ import annotations
+from dataclasses import dataclass, asdict
+from typing import Dict, List, Optional, Tuple, Any
+import warnings
+
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+from .topological_metrics import compute_structural_metrics
+from .calm_detection import detect_calm_periods, rank_calm_candidates
+from .visualization import plot_regime_evolution, plot_cohort_comparison
+from .def_metric import compute_def, compute_def_with_components
+
+
+@dataclass
+class KatashiConfig:
+    """Configuration for Katashi analysis."""
+    
+    # Rolling window parameters
+    window: int = 10              # Window size (weeks)
+    step: int = 1                 # Step size
+    k: int = 4                    # Scale factor for Ξ
+    
+    # CALM detection
+    calm_length: int = 12         # CALM period length
+    calm_step: int = 1            # CALM search step
+    calm_top_n: int = 3           # Number of CALMs for ensemble
+    calm_deg_weight: float = 1.0  # Degeneracy penalty weight
+    
+    # Memory dynamics (Φ)
+    gamma: float = 0.97           # Forgetting factor
+    delta: float = 0.08           # Damage sensitivity
+    
+    # Crossing detection
+    persist_sens: int = 2         # Weeks for sensitization
+    persist_conf: int = 5         # Weeks for confirmation
+    
+    # Thresholds
+    xi_quantile: float = 0.95     # Percentile for Ξ_c
+    oh_quantile: float = 0.95     # Percentile for θ (Oh threshold)
+    phi_quantile: float = 0.05    # Percentile for Φ_c (low = stability)
+
+
+class KatashiAnalyzer:
+    """
+    Main analyzer class for Katashi regime detection.
+    
+    Example:
+        >>> analyzer = KatashiAnalyzer(window=10)
+        >>> state = analyzer.analyze(df)
+        >>> calm_info = analyzer.detect_calm(state)
+        >>> thresholds = analyzer.calibrate_thresholds(state, calm_info)
+        >>> crossings = analyzer.detect_crossings(state, thresholds)
+    """
+    
+    def __init__(self, config: Optional[KatashiConfig] = None, **kwargs):
+        """
+        Initialize analyzer.
+        
+        Args:
+            config: KatashiConfig object or None to use defaults
+            **kwargs: Override specific config parameters
+        """
+        self.config = config or KatashiConfig()
+        
+        # Override with kwargs if provided
+        for key, value in kwargs.items():
+            if hasattr(self.config, key):
+                setattr(self.config, key, value)
+            else:
+                warnings.warn(f"Unknown config parameter: {key}")
+    
+    def analyze(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Compute structural state for entire time series.
+        
+        Args:
+            df: DataFrame with engagement metrics (indexed by date)
+        
+        Returns:
+            DataFrame with structural observables (Ξ, η, Oh, Φ)
+        """
+        state_list = []
+        phi_t = 0.0  # Initialize memory
+        
+        for i in range(0, len(df) - self.config.window + 1, self.config.step):
+            window_data = df.iloc[i:i + self.config.window]
+            
+            # Compute structural metrics
+            metrics = compute_structural_metrics(
+                window_data, 
+                k=self.config.k
+            )
+            
+            # Update memory (Φ)
+            oh_t = metrics.get('Oh', 0.0)
+            phi_t = self.config.gamma * phi_t + \
+                    self.config.delta * max(0, oh_t - 1.0)
+            
+            # Store state
+            state_list.append({
+                'date': window_data.index[-1],
+                'Xi': metrics['Xi'],
+                'eta': metrics['eta'],
+                'Oh': metrics.get('Oh', 0.0),  # Will be normalized after CALM
+                'phi': phi_t,
+                'mean_corr': metrics.get('mean_corr', 0.0),
+                'spectral_dom': metrics.get('spectral_dom', 0.0)
+            })
+        
+        state = pd.DataFrame(state_list)
+        state.set_index('date', inplace=True)
+        
+        return state
+    
+    def detect_calm(self, state: pd.DataFrame) -> Dict[str, Any]:
+        """
+        Detect CALM periods (Collectively Aligned Low-variance Mode).
+        
+        Args:
+            state: DataFrame with structural observables
+        
+        Returns:
+            Dictionary with CALM period info
+        """
+        candidates = detect_calm_periods(
+            state,
+            length=self.config.calm_length,
+            step=self.config.calm_step,
+            deg_weight=self.config.calm_deg_weight
+        )
+        
+        top_calms = rank_calm_candidates(
+            candidates, 
+            top_n=self.config.calm_top_n
+        )
+        
+        return {
+            'best': top_calms[0] if top_calms else None,
+            'top': top_calms,
+            'count': len(candidates),
+            'all_candidates': candidates
+        }
+    
+    def calibrate_thresholds(
+        self, 
+        state: pd.DataFrame, 
+        calm_info: Dict[str, Any]
+    ) -> Dict[str, float]:
+        """
+        Calibrate detection thresholds from CALM period.
+        
+        Args:
+            state: DataFrame with structural observables
+            calm_info: CALM period information
+        
+        Returns:
+            Dictionary with calibrated thresholds
+        """
+        best_calm = calm_info['best']
+        if best_calm is None:
+            raise ValueError("No CALM period detected")
+        
+        # Extract CALM period data
+        calm_start = best_calm['start']
+        calm_end = best_calm['end']
+        calm_data = state.loc[calm_start:calm_end]
+        
+        # Calibrate Ξ_c (reference intensity)
+        xi_c = calm_data['Xi'].quantile(self.config.xi_quantile)
+        
+        # Normalize Oh using Ξ_c
+        state['Oh'] = state['Xi'] / xi_c
+        
+        # Calibrate θ (Oh threshold) from CALM
+        theta = calm_data['Xi'].quantile(self.config.oh_quantile) / xi_c
+        
+        # Calibrate Φ_c (memory threshold)
+        phi_c = calm_data['phi'].quantile(self.config.phi_quantile)
+        
+        # Ensemble: calibrate from top-N CALMs
+        theta_ensemble = []
+        for calm in calm_info['top']:
+            calm_xi = state.loc[calm['start']:calm['end'], 'Xi']
+            theta_i = calm_xi.quantile(self.config.oh_quantile) / xi_c
+            theta_ensemble.append(theta_i)
+        
+        return {
+            'Xi_c': xi_c,
+            'theta': theta,
+            'theta_ensemble': theta_ensemble,
+            'phi_c': phi_c,
+            'calm_start': calm_start,
+            'calm_end': calm_end
+        }
+    
+    def detect_crossings(
+        self, 
+        state: pd.DataFrame, 
+        thresholds: Dict[str, float]
+    ) -> Dict[str, Dict[str, Optional[pd.Timestamp]]]:
+        """
+        Detect threshold crossings with persistence logic.
+        
+        Args:
+            state: DataFrame with structural observables
+            thresholds: Calibrated thresholds
+        
+        Returns:
+            Dictionary with crossing timestamps
+        """
+        crossings = {}
+        
+        # Oh > 1.0 crossings
+        crossings['Oh>1'] = self._detect_crossing(
+            state['Oh'], 
+            threshold=1.0,
+            persist_sens=self.config.persist_sens,
+            persist_conf=self.config.persist_conf
+        )
+        
+        # Oh > θ crossings
+        crossings['Oh>theta'] = self._detect_crossing(
+            state['Oh'], 
+            threshold=thresholds['theta'],
+            persist_sens=self.config.persist_sens,
+            persist_conf=self.config.persist_conf
+        )
+        
+        # Φ > Φ_c crossings
+        crossings['phi>phi_c'] = self._detect_crossing(
+            state['phi'], 
+            threshold=thresholds['phi_c'],
+            persist_sens=self.config.persist_sens,
+            persist_conf=self.config.persist_conf,
+            direction='above'  # Φ increases with damage
+        )
+        
+        # Ensemble crossings (any θ in ensemble)
+        crossings['Oh>theta_ensemble'] = self._detect_ensemble_crossing(
+            state['Oh'],
+            thresholds['theta_ensemble'],
+            persist_sens=self.config.persist_sens,
+            persist_conf=self.config.persist_conf
+        )
+        
+        return crossings
+    
+    def _detect_crossing(
+        self,
+        series: pd.Series,
+        threshold: float,
+        persist_sens: int,
+        persist_conf: int,
+        direction: str = 'above'
+    ) -> Dict[str, Optional[pd.Timestamp]]:
+        """
+        Detect persistent crossing of threshold.
+        
+        Returns:
+            dict with 'sens' and 'confirm' timestamps
+        """
+        if direction == 'above':
+            violations = series > threshold
+        else:
+            violations = series < threshold
+        
+        sens_date = None
+        conf_date = None
+        
+        # Sensitization: first sustained violation
+        for i in range(len(violations) - persist_sens + 1):
+            if violations.iloc[i:i + persist_sens].all():
+                sens_date = violations.index[i]
+                break
+        
+        # Confirmation: prolonged violation
+        if sens_date:
+            for i in range(len(violations) - persist_conf + 1):
+                if violations.iloc[i:i + persist_conf].all():
+                    conf_date = violations.index[i]
+                    break
+        
+        return {'sens': sens_date, 'confirm': conf_date}
+    
+    def _detect_ensemble_crossing(
+        self,
+        series: pd.Series,
+        thresholds: List[float],
+        persist_sens: int,
+        persist_conf: int
+    ) -> Dict[str, Optional[pd.Timestamp]]:
+        """
+        Detect crossing of ANY threshold in ensemble.
+        """
+        # Check if series crosses ANY threshold
+        violations = pd.Series(False, index=series.index)
+        for theta_i in thresholds:
+            violations |= (series > theta_i)
+        
+        return self._detect_crossing(
+            violations.astype(float),
+            threshold=0.5,  # Boolean converted to 0/1
+            persist_sens=persist_sens,
+            persist_conf=persist_conf,
+            direction='above'
+        )
+    
+    def compute_lead_times(
+        self,
+        crossings: Dict[str, Dict[str, Optional[pd.Timestamp]]],
+        outcome_date: pd.Timestamp
+    ) -> Dict[str, Any]:
+        """
+        Compute lead times between crossings and outcome.
+        
+        Args:
+            crossings: Crossing timestamps
+            outcome_date: Final outcome date
+        
+        Returns:
+            Dictionary with lead time metrics
+        """
+        # Find earliest sensitization
+        sens_dates = [
+            c['sens'] for c in crossings.values() 
+            if c['sens'] is not None
+        ]
+        
+        if not sens_dates:
+            return {'Δt_total': None, 'Δt_cascade': None, 'sync_ratio': None}
+        
+        first_sens = min(sens_dates)
+        
+        # Find latest confirmation
+        conf_dates = [
+            c['confirm'] for c in crossings.values() 
+            if c['confirm'] is not None
+        ]
+        
+        if not conf_dates:
+            last_conf = first_sens
+        else:
+            last_conf = max(conf_dates)
+        
+        # Compute metrics
+        dt_total = (outcome_date - first_sens).days
+        dt_cascade = (last_conf - first_sens).days
+        sync_ratio = dt_cascade / dt_total if dt_total > 0 else 0.0
+        
+        return {
+            'Δt_total': dt_total,
+            'Δt_cascade': dt_cascade,
+            'sync_ratio': sync_ratio,
+            'first_sens': first_sens,
+            'last_conf': last_conf
+        }
+    
+    def compute_def(
+        self,
+        state: pd.DataFrame,
+        window: int = 5,
+        normalized: bool = True
+    ) -> pd.DataFrame:
+        """
+        Compute DEF (State-Phase Divergence) for the state.
+        
+        DEF measures incoherence between where the system is (state)
+        and where it is going (phase/dynamics).
+        
+        Args:
+            state: DataFrame with structural observables
+            window: Window size for phase vector computation
+            normalized: Use normalized DEF (scale-invariant)
+        
+        Returns:
+            State DataFrame with DEF column added
+        """
+        from .def_metric import compute_def_timeseries
+        
+        # Compute DEF time series
+        def_series = compute_def_timeseries(
+            state,
+            window=window,
+            normalized=normalized
+        )
+        
+        # Add to state
+        state_with_def = state.copy()
+        state_with_def['DEF'] = def_series
+        
+        return state_with_def
+    
+    def analyze_with_def(
+        self,
+        df: pd.DataFrame,
+        def_window: int = 5
+    ) -> pd.DataFrame:
+        """
+        Complete analysis including DEF computation.
+        
+        Args:
+            df: DataFrame with engagement metrics
+            def_window: Window for DEF phase computation
+        
+        Returns:
+            DataFrame with all observables including DEF
+        """
+        # Standard analysis
+        state = self.analyze(df)
+        
+        # Add DEF
+        state_with_def = self.compute_def(state, window=def_window)
+        
+        return state_with_def
+    
+    def plot_regime_evolution(
+        self,
+        state: pd.DataFrame,
+        calm_info: Dict[str, Any],
+        thresholds: Dict[str, float],
+        crossings: Dict[str, Dict[str, Optional[pd.Timestamp]]]
+    ):
+        """
+        Plot regime evolution with CALM period and crossings.
+        """
+        from .visualization import plot_regime_evolution
+        plot_regime_evolution(state, calm_info, thresholds, crossings)
+    
+    @staticmethod
+    def compare_cohorts(
+        cohorts: Dict[str, pd.DataFrame],
+        metric: str = 'Oh'
+    ):
+        """
+        Compare metric distributions across cohorts.
+        """
+        from .visualization import plot_cohort_comparison
+        plot_cohort_comparison(cohorts, metric)
+
+
+def load_oulad_data(path: str) -> pd.DataFrame:
+    """
+    Load and preprocess OULAD dataset.
+    
+    Args:
+        path: Path to OULAD CSV file
+    
+    Returns:
+        Preprocessed DataFrame
+    """
+    df = pd.read_csv(path, parse_dates=['date'], index_col='date')
+    
+    # Ensure required columns exist
+    required_cols = [
+        'active_students', 'total_clicks', 'mean_clicks_per_student',
+        'entropy_clicks', 'dominance_clicks'
+    ]
+    
+    missing = [col for col in required_cols if col not in df.columns]
+    if missing:
+        raise ValueError(f"Missing required columns: {missing}")
+    
+    return df

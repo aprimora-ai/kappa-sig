@@ -1,0 +1,140 @@
+{
+  "commodities": {
+    "t_S": 245,
+    "t_S_date": "2023-01-26",
+    "embeddings": {
+      "Phi": {
+        "column": "phi",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 0.5214069945548407,
+        "lead_time": 185,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": false
+      },
+      "Oh": {
+        "column": "Oh",
+        "t_G": 233,
+        "t_G_date": "2023-01-09",
+        "peak_theta_A": 1.8925869569549059,
+        "lead_time": 12,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      },
+      "eta": {
+        "column": "eta",
+        "t_G": 63,
+        "t_G_date": "2022-05-05",
+        "peak_theta_A": 2.4027658601325794,
+        "lead_time": 182,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      },
+      "mean_corr": {
+        "column": "mean_corr",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 1.7007072050999201,
+        "lead_time": 185,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      }
+    }
+  },
+  "energy": {
+    "t_S": 84,
+    "t_S_date": "2022-06-06",
+    "embeddings": {
+      "Phi": {
+        "column": "phi",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 1.20660398420003,
+        "lead_time": 24,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": false
+      },
+      "Oh": {
+        "column": "Oh",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 3.027871295933209,
+        "lead_time": 24,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      },
+      "eta": {
+        "column": "eta",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 2.946564801237723,
+        "lead_time": 24,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      },
+      "mean_corr": {
+        "column": "mean_corr",
+        "t_G": 69,
+        "t_G_date": "2022-05-13",
+        "peak_theta_A": 2.7299550158242334,
+        "lead_time": 15,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      }
+    }
+  },
+  "asia_pacific": {
+    "t_S": 63,
+    "t_S_date": "2022-05-05",
+    "embeddings": {
+      "Phi": {
+        "column": "phi",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 1.807706294747383,
+        "lead_time": 3,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": false
+      },
+      "Oh": {
+        "column": "Oh",
+        "t_G": 103,
+        "t_G_date": "2022-07-05",
+        "peak_theta_A": 2.6513466685412603,
+        "lead_time": null,
+        "geo_reliability": "HIGH",
+        "verdict": "after damage",
+        "independent_of_phi": true
+      },
+      "eta": {
+        "column": "eta",
+        "t_G": 125,
+        "t_G_date": "2022-08-04",
+        "peak_theta_A": 3.826018412955243,
+        "lead_time": null,
+        "geo_reliability": "HIGH",
+        "verdict": "after damage",
+        "independent_of_phi": true
+      },
+      "mean_corr": {
+        "column": "mean_corr",
+        "t_G": 60,
+        "t_G_date": "2022-05-02",
+        "peak_theta_A": 3.349195906309715,
+        "lead_time": 3,
+        "geo_reliability": "HIGH",
+        "verdict": "PRECEDES DAMAGE",
+        "independent_of_phi": true
+      }
+    }
+  }
+}

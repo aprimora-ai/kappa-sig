@@ -1,0 +1,39 @@
+{
+  "verdicts": {
+    "T1_regime_separation": "PASS",
+    "T2_partial_correlation": "COMPOSITE",
+    "T4_cross_stability": "PARTIAL",
+    "T5_temporal_dynamics": "DRIFT_CONFIRMED",
+    "T6_calm_saturated": "LSCC_COVERS_BLIND_SPOT"
+  },
+  "overall": "STRONG EVIDENCE",
+  "results": {
+    "T1_regime_separation": {
+      "sep_np": 3.1691322326660156,
+      "sep_pd": 12.200785636901855,
+      "silhouette": 0.07433995604515076,
+      "auc_pc1": 0.6527915115465176,
+      "verdict": "PASS"
+    },
+    "T2_partial_correlation": {
+      "r2_linear": 0.03189354499908048,
+      "max_corr": 0.11104212978810465,
+      "verdict": "COMPOSITE"
+    },
+    "T3_incremental_value": {},
+    "T4_cross_stability": {
+      "mean_cosine": 0.6644477817673413,
+      "min_cosine": 0.00867739599198103,
+      "n_universes": 21,
+      "verdict": "PARTIAL"
+    },
+    "T5_temporal_dynamics": {
+      "verdict": "DRIFT_CONFIRMED"
+    },
+    "T6_calm_saturated": {
+      "mean_sat": 0.9111977565299391,
+      "mean_high": 0.9548124370983412,
+      "verdict": "LSCC_COVERS_BLIND_SPOT"
+    }
+  }
+}

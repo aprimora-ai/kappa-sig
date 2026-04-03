@@ -1,0 +1,221 @@
+{
+  "extraction_date": "2026-04-01 09:49",
+  "n_universes": 19,
+  "total_steps": 19768,
+  "window": 22,
+  "methods": [
+    "S1_spectral",
+    "S2_lz",
+    "S3_ph"
+  ],
+  "has_ripser": true,
+  "universes": [
+    {
+      "uid": "ai_ecosystem",
+      "n_steps": 1030,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 61,
+        "CRYSTALLIZING": 524,
+        "DAMAGED": 445
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\ai_ecosystem_sig.npz"
+    },
+    {
+      "uid": "asia_pacific",
+      "n_steps": 1041,
+      "n_assets": 12,
+      "labels": {
+        "NOMINAL": 64,
+        "CRYSTALLIZING": 654,
+        "DAMAGED": 323
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\asia_pacific_sig.npz"
+    },
+    {
+      "uid": "brazil_sectors",
+      "n_steps": 1041,
+      "n_assets": 16,
+      "labels": {
+        "NOMINAL": 928,
+        "DAMAGED": 113
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\brazil_sectors_sig.npz"
+    },
+    {
+      "uid": "china_property",
+      "n_steps": 1041,
+      "n_assets": 9,
+      "labels": {
+        "NOMINAL": 62,
+        "CRYSTALLIZING": 528,
+        "DAMAGED": 451
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\china_property_sig.npz"
+    },
+    {
+      "uid": "commodities",
+      "n_steps": 1041,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 1027,
+        "DAMAGED": 14
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\commodities_sig.npz"
+    },
+    {
+      "uid": "energy",
+      "n_steps": 1041,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 75,
+        "CRYSTALLIZING": 682,
+        "DAMAGED": 284
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\energy_sig.npz"
+    },
+    {
+      "uid": "europe",
+      "n_steps": 1041,
+      "n_assets": 12,
+      "labels": {
+        "NOMINAL": 18,
+        "DAMAGED": 329,
+        "CRYSTALLIZING": 662,
+        "CRYSTALLIZED": 32
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\europe_sig.npz"
+    },
+    {
+      "uid": "financials",
+      "n_steps": 1041,
+      "n_assets": 10,
+      "labels": {
+        "NOMINAL": 1006,
+        "DAMAGED": 35
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\financials_sig.npz"
+    },
+    {
+      "uid": "global_macro",
+      "n_steps": 1041,
+      "n_assets": 20,
+      "labels": {
+        "NOMINAL": 58,
+        "DAMAGED": 636,
+        "CRYSTALLIZING": 347
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\global_macro_sig.npz"
+    },
+    {
+      "uid": "iran_war",
+      "n_steps": 1041,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 60,
+        "CRYSTALLIZING": 704,
+        "DAMAGED": 277
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\iran_war_sig.npz"
+    },
+    {
+      "uid": "mena",
+      "n_steps": 1041,
+      "n_assets": 6,
+      "labels": {
+        "NOMINAL": 542,
+        "DAMAGED": 142,
+        "CRYSTALLIZING": 357
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\mena_sig.npz"
+    },
+    {
+      "uid": "tech_ai",
+      "n_steps": 1041,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 68,
+        "CRYSTALLIZING": 890,
+        "DAMAGED": 83
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\tech_ai_sig.npz"
+    },
+    {
+      "uid": "us_sectors",
+      "n_steps": 1041,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 47,
+        "DAMAGED": 614,
+        "CRYSTALLIZING": 380
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\us_sectors_sig.npz"
+    },
+    {
+      "uid": "x_brazil_vuln",
+      "n_steps": 1041,
+      "n_assets": 13,
+      "labels": {
+        "NOMINAL": 69,
+        "DAMAGED": 167,
+        "CRYSTALLIZING": 576,
+        "CRYSTALLIZED": 229
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\x_brazil_vuln_sig.npz"
+    },
+    {
+      "uid": "x_energy_geopolitics",
+      "n_steps": 1041,
+      "n_assets": 14,
+      "labels": {
+        "NOMINAL": 52,
+        "DAMAGED": 647,
+        "CRYSTALLIZING": 342
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\x_energy_geopolitics_sig.npz"
+    },
+    {
+      "uid": "x_energy_tech",
+      "n_steps": 1041,
+      "n_assets": 13,
+      "labels": {
+        "NOMINAL": 60,
+        "CRYSTALLIZING": 648,
+        "DAMAGED": 333
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\x_energy_tech_sig.npz"
+    },
+    {
+      "uid": "x_europe_vuln",
+      "n_steps": 1041,
+      "n_assets": 12,
+      "labels": {
+        "NOMINAL": 948,
+        "DAMAGED": 93
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\x_europe_vuln_sig.npz"
+    },
+    {
+      "uid": "x_global_contagion",
+      "n_steps": 1041,
+      "n_assets": 12,
+      "labels": {
+        "NOMINAL": 963,
+        "DAMAGED": 78
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\x_global_contagion_sig.npz"
+    },
+    {
+      "uid": "x_us_systemic",
+      "n_steps": 1041,
+      "n_assets": 13,
+      "labels": {
+        "NOMINAL": 21,
+        "DAMAGED": 93,
+        "CRYSTALLIZING": 373,
+        "CRYSTALLIZED": 554
+      },
+      "file": "C:\\Users\\ohiod\\Projects\\Sentinel\\data\\sig\\x_us_systemic_sig.npz"
+    }
+  ]
+}

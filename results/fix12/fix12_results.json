@@ -1,0 +1,174 @@
+{
+  "anatomy": {
+    "commodities": {
+      "n_steps": 1041,
+      "t_S": 1027,
+      "t_G": null,
+      "theta_a_mean": 0.0,
+      "scr_mean": 0.3698806166648865,
+      "n_suppressed": 260,
+      "frac_suppressed": 0.24975984630163303,
+      "n_suppressed_pre_damage_90": 10,
+      "calm_verdict": "SEVERE_SUPPRESSION"
+    },
+    "energy": {
+      "n_steps": 1041,
+      "t_S": 84,
+      "t_G": 60,
+      "theta_a_mean": 0.39708120251380236,
+      "scr_mean": 0.5160611867904663,
+      "n_suppressed": 24,
+      "frac_suppressed": 0.023054755043227664,
+      "n_suppressed_pre_damage_90": 0,
+      "calm_verdict": "MINIMAL"
+    },
+    "europe": {
+      "n_steps": 1041,
+      "t_S": 16,
+      "t_G": 217,
+      "theta_a_mean": 0.47223947328052546,
+      "scr_mean": 0.6484363675117493,
+      "n_suppressed": 49,
+      "frac_suppressed": 0.04707012487992315,
+      "n_suppressed_pre_damage_90": 13,
+      "calm_verdict": "MINIMAL"
+    },
+    "x_us_systemic": {
+      "n_steps": 1041,
+      "t_S": 21,
+      "t_G": 60,
+      "theta_a_mean": 2.73827816083264,
+      "scr_mean": 0.47952282428741455,
+      "n_suppressed": 21,
+      "frac_suppressed": 0.020172910662824207,
+      "n_suppressed_pre_damage_90": 0,
+      "calm_verdict": "MINIMAL"
+    },
+    "x_brazil_vuln": {
+      "n_steps": 1041,
+      "t_S": 21,
+      "t_G": 238,
+      "theta_a_mean": 1.280697746577467,
+      "scr_mean": 0.3819859027862549,
+      "n_suppressed": 44,
+      "frac_suppressed": 0.04226705091258405,
+      "n_suppressed_pre_damage_90": 0,
+      "calm_verdict": "MINIMAL"
+    },
+    "us_sectors": {
+      "n_steps": 1041,
+      "t_S": 46,
+      "t_G": 60,
+      "theta_a_mean": 0.38346803956461306,
+      "scr_mean": 0.5348184108734131,
+      "n_suppressed": 20,
+      "frac_suppressed": 0.01921229586935639,
+      "n_suppressed_pre_damage_90": 14,
+      "calm_verdict": "MINIMAL"
+    },
+    "ai_ecosystem": {
+      "n_steps": 1030,
+      "t_S": 94,
+      "t_G": 60,
+      "theta_a_mean": 0.3268954368992656,
+      "scr_mean": 0.46308594942092896,
+      "n_suppressed": 94,
+      "frac_suppressed": 0.0912621359223301,
+      "n_suppressed_pre_damage_90": 51,
+      "calm_verdict": "MODERATE_SUPPRESSION"
+    },
+    "financials": {
+      "n_steps": 1041,
+      "t_S": 1006,
+      "t_G": null,
+      "theta_a_mean": 0.0,
+      "scr_mean": 0.6317280530929565,
+      "n_suppressed": 260,
+      "frac_suppressed": 0.24975984630163303,
+      "n_suppressed_pre_damage_90": 0,
+      "calm_verdict": "SEVERE_SUPPRESSION"
+    }
+  },
+  "variants": {
+    "commodities": {
+      "V0_calm_zscore_calm_dep": null,
+      "V0_calm_zscore_calm_free": 0.5,
+      "V1_global_percentile_calm_dep": null,
+      "V1_global_percentile_calm_free": 0.7172977001262757,
+      "V2_rolling_baseline_calm_dep": null,
+      "V2_rolling_baseline_calm_free": 0.5181961206450412,
+      "V3_hybrid_scr_calm_dep": null,
+      "V3_hybrid_scr_calm_free": 0.5634276605874925
+    },
+    "energy": {
+      "V0_calm_zscore_calm_dep": 0.8657785964597,
+      "V0_calm_zscore_calm_free": 0.7270715858663375,
+      "V1_global_percentile_calm_dep": 0.6576797719308277,
+      "V1_global_percentile_calm_free": 0.7194746588368756,
+      "V2_rolling_baseline_calm_dep": 0.6077855561636674,
+      "V2_rolling_baseline_calm_free": 0.7211095725868341,
+      "V3_hybrid_scr_calm_dep": 0.8349296269369951,
+      "V3_hybrid_scr_calm_free": 0.6297817056487938
+    },
+    "europe": {
+      "V0_calm_zscore_calm_dep": 0.7672121685256086,
+      "V0_calm_zscore_calm_free": 0.6301996067540377,
+      "V1_global_percentile_calm_dep": 0.5032015879211686,
+      "V1_global_percentile_calm_free": 0.5598992402855241,
+      "V2_rolling_baseline_calm_dep": 0.5657467465056599,
+      "V2_rolling_baseline_calm_free": 0.6361671524860948,
+      "V3_hybrid_scr_calm_dep": 0.7062075924557135,
+      "V3_hybrid_scr_calm_free": 0.543507616271508
+    },
+    "x_us_systemic": {
+      "V0_calm_zscore_calm_dep": 0.849192831052821,
+      "V0_calm_zscore_calm_free": 0.8544902352760264,
+      "V1_global_percentile_calm_dep": 0.8771220121501164,
+      "V1_global_percentile_calm_free": 0.8829194218053207,
+      "V2_rolling_baseline_calm_dep": 0.9920465943715815,
+      "V2_rolling_baseline_calm_free": 0.9935414424111948,
+      "V3_hybrid_scr_calm_dep": 0.8385330910880222,
+      "V3_hybrid_scr_calm_free": 0.8428417653390743
+    },
+    "x_brazil_vuln": {
+      "V0_calm_zscore_calm_dep": 0.8733945678492472,
+      "V0_calm_zscore_calm_free": 0.7711915499643959,
+      "V1_global_percentile_calm_dep": 0.5893909885251079,
+      "V1_global_percentile_calm_free": 0.6806598623308806,
+      "V2_rolling_baseline_calm_dep": 0.6091009579955785,
+      "V2_rolling_baseline_calm_free": 0.634984571564206,
+      "V3_hybrid_scr_calm_dep": 0.7679834719444152,
+      "V3_hybrid_scr_calm_free": 0.6905957749821979
+    },
+    "us_sectors": {
+      "V0_calm_zscore_calm_dep": 0.7615136555458238,
+      "V0_calm_zscore_calm_free": 0.608900095406842,
+      "V1_global_percentile_calm_dep": 0.5514431881519228,
+      "V1_global_percentile_calm_free": 0.5061332969878697,
+      "V2_rolling_baseline_calm_dep": 0.5105840433155506,
+      "V2_rolling_baseline_calm_free": 0.5735995638544364,
+      "V3_hybrid_scr_calm_dep": 0.7621586113544072,
+      "V3_hybrid_scr_calm_free": 0.7521977647539866
+    },
+    "ai_ecosystem": {
+      "V0_calm_zscore_calm_dep": 0.8460251787707813,
+      "V0_calm_zscore_calm_free": 0.7285386846848998,
+      "V1_global_percentile_calm_dep": 0.506820821893009,
+      "V1_global_percentile_calm_free": 0.5584458478080072,
+      "V2_rolling_baseline_calm_dep": 0.523887019883535,
+      "V2_rolling_baseline_calm_free": 0.5742555739929408,
+      "V3_hybrid_scr_calm_dep": 0.7857862142835591,
+      "V3_hybrid_scr_calm_free": 0.6787617239883645
+    },
+    "financials": {
+      "V0_calm_zscore_calm_dep": null,
+      "V0_calm_zscore_calm_free": 0.5,
+      "V1_global_percentile_calm_dep": null,
+      "V1_global_percentile_calm_free": 0.5865022689696415,
+      "V2_rolling_baseline_calm_dep": null,
+      "V2_rolling_baseline_calm_free": 0.5352481795476132,
+      "V3_hybrid_scr_calm_dep": null,
+      "V3_hybrid_scr_calm_free": 0.5288985823336969
+    }
+  }
+}

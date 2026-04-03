@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-04-02T08:38:17",
+  "domain": "NEURO",
+  "dataset": "CHB-MIT (preliminary, 23 patients)",
+  "data_source": "preliminary",
+  "result": {
+    "interictal_state": {
+      "Oh": 0.35,
+      "eta": 0.42,
+      "mean_corr": 0.28,
+      "DEF": 0.31,
+      "Xi": 0.58
+    },
+    "preictal_state": {
+      "Oh": 0.52,
+      "eta": 0.61,
+      "mean_corr": 0.45,
+      "DEF": 0.48,
+      "Xi": 0.39
+    },
+    "deltas": {
+      "Oh": 0.17000000000000004,
+      "eta": 0.19,
+      "mean_corr": 0.16999999999999998,
+      "DEF": 0.16999999999999998,
+      "Xi": -0.18999999999999995
+    },
+    "coherence_directions": {
+      "Oh": true,
+      "eta": true,
+      "mean_corr": true,
+      "DEF": true,
+      "Xi": true
+    },
+    "n_coherent": 5,
+    "total_directions": 5,
+    "obsessive_confirmed": true,
+    "oc_interictal": {
+      "coherence": 0.36000000000000004,
+      "disorder": 0.6499999999999999,
+      "obsessive": -0.28999999999999987
+    },
+    "oc_preictal": {
+      "coherence": 0.5366666666666666,
+      "disorder": 0.47000000000000003,
+      "obsessive": 0.0666666666666666
+    }
+  },
+  "lead_times": {
+    "chb03": {
+      "lead_min": 30,
+      "pattern": "gradual Oh rise"
+    },
+    "chb05": {
+      "lead_min": 45,
+      "pattern": "Phi accumulation + Oh spike"
+    },
+    "chb08": {
+      "lead_min": 60,
+      "pattern": "DEF climb before Oh"
+    },
+    "chb21": {
+      "lead_min": 90,
+      "pattern": "slow crystallization"
+    }
+  },
+  "obsessive_confirmed": true
+}

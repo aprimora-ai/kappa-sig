@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02T15:50:01",
+  "timestamp": "2026-04-03T14:25:04",
   "domain": "POL",
   "dataset": "Political Blogosphere 2004 (Adamic & Glance)",
   "method": "Adjacency matrix eigenstructure (SIG/v5.8c). Static network: adjacency = correlation analog.",

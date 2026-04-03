@@ -1,0 +1,30 @@
+{
+  "s4_neural_ode": {
+    "auc_calmfree": 0.6682648535933507,
+    "n_eval": 905,
+    "det_mean": 0.9251747320774812,
+    "det_std": 0.039504469412376134,
+    "W_short": 20,
+    "factor": 10
+  },
+  "s5_autoencoder_fullfit": {
+    "auc_fullfit": 0.9979019540659227,
+    "n": 18910
+  },
+  "s5_autoencoder_louo_calmfree": {
+    "louo_auc_mean": 0.7332501864482094,
+    "louo_auc_std": 0.10257164822739138,
+    "n_folds": 19,
+    "window": 20,
+    "latent_dim": 8,
+    "label_mode": "calmfree"
+  },
+  "s5_autoencoder_louo_calm": {
+    "louo_auc_mean": 0.6768925084316033,
+    "louo_auc_std": 0.1242554951713802,
+    "n_folds": 19,
+    "window": 20,
+    "latent_dim": 8,
+    "label_mode": "calm"
+  }
+}

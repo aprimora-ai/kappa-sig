@@ -1,0 +1,107 @@
+{
+  "ablation": {
+    "full": {
+      "AUC": 0.7331048887850582,
+      "Brier": 0.13663907601157266
+    },
+    "ablated": {
+      "kappa_F": {
+        "AUC": 0.7291906177378303,
+        "dAUC": 0.0039142710472278575,
+        "Brier": 0.1377960928991832,
+        "interpretation": "minor"
+      },
+      "rho_bar_pos": {
+        "AUC": 0.7331048887850582,
+        "dAUC": 0.0,
+        "Brier": 0.13663908659914079,
+        "interpretation": "redundant"
+      },
+      "eta_norm": {
+        "AUC": 0.7457333792374183,
+        "dAUC": -0.012628490452360142,
+        "Brier": 0.14258289408441646,
+        "interpretation": "redundant"
+      },
+      "theta_A": {
+        "AUC": 0.5241734190756064,
+        "dAUC": 0.20893146970945176,
+        "Brier": 0.18529427222511194,
+        "interpretation": "CRITICAL"
+      }
+    },
+    "theta_alone": {
+      "AUC": 0.6911802678011533
+    },
+    "kf_alone": {
+      "AUC": 0.5757386664043576
+    }
+  },
+  "shuffle_test": {
+    "AUC_real": 0.7331048887850582,
+    "AUC_shuffled_mean": 0.5130636842331764,
+    "AUC_shuffled_std": 0.0099173907833589,
+    "AUC_shuffled_max": 0.551148729235574,
+    "AUC_shuffled_p95": 0.5306450881604349,
+    "AUC_shuffled_p99": 0.5377620067872471,
+    "p_value": 0.0,
+    "n_permutations": 1000,
+    "verdict": "PASS"
+  },
+  "random_features": {
+    "real_features": {
+      "kappa_F": {
+        "original_beta": 1.0168595287690831,
+        "mean_with_noise": 1.0196013061233204,
+        "std_with_noise": 0.0263226413037556,
+        "drift_pct": 0.26963186916842397,
+        "stable": "True"
+      },
+      "rho_bar_pos": {
+        "original_beta": 0.004318860887125207,
+        "mean_with_noise": 0.004482121589895504,
+        "std_with_noise": 0.0009232737326004325,
+        "drift_pct": 3.7801797056484796,
+        "stable": "True"
+      },
+      "eta_norm": {
+        "original_beta": 0.5391382483672702,
+        "mean_with_noise": 0.5394570773323877,
+        "std_with_noise": 0.0028075711513665504,
+        "drift_pct": 0.05913677356096009,
+        "stable": "True"
+      },
+      "theta_A": {
+        "original_beta": 4.415150400354613,
+        "mean_with_noise": 4.42360290000872,
+        "std_with_noise": 0.01030081454093551,
+        "drift_pct": 0.19144307413463826,
+        "stable": "True"
+      }
+    },
+    "random_features": {
+      "random_0": {
+        "mean_beta": -0.005884900109822286,
+        "std_beta": 0.05719099861743378,
+        "near_zero": "True"
+      },
+      "random_1": {
+        "mean_beta": 0.0011423886603129996,
+        "std_beta": 0.05224621674720239,
+        "near_zero": "True"
+      },
+      "random_2": {
+        "mean_beta": -0.0072237179108026114,
+        "std_beta": 0.05040176056545055,
+        "near_zero": "True"
+      },
+      "random_3": {
+        "mean_beta": -0.0007691065439195157,
+        "std_beta": 0.046559601188918984,
+        "near_zero": "True"
+      }
+    },
+    "verdict": "PASS"
+  },
+  "overall_pass": true
+}
