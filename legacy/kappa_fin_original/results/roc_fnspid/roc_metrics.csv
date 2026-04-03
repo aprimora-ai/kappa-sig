@@ -1,0 +1,2 @@
+auc_global,n_obs,n_pos,n_neg,sensitivity_opt,specificity_opt,n_curated,n_extra,build_up_start
+0.5540868766544987,2906,429,2477,0.9020979020979021,0.31166733952361725,51,30,2007-01-01

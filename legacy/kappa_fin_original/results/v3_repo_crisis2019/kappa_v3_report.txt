@@ -1,0 +1,57 @@
+========================================================================
+Kappa-FIN v3.0 — RELATÓRIO DE ANÁLISE COMPLETA
+Implementação exata do Método Kappa (README §IV–V)
+Autor: David Ohio <odavidohio@gmail.com>
+========================================================================
+
+Período:    2018-01-01 → 2020-06-30
+Tickers:    10  (22d janela, k=5)
+Retornos:   626 dias úteis
+Distância:  d_ij = sqrt(2*(1 − C_ij))  ← distância angular v3
+CALM:       2018-02-02 → 2019-01-31
+
+────────────────────────────────────────────────────────────────────────
+PARÂMETROS DE CALIBRAÇÃO (S(t) = (Oh, Φ, η, Ξ, DEF))
+────────────────────────────────────────────────────────────────────────
+  η_ref (CALM q5 de η)        = 0.198020
+  Ξ_c  (CALM q99 de Ξ(η))    = 1.020000
+  Oh_c95 (CALM q95)         = 0.9804
+  Oh_pre (Φ baseline, q0.968) = 0.9804
+  Φ_c  (CALM q99 de Φ)      = 0.000001
+  Φ*   (irreversibilidade)  = 0.000000
+  h1_Ξ_c (CALM q95 de h1)   = 1.0000
+  γ    (dissipação Φ)       = 0.97
+  δ    (margem Oh→Φ)        = 0.08
+
+────────────────────────────────────────────────────────────────────────
+VISCOSIDADE ESTRUTURAL (ν_s)
+────────────────────────────────────────────────────────────────────────
+  ν_s = τ_Katashi_max × η_Katashi / (Ξ_Katashi + ε)
+      = 104 × 0.1980 / (0.1442 + ε)
+      = 142.8439
+  ∫Φ dt              = 0.0006
+  τ_Katashi_max      = 104 dias
+  τ_Katashi_mean     = 19.2 dias
+  Fração Nagare      = 0.0%
+  Fração Utsuroi     = 46.1%
+  Fração Katashi     = 53.9%
+
+────────────────────────────────────────────────────────────────────────
+CROSSINGS (após CALM)
+────────────────────────────────────────────────────────────────────────
+  Oh > 1.0   sens(p=2): NONE
+  Oh > 1.0   conf(p=5): NONE
+  Oh > q95   sens: NONE
+  Oh > q95   conf: NONE
+  Φ > Φ_c    sens: NONE
+  Φ > Φ_c    conf: NONE
+  Katashi    conf: 2019-02-14
+
+────────────────────────────────────────────────────────────────────────
+PROPOSIÇÃO B.15 — IRREVERSIBILIDADE
+────────────────────────────────────────────────────────────────────────
+  Φ* estimado (joelho): 0.000000
+  Φ_max real:           0.000001
+  Irreversibilidade:    ❌ Não atingida
+
+========================================================================

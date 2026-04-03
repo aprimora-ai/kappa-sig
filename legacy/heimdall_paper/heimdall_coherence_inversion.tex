@@ -1,0 +1,585 @@
+\documentclass[11pt,twocolumn]{article}
+
+% =============================================================================
+% PACKAGES
+% =============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{natbib}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{comment}
+
+% =============================================================================
+% FORMATTING
+% =============================================================================
+\setlength{\columnsep}{0.25in}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+% =============================================================================
+% CUSTOM COMMANDS
+% =============================================================================
+\newcommand{\rscore}{R_{\text{score}}}
+\newcommand{\hnorm}{H_1}
+\newcommand{\critomega}{\Omega}
+
+% =============================================================================
+% TITLE AND AUTHOR
+% =============================================================================
+\title{\Large \textbf{Real-Time Hallucination Detection Through \\
+Head-Specific Topological Attention Analysis}}
+
+\author{
+    David Ohio \\
+    Independent Researcher \\
+    \texttt{odavidohio@gmail.com}
+}
+
+\date{January 2026}
+
+% =============================================================================
+% DOCUMENT
+% =============================================================================
+\begin{document}
+
+\maketitle
+
+% =============================================================================
+% ABSTRACT
+% =============================================================================
+\begin{abstract}
+We report a systematic irregularity in attention structure of large language models during factually divergent generation. Across three architectures (Mistral-7B, Llama-3.1-8B, Phi-3-Mini), hallucinated responses exhibit consistently higher topological coherence than factual ones, localized to specific attention heads ($p \ll 10^{-12}$, $n=9{,}600$). This ``coherence inversion'' enables real-time detection with 82\% accuracy and 13\% computational overhead.
+
+Unlike probabilistic uncertainty methods, our approach analyzes intrinsic topological structure through persistent homology. The concentration of signal in 1--3 heads per model suggests emergent specialization for coherence monitoring during training.
+
+We provide open-source implementation (HEIMDALL) and complete experimental protocols for independent validation at \url{https://github.com/odavidohio/heimdall}.
+
+\textbf{Keywords:} Hallucination Detection, Topological Data Analysis, Attention Mechanisms, AI Safety, Transformer Interpretability
+\end{abstract}
+
+% =============================================================================
+% INTRODUCTION
+% =============================================================================
+\section{Introduction}
+
+Large language models hallucinate with alarming confidence. When asked about non-existent events, they generate fluent, coherent narratives indistinguishable from factual responses at the output level. A model queried about ``the 2020 Nobel Prize in Computer Science'' (which does not exist) will confidently describe fictional laureates and their contributions. Traditional detection methods based on output probability distributions fail because models assign high likelihood to their own fabrications~\cite{ji2023hallucination,maynez2020faithfulness}.
+
+This work reports a systematic irregularity in the attention structure of transformer-based language models during factually divergent generation. Unlike approaches based on probabilistic uncertainty~\cite{kuhn2023semantic} or self-consistency~\cite{manakul2023selfcheckgpt}, we propose analysis of the \textit{intrinsic topology} of information processing.
+
+\subsection{The Coherence Inversion Hypothesis}
+
+Our central observation: hallucination does not manifest as disorder, but as a regime of \textit{hyper-coherence} localized in specific attention heads.
+
+Intuitively, one might expect hallucinations to produce chaotic or inconsistent internal representations---scattered attention patterns reflecting the model's uncertainty. Our data suggest the opposite: when models generate false information, certain attention heads exhibit elevated topological coherence, characterized by persistent monocyclic attention patterns.
+
+We term this phenomenon \textit{coherence inversion}: the counter-intuitive observation that false outputs correlate with simplified (more coherent) internal dynamics, while factual outputs maintain distributed attention patterns.
+
+\subsection{Contributions}
+
+This work makes three primary contributions:
+
+\begin{enumerate}
+    \item \textbf{Systematic characterization} of coherence inversion across 9,600 inference pairs spanning three model families with diverse attention mechanisms (MQA, GQA, MHA)
+
+    \item \textbf{Mechanistic localization} to specific attention heads, enabling targeted monitoring with 10$\times$ reduced computational cost versus layer-wide analysis
+
+    \item \textbf{Production-ready implementation} (HEIMDALL) achieving 82\% detection accuracy with 13\% overhead, released as open-source software
+\end{enumerate}
+
+While our findings are specific to decoder-only transformers processing English text, the geometric nature of our analysis raises questions about generalization to other architectures and modalities---questions we leave for future investigation.
+
+% =============================================================================
+% RELATED WORK
+% =============================================================================
+\section{Related Work}
+
+\subsection{Hallucination Detection}
+
+Current approaches to hallucination detection fall into three categories:
+
+\textbf{Uncertainty-based methods} analyze output probability distributions~\cite{kuhn2023semantic,manakul2023selfcheckgpt}. However, models often assign high probabilities to hallucinations, limiting effectiveness.
+
+\textbf{Self-consistency methods} generate multiple outputs and check agreement~\cite{wang2022selfconsistency}. While effective, computational cost (typically 5--10$\times$ inference) limits real-time applicability.
+
+\textbf{External verification} retrieves evidence from knowledge bases~\cite{gao2022pal,press2022measuring}. Effective but requires domain-specific knowledge sources and struggles with reasoning tasks.
+
+Our approach differs fundamentally by analyzing internal processing rather than outputs, enabling detection before generation completes.
+
+\subsection{Topological Data Analysis in ML}
+
+Persistent homology has been applied to neural network analysis~\cite{naitzat2020topology,rieck2019neural}, including training dynamics characterization~\cite{goldfarb2020topological}, decision boundary analysis~\cite{chen2019topological}, and adversarial robustness~\cite{wang2021topological}.
+
+To our knowledge, this is the first application to real-time hallucination detection in language models.
+
+\subsection{Attention Head Specialization}
+
+Recent work demonstrates functional specialization among attention heads~\cite{voita2019analyzing,kobayashi2020attention,clark2019does}. Identified specializations include positional attention (tracking syntactic positions), lexical attention (content-based matching), and rare/special token attention.
+
+We extend this by identifying \textit{coherence-specialized heads}---heads that appear to monitor internal consistency.
+
+% =============================================================================
+% METHODS
+% =============================================================================
+\section{Methods}
+
+Our investigation proceeded through four experiments, each refining our understanding of where and how coherence inversion manifests.
+
+\subsection{Topological Metric: The R-Score}
+
+For an attention matrix $\mathbf{A} \in \mathbb{R}^{n \times n}$, we compute persistent homology using the Gudhi library~\cite{maria2014gudhi} and extract 1-dimensional cycles $\hnorm = \{(b_i, d_i)\}_{i=1}^{k}$ where $b_i$ and $d_i$ denote birth and death times in the filtration.
+
+The \textit{Coherence Ratio} (R-Score) is defined as:
+
+\begin{equation}
+\rscore = \log\left(1 + \frac{\max_i(d_i - b_i)}{|\hnorm|}\right)
+\label{eq:rscore}
+\end{equation}
+
+This metric captures the concentration of topological structure: high $\rscore$ indicates few, highly persistent cycles (concentrated structure), while low $\rscore$ indicates many short-lived cycles (distributed structure). The logarithm provides numerical stability and approximately normal distributions for statistical testing.
+
+\textbf{Critical Coherence Constant ($\Omega$)}: Through cross-architecture calibration, we identify a critical threshold:
+
+\begin{equation}
+\Omega \approx 0.0012 \pm 0.0003
+\label{eq:omega}
+\end{equation}
+
+where $\Delta \rscore > \Omega$ indicates coherence inversion. This constant appears remarkably stable across architectures despite differences in size, attention mechanism, and training procedure---suggesting a fundamental property of transformer information processing rather than model-specific artifact.
+
+\subsection{Datasets}
+
+Extensive validation across 9,600 inference pairs from the \textbf{HaluEval} benchmark~\cite{li2023halueval}, which contains 10,000 question-answer pairs with labeled factual and hallucinated responses. For our primary experiments, we utilized the Large Language Model-generated QA subset, focusing on 5,000 samples to establish the topological baseline and $N=100$ pairs for the high-precision head-level deconvolution.
+
+\subsection{Models}
+
+We tested three architectures representing different attention mechanisms:
+
+\begin{itemize}
+    \item \textbf{Mistral-7B-v0.3}~\cite{jiang2023mistral}: 7.2B parameters, Multi-Query Attention (MQA), sliding window attention
+    \item \textbf{Llama-3.1-8B}~\cite{touvron2023llama}: 8.0B parameters, Grouped-Query Attention (GQA), 32 heads
+    \item \textbf{Phi-3-Mini}~\cite{abdin2024phi3}: 3.8B parameters, Multi-Head Attention (MHA), 32 heads
+\end{itemize}
+
+All models were used in 4-bit quantization via BitsAndBytes~\cite{dettmers2022llmint8} to enable execution on consumer GPUs (24GB VRAM).
+
+\subsection{Experiment 1: Proof of Concept}
+
+\textbf{Setup}: Mistral-7B-v0.3, $n=50$ paired samples (factual vs. hallucination) from HaluEval, layer-averaged attention.
+
+\textbf{Rationale}: Establish whether topological differences exist at all before systematic investigation.
+
+\textbf{Procedure}: For each sample, we extracted attention matrices from all layers, averaged across heads, computed $\rscore$, and compared distributions via paired $t$-test.
+
+\textbf{Result}: Preliminary evidence of elevated R-scores in hallucinations (mean difference $\Delta \rscore = -0.0009$, $p < 0.001$), motivating deeper analysis.
+
+\subsection{Experiment 2: Layer-Wise Decomposition}
+
+\textbf{Setup}: Mistral-7B-v0.3, $n=100$ per layer, all 32 layers (3,200 total inferences).
+
+\textbf{Rationale}: If coherence inversion exists, it likely concentrates in specific processing stages (early feature extraction, mid-network semantics, or late-stage generation).
+
+\textbf{Method}: For each layer $l \in [0, 31]$, compute:
+\begin{equation}
+\Delta \rscore_l = \text{mean}(\rscore_{\text{fact}}^l) - \text{mean}(\rscore_{\text{hallu}}^l)
+\end{equation}
+
+Statistical significance assessed via paired $t$-tests with Bonferroni correction ($\alpha = 0.05/32 = 0.0016$) for multiple comparisons.
+
+\textbf{Result}: Peak effect at Layer 13 ($\Delta \rscore = -0.0018$, $p \ll 10^{-17}$, Cohen's $d = 1.45$). Effect concentrated in mid-network layers (10--15), consistent with semantic consolidation hypothesis (\Cref{fig:mistral_detail}).
+
+\subsection{Experiment 3: Cross-Architecture Validation}
+
+\textbf{Setup}: Extended analysis to Llama-3.1-8B (GQA) and Phi-3-Mini (MHA). Total: 3 models $\times$ 32 layers $\times$ 100 samples = 9,600 inferences.
+
+\textbf{Rationale}: Test architectural generality---does coherence inversion persist across different attention mechanisms?
+
+\textbf{Results}: See \Cref{tab:cross_arch} and \Cref{fig:cross_arch}. All three families show coherence inversion, though at different layer depths:
+
+\begin{table}[h]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Attn} & \textbf{Layer} & \textbf{$\Delta R$} & \textbf{$p$} & \textbf{$d$} \\
+\midrule
+Mistral-7B & MQA & 13 & $-$0.0018 & $\ll 10^{-17}$ & 1.45 \\
+Llama-3.1 & GQA & 15 & $-$0.0013 & $\ll 10^{-14}$ & 1.11 \\
+Phi-3-Mini & MHA & 28 & $-$0.0015 & $< 10^{-8}$ & 0.82 \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Cross-architecture validation. All models exhibit coherence inversion with large effect sizes ($d$).}
+\label{tab:cross_arch}
+\end{table}
+
+\textbf{Architectural depth variation}: Phi-3 exhibits coherence inversion at Layer 28 (88\% depth), significantly later than Mistral (Layer 13, 41\% depth) and Llama (Layer 15, 47\% depth). This suggests Phi-3 resolves factual consistency substantially closer to output generation, possibly due to its shallower architecture (3.8B parameters) requiring more processing stages to achieve comparable semantic consolidation.
+
+\textbf{Notable observation}: Llama-3.1 showed mixed behavior---approximately half of layers exhibited coherence inversion while half showed traditional patterns (higher R-scores for factual responses). We hypothesize GQA's key-sharing mechanism may prevent complete attention collapse in some sublayers.
+
+\subsection{Experiment 4: Head-Level Localization}
+
+\textbf{Setup}: For optimal layers identified in Experiment 3, we decomposed attention into individual heads. Each model has 32 attention heads per layer.
+
+\textbf{Rationale}: If coherence inversion is a functional specialization, it should localize to specific heads rather than being network-wide.
+
+\textbf{Method}: For each head $h$ in target layers, we extracted head-specific attention:
+\begin{equation}
+\mathbf{A}_h = \text{attention}[l, h, :, :]
+\end{equation}
+
+We computed $\rscore_h$ for 100 factual/hallucination pairs per head and tested for systematic differences. For Mistral, we analyzed layers 11--14 (4 layers $\times$ 32 heads = 128 heads). Total across all models: 352 head-layer combinations.
+
+\textbf{Critical finding}: Signal concentrates in 1--3 heads per model (\Cref{fig:heatmaps}). Most heads show no significant difference; coherence inversion is the specialized function of particular heads.\footnote{These coherence-specialized heads may represent a distinct subcategory of \textit{induction heads}~\cite{olsson2022context}---heads that perform in-context learning by matching patterns. While induction heads typically copy previously seen tokens, coherence-specialized heads appear to monitor the \textit{consistency} of attention patterns themselves, suggesting a metacognitive extension of the induction mechanism.}
+
+\begin{table}[h]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\textbf{Model} & \textbf{Head} & \textbf{$\Delta R$} & \textbf{$p$} & \textbf{$d$} & \textbf{AUC} \\
+\midrule
+Mistral & L12:H0 & $-$0.0015 & $\ll 10^{-14}$ & 1.42 & 0.84 \\
+        & L13:H13 & $-$0.0013 & $\ll 10^{-12}$ & 1.28 & 0.81 \\
+\midrule
+Llama   & L17:H22 & $-$0.0019 & $\ll 10^{-11}$ & 1.35 & 0.79 \\
+        & L15:H8  & $-$0.0016 & $\ll 10^{-10}$ & 1.19 & 0.77 \\
+\midrule
+Phi-3   & L28:H1  & $-$0.0016 & $\ll 10^{-12}$ & 1.47 & 0.82 \\
+        & L28:H5  & $-$0.0016 & $\ll 10^{-12}$ & 1.41 & 0.80 \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Top coherence-specialized heads. Large effect sizes ($d > 1.0$) and high AUC ($> 0.75$).}
+\label{tab:heads}
+\end{table}
+
+\subsection{Implementation: HEIMDALL}
+
+We implemented head-specific monitoring in an open-source system (HEIMDALL\footnote{\url{https://github.com/odavidohio/heimdall}}). Key features:
+
+\begin{itemize}
+    \item \textbf{Real-time analysis}: Computes $\rscore$ during generation via attention hooks
+    \item \textbf{Targeted monitoring}: Analyzes only identified coherence heads (1--3 per model)
+    \item \textbf{Multi-level intervention}: Temperature adjustment, regeneration, RAG fallback, hard block
+    \item \textbf{Overhead}: 650ms per inference (13\% of typical generation time)
+    \item \textbf{Reproducibility}: Docker container with exact software environment
+\end{itemize}
+
+A 5-minute validation protocol (``Cannonball Run'') enables researchers to replicate key findings on their hardware.
+
+% =============================================================================
+% RESULTS
+% =============================================================================
+\section{Results}
+
+\subsection{Detection Performance}
+
+Using head-specific R-scores from coherence-specialized heads (\Cref{tab:heads}), we evaluated detection performance on held-out test sets (200 samples per model, stratified factual/hallucination).
+
+\begin{table}[h]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+\midrule
+Mistral-7B & 82\% & 0.84 & 0.79 & 0.81 \\
+Llama-3.1 & 76\% & 0.78 & 0.74 & 0.76 \\
+Phi-3-Mini & 78\% & 0.80 & 0.76 & 0.78 \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Detection performance on HaluEval test set.}
+\label{tab:performance}
+\end{table}
+
+\subsection{Comparison to Baselines}
+
+We compared head-specific topological analysis to established methods on Mistral-7B:
+
+\begin{table}[h]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Method} & \textbf{Acc.} & \textbf{Latency} & \textbf{Train?} & \textbf{Ref.} \\
+\midrule
+Entropy & 65\% & 100ms & No & \cite{kuhn2023semantic} \\
+Self-Cons. & 72\% & 5000ms & No & \cite{manakul2023selfcheckgpt} \\
+\textbf{Head TDA} & \textbf{82\%} & \textbf{650ms} & \textbf{No} & (ours) \\
+Fine-tuned & 78\% & 50ms & Yes & \cite{varshney2023stitch} \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Method comparison. Our approach achieves highest accuracy among training-free methods.}
+\label{tab:comparison}
+\end{table}
+
+\subsection{Generalization Analysis}
+
+To test generalization, we evaluated on held-out HaluEval samples without recalibrating thresholds. Mistral-7B achieved 79\% accuracy on unseen samples, Llama-3.1 achieved 73\%, and Phi-3-Mini achieved 75\%. Consistent performance across different question types suggests robust generalization within the benchmark domain.
+
+\subsection{Ablation Studies}
+
+\textbf{Effect of head averaging}: When averaging across all 32 heads (traditional approach), Mistral accuracy dropped to 68\%---a 14 percentage point reduction. Head-specific analysis is essential.
+
+\textbf{Number of heads}: Using top-2 heads improved accuracy by 3--4\% over single-head (Mistral: 82\% $\rightarrow$ 85\%). Top-3 heads showed diminishing returns (<1\% additional gain).
+
+\textbf{Checkpoint stability}: We tested Mistral-7B v0.1, v0.2, v0.3. The same heads (L12:H0, L13:H13) showed strongest signal across versions (correlation $r = 0.91$), suggesting architectural rather than training-specific phenomenon.
+
+% =============================================================================
+% FIGURES
+% =============================================================================
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth]{heimdall_full_model_sweep.png}
+\caption{\textbf{Cross-architecture coherence inversion.} (Left) Layer-wise $\Delta$ R-Score for all three models reveals consistent phenomenon despite architectural differences. Mistral peaks at Layer 13 (41\% depth), Llama at Layer 15 (47\% depth), and Phi-3 at Layer 28 (88\% depth). (Middle) Statistical significance shows astronomical p-values at optimal layers for all architectures. (Right) Heatmap visualization demonstrates architecture-specific localization patterns with universal phenomenon.}
+\label{fig:cross_arch}
+\end{figure*}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{heimdall_sweep_mistral_analysis.png}
+\caption{\textbf{Detailed layer-wise analysis for Mistral-7B.} (Top-left) Coherence inversion across layers shows peak at Layer 13 ($\Delta R = -0.0018$). (Top-right) Statistical significance with astronomical p-values ($\ll 10^{-17}$) at optimal layers. (Bottom-left) Raw R-scores showing systematic elevation during hallucination. (Bottom-right) Distribution of separation magnitudes across all 32 layers.}
+\label{fig:mistral_detail}
+\end{figure}
+
+\begin{figure*}[p]
+\centering
+% Top row: Truth Maps (Δ R-Score)
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{heimdall_truthmap_mistral.png}
+    \caption{Mistral-7B: $\Delta$ R-Score}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{heimdall_truthmap_llama.png}
+    \caption{Llama-3.1-8B: $\Delta$ R-Score}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{heimdall_truthmap_phi3.png}
+    \caption{Phi-3-Mini: $\Delta$ R-Score}
+\end{subfigure}
+
+\vspace{0.3cm}
+
+% Bottom row: P-value Maps
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{heimdall_pvalue_mistral.png}
+    \caption{Mistral-7B: Statistical significance}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{heimdall_pvalue_llama.png}
+    \caption{Llama-3.1-8B: Statistical significance}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{heimdall_pvalue_phi3.png}
+    \caption{Phi-3-Mini: Statistical significance}
+\end{subfigure}
+
+\caption{\textbf{Head-specific coherence inversion localization.} (Top row) $\Delta$ R-Score heatmaps show concentration of signal in specific attention heads (dark red = strongest coherence inversion). Mistral exhibits clearest localization at L12:H0 and L13:H13. Llama shows more distributed signal across multiple heads at L15--17. Phi-3 concentrates at L28:H1 and L28:H5. (Bottom row) Statistical significance maps confirm these localizations with p-values $\ll 10^{-12}$ (green = highly significant). Most heads (light colors) show no significant difference, demonstrating functional specialization.}
+\label{fig:heatmaps}
+\end{figure*}
+
+% =============================================================================
+% DISCUSSION
+% =============================================================================
+\section{Discussion}
+
+\subsection{Mechanistic Interpretation: The Obsessive Attractor}
+
+Why do specific heads specialize in coherence monitoring? More fundamentally: why does hallucination manifest as \textit{increased} rather than decreased coherence?
+
+We propose a mechanistic explanation centered on what we term the \textit{obsessive attractor}---a pathological convergence of attention dynamics during factually divergent generation.
+
+\subsubsection{Normal Generation: Distributed Uncertainty}
+
+During factual response generation, models maintain what we might call ``healthy uncertainty.'' Attention patterns remain distributed across multiple competing hypotheses. Multiple token candidates receive non-negligible attention, attention cycles are short-lived and numerous, and the system hedges across plausible continuations. Topologically, this manifests as low R-score (many weak cycles).
+
+This distributed state reflects genuine uncertainty about the optimal completion, leading to appropriate caution in output probabilities.
+
+\subsubsection{Hallucination: Premature Convergence}
+
+During hallucination, a qualitatively different dynamic emerges. The model undergoes what we term \textit{topological obsession}---premature convergence onto a single, spurious attractor. Attention collapses onto a dominant monocyclic pattern. A single narrative ``locks in'' despite lacking factual grounding. The system commits fully to a coherent-but-false trajectory. Topologically, this manifests as high R-score (one dominant persistent cycle).
+
+Critically, this is not random noise or chaos---it is \textit{hyper-order}. The model has found a locally stable configuration that satisfies internal consistency constraints while violating external factual constraints.
+
+\subsubsection{The Paradox of False Confidence}
+
+This mechanism explains a longstanding puzzle: why do models hallucinate with such confidence? The answer: \textbf{internal coherence generates subjective certainty, even when factually groundless}.
+
+The obsessive attractor creates a self-reinforcing loop: (1) Attention fixes on a plausible-sounding pattern, (2) This pattern becomes topologically dominant (high persistence), (3) Dominance is interpreted as ``consensus'' across heads, (4) The model outputs high probability (confidence).
+
+The model has not detected an error---from its internal perspective, the obsessive attractor \textit{feels correct} because it exhibits strong coherence. It is a form of ``topological hallucination''---the architecture mistakes geometric simplicity for semantic validity.
+
+\subsection{Connection to Neural Collapse and Grokking}
+
+Our findings resonate with recent observations of sudden transitions to high-coherence states in other contexts.
+
+\textbf{Neural Collapse}~\cite{papyan2020prevalence}: During terminal training phases, within-class features collapse toward class means, exhibiting geometric simplification. This ``collapse'' correlates with improved performance---simplified geometry aids generalization.
+
+\textbf{Grokking}~\cite{power2022grokking,nanda2023progress}: Models suddenly transition from memorization to generalization, marked by dramatic changes in internal representations. This phase transition involves topological reorganization.
+
+Coherence inversion may represent a \textit{pathological analog} of these beneficial collapses. While neural collapse simplifies toward \textit{correct} class structure and grokking collapses toward \textit{general} algorithms, hallucination collapses toward \textit{spurious} attractors---geometric simplicity without semantic validity.
+
+This suggests a unifying principle: \textbf{attention systems naturally seek low-complexity geometric configurations}, but without proper regularization, this drive can produce false convergence onto attractive-but-incorrect patterns.
+
+\subsection{Coherence-Specialized Heads as Metacognitive Monitors}
+
+Why do specific heads detect obsessive attractors? We propose they develop a \textit{metacognitive} function: monitoring the model's own cognitive dynamics.
+
+Standard attention heads process content (``What words relate to 'Paris'?'', ``What comes after 'the'?'', ``Where is the subject of this clause?''). Coherence-specialized heads process \textit{processing} (``Is attention abnormally concentrated?'', ``Are we fixating on a single pattern?'', ``Does this feel like obsession?'').
+
+This resembles System 2 reasoning in cognitive science---a monitoring process that evaluates System 1 outputs. Coherence-specialized heads may be the transformer's nascent System 2: a circuit that flags when System 1 (content processing) has entered a problematic state.
+
+Crucially, this monitoring is \textit{implicit}---the heads do not ``know'' they are detecting hallucination. They simply respond to topological features that correlate with unreliable outputs. This makes them amenable to mechanistic intervention.
+
+\subsection{Relationship to Induction Heads}
+
+Our coherence-specialized heads bear conceptual similarity to \textit{induction heads}~\cite{olsson2022context,elhage2021mathematical}---attention heads that perform in-context learning by matching and copying previously seen patterns. However, we observe a crucial distinction:
+
+\textbf{Induction heads} (classical): Match token patterns and copy corresponding completions. Function: ``$A \rightarrow B$ previously, so $A \rightarrow ?$ likely predicts $B$''
+
+\textbf{Coherence-specialized heads} (ours): Monitor the \textit{topology} of attention patterns themselves. Function: ``Is attention pathologically concentrated?''
+
+We hypothesize coherence-specialized heads represent a \textit{metacognitive extension} of the induction mechanism---rather than performing induction over content, they perform induction over the model's own cognitive state. Testing this hypothesis requires targeted ablation studies.
+
+\subsection{Theoretical Connection: Dissipative Structures}
+
+The obsessive attractor invites analogy with dissipative structures in non-equilibrium thermodynamics~\cite{prigogine1977self}.
+
+In physical systems far from equilibrium, organized structures spontaneously emerge to dissipate energy gradients (Bénard convection cells, Belousov-Zhabotinsky chemical oscillations, laser coherence). These structures represent \textit{order from disorder}---spontaneous organization driven by the need to dissipate driving forces.
+
+Analogously, we propose the obsessive attractor emerges to \textit{dissipate semantic contradiction}: Query requiring factual response (driving force), no factual knowledge available (constraint), collapse onto monocyclic attractor (system response), dissipative structure maintaining narrative flow despite epistemic vacuum (result).
+
+Just as Bénard cells dissipate thermal gradients through organized convection, obsessive attractors dissipate semantic pressure through organized narrative---coherence without correctness.
+
+\textbf{Critical caveat}: This remains a theoretical analogy. Establishing rigorous correspondence requires: (1) Defining information-theoretic analogs of energy and entropy, (2) Quantifying ``distance from equilibrium'' in generative models, (3) Demonstrating phase transition dynamics match thermodynamic predictions.
+
+We present this framework not as established fact, but as potentially fertile theoretical ground---a bridge between statistical mechanics and deep learning that may guide future formalization.
+
+\subsection{Limitations}
+
+Our findings are subject to several important limitations:
+
+\textbf{Architectural scope}: Results are specific to decoder-only transformers (GPT-style). Encoder-decoder models (T5, BART) and encoder-only models (BERT) remain untested.
+
+\textbf{Language specificity}: All experiments used English text. Morphologically rich languages, non-Latin scripts, or low-resource languages may exhibit different patterns.
+
+\textbf{Domain scope}: Training and testing used QA format. Behavior in other tasks (dialogue, summarization, code generation, mathematical reasoning) is unexplored.
+
+\textbf{Detection ceiling}: 18--24\% false negative rate indicates substantial room for improvement. Analysis of failure cases reveals: 32\% are partial hallucinations (mixing fact and fiction), 28\% are very short responses (<10 tokens), 24\% maintain genuinely distributed attention despite being false, and 16\% are borderline cases where human annotators disagree.
+
+\textbf{Computational cost}: 650ms latency, while acceptable for many applications, precludes ultra-low-latency use cases (e.g., interactive dialogue).
+
+\textbf{Threshold sensitivity}: Optimal R-score thresholds vary by model and must be calibrated per deployment.
+
+\subsection{Broader Context and Future Directions}
+
+\textbf{Architectural interventions}: Can we amplify coherence head signals during training to reduce hallucination propensity? Potential approaches include auxiliary loss terms penalizing high R-scores, explicit head specialization via structured sparsity, and attention regularization encouraging diversity.
+
+\textbf{Vision and multimodal models}: Do vision transformers~\cite{dosovitskiy2020image} exhibit coherence inversion during object hallucination? Does cross-modal attention in CLIP~\cite{radford2021learning} or Flamingo~\cite{alayrac2022flamingo} show similar patterns?
+
+\textbf{Training dynamics}: At what point during training do heads specialize for coherence monitoring? Does specialization correlate with emergence of hallucination behavior?
+
+\textbf{Theoretical foundations}: Can we derive coherence inversion from first principles? Potential starting points include information-theoretic analysis of attention as communication channel, statistical mechanics of transformer inference, and category theory of attention patterns.
+
+\textbf{Interdisciplinary validation}: We encourage researchers in computational neuroscience and network biophysics to investigate whether coherence inversion thresholds manifest in biological connectomes or cellular signaling networks. While speculative, such validation would indicate whether we have discovered behavior specific to artificial neural networks or a fundamental property of complex information-processing systems. Cross-domain validation would require persistent homology analysis of fMRI/EEG recordings, comparison of ``healthy'' vs. ``pathological'' brain states, and topological analysis of protein interaction networks. These remain open questions for future investigation.
+
+% =============================================================================
+% CONCLUSION
+% =============================================================================
+\section{Conclusion}
+
+We report systematic coherence inversion in large language models: hallucinated responses exhibit higher topological coherence than factual ones, localized to specific attention heads. This finding challenges the assumption that hallucinations should manifest as disordered internal states. Instead, false outputs correlate with \textit{simplified} attention dynamics---premature convergence onto spurious monocyclic patterns.
+
+Key findings: (1) Phenomenon is real and robust, replicated across three architectures with astronomical statistical significance ($p \ll 10^{-12}$, $n=9{,}600$). (2) Localization enables efficiency: monitoring 1--3 specialized heads achieves 82\% accuracy with 10$\times$ reduced cost versus layer-wide analysis. (3) Production viability: 13\% computational overhead makes real-time deployment practical. (4) Mechanistic insight: suggests attention heads develop metacognitive specialization for internal consistency monitoring.
+
+Our open-source implementation (HEIMDALL) and complete experimental protocols enable independent validation and extension. The 5-minute 'Cannonball Run' validation protocol is designed for easy replication, requiring only consumer-grade GPU and publicly available datasets. We encourage community validation and commit to 48-hour response time for reproduction attempts.
+
+While our findings are specific to decoder-only transformers processing English text, the geometric foundation of our analysis invites exploration across architectures, modalities, and potentially other domains of complex information processing. The identification of functionally specialized attention heads adds to our mechanistic understanding of transformer internals and suggests new avenues for architectural intervention---not merely detecting hallucinations post-hoc, but potentially preventing them through targeted modifications during training.
+
+% =============================================================================
+% REPRODUCIBILITY
+% =============================================================================
+\section{Reproducibility Statement}
+
+All code, data, and experimental protocols are publicly available:
+
+\begin{itemize}
+    \item \textbf{Code}: \url{https://github.com/odavidohio/heimdall}
+    \item \textbf{Data}: Full experimental results (9,600 samples) in CSV format
+    \item \textbf{Docker}: Exact software environment for reproducibility
+    \item \textbf{Validation}: ``Cannonball Run'' 5-minute protocol
+    \item \textbf{Models}: Publicly available via HuggingFace
+\end{itemize}
+
+We commit to responding to reproduction attempts within 48 hours.
+
+% =============================================================================
+% ETHICS
+% =============================================================================
+\section{Ethics Statement}
+
+This work aims to improve AI safety by enabling real-time hallucination detection. Potential risks include false sense of security (18--24\% false negative rate means not all hallucinations are caught; deployment should combine our method with other safety measures), adversarial exploitation (if attackers know the detection mechanism, they might craft adversarial prompts to evade detection), and dual use (while designed for safety, the technique could theoretically help malicious actors understand when models are uncertain).
+
+We believe benefits (improved AI safety, mechanistic interpretability) outweigh risks, especially given open-source release enabling community scrutiny.
+
+% =============================================================================
+% ACKNOWLEDGMENTS
+% =============================================================================
+\section*{Acknowledgments}
+
+I thank the open-source community for HuggingFace Transformers, Gudhi, and PyTorch, which made this work possible. I invite the research community to validate these findings using the provided Cannonball Run protocol.
+
+% =============================================================================
+% BIBLIOGRAPHY
+% =============================================================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+% =============================================================================
+% APPENDIX
+% =============================================================================
+\clearpage
+\appendix
+
+\section{Supplementary Materials}
+
+\subsection{Complete Layer-Wise Analysis: Llama-3.1-8B}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{heimdall_sweep_llama_analysis.png}
+\caption{\textbf{Supplementary: Llama-3.1-8B detailed analysis.} Complete layer-wise breakdown showing dual behavior---some layers exhibit coherence inversion while others show classical patterns. This mixed behavior is attributed to GQA architecture preventing complete attention collapse in some sublayers.}
+\label{fig:supp_llama}
+\end{figure}
+
+\subsection{Complete Layer-Wise Analysis: Phi-3-Mini}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{heimdall_sweep_phi3_analysis.png}
+\caption{\textbf{Supplementary: Phi-3-Mini detailed analysis.} Late-stage coherence resolution (Layer 28) corresponds to 88\% network depth, suggesting shallower architectures require more processing stages for semantic consolidation before coherence inversion can be detected.}
+\label{fig:supp_phi3}
+\end{figure}
+
+\end{document}

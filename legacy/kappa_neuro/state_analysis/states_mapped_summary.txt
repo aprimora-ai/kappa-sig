@@ -1,0 +1,43 @@
+STATE MAPPING SUMMARY
+============================================================
+
+State Distribution:
+state
+baseline     71940
+pos_ictal      412
+pre_ictal      305
+ictal          212
+artifact        73
+
+State Statistics:
+------------------------------------------------------------
+
+BASELINE:
+  Count: 71940
+  Xi:   mean=7.40, std=0.58
+  Oh:   mean=1.09, std=0.09
+  Dom:  mean=0.343, std=0.067
+
+ARTIFACT:
+  Count: 73
+  Xi:   mean=10.34, std=0.43
+  Oh:   mean=1.53, std=0.06
+  Dom:  mean=0.627, std=0.033
+
+PRE_ICTAL:
+  Count: 305
+  Xi:   mean=7.20, std=0.53
+  Oh:   mean=1.06, std=0.08
+  Dom:  mean=0.322, std=0.063
+
+ICTAL:
+  Count: 212
+  Xi:   mean=7.86, std=0.73
+  Oh:   mean=1.16, std=0.11
+  Dom:  mean=0.392, std=0.075
+
+POS_ICTAL:
+  Count: 412
+  Xi:   mean=7.39, std=0.57
+  Oh:   mean=1.09, std=0.08
+  Dom:  mean=0.345, std=0.066

@@ -1,0 +1,36 @@
+ICTAL DETECTION PERFORMANCE
+============================================================
+
+True Positives (TP):  10
+False Negatives (FN): 202
+False Positives (FP): 0
+True Negatives (TN):  72730
+
+Sensitivity (Recall): 4.7%
+Specificity:          100.0%
+Precision:            100.0%
+
+------------------------------------------------------------
+PER-SEIZURE DETECTION:
+------------------------------------------------------------
+
+Seizure 3:
+  Detected: 0/19 windows (0.0%)
+
+Seizure 4:
+  Detected: 2/24 windows (8.3%)
+
+Seizure 5:
+  Detected: 0/44 windows (0.0%)
+
+Seizure 6:
+  Detected: 0/45 windows (0.0%)
+
+Seizure 7:
+  Detected: 1/49 windows (2.0%)
+
+Seizure 1:
+  Detected: 2/19 windows (10.5%)
+
+Seizure 2:
+  Detected: 5/12 windows (41.7%)

@@ -1,0 +1,94 @@
+======================================================================
+Kappa-FIN v0.1 — RELATÓRIO DE ANÁLISE
+======================================================================
+
+Período analisado: 1985-01-01 -> 1989-12-31
+CALM: 1985-06-10 -> 1986-06-10
+
+PARÂMETROS DE CALIBRAÇÃO:
+  eta_ref      = 0.327869
+  Xi_c         = 1.020000
+  Oh_pre       = 0.980392
+  phi_c        = 0.000001
+  [NOTE] phi_c is at the floor: the CALM period had zero drive
+  accumulation, which is the expected behavior of a well-identified
+  baseline. The meaningful threshold is Oh_pre + delta above which
+  damage begins to accumulate. phi_c does not inflate the crossing.
+  Oh P90(CALM) = 0.6590
+  Oh P95(CALM) = 0.9804
+
+CALM penalty_knee_phi_tail (v4.6):
+  knee_weight   = 1.000
+  tail_frac     = 0.25
+  ratio_thresh  = 1.50
+  slope_ann_thr = 0.000
+  mix           = 0.50
+
+======================================================================
+PARTE 1: INDICADORES DE AQUECIMENTO
+======================================================================
+
+1.1 TENDÊNCIA DO Oh (slope anualizado)
+--------------------------------------------------
+  1985: ↑ +0.144/ano **
+  1986: ↓ -0.203/ano ***
+  1987: — +0.081/ano 
+  1988: ↑ +0.182/ano ***
+  1989: — -0.018/ano 
+
+1.2 FREQUÊNCIA ACIMA DOS LIMIARES
+--------------------------------------------------
+  Ano       %>P90    %>P95    %>1.0
+  1985       3.9%     0.0%     0.0%
+  1986       7.5%     0.4%     0.4%
+  1987       6.3%     0.0%     0.0%
+  1988       7.9%     0.0%     0.0%
+  1989       2.4%     0.0%     0.0%
+
+1.3 AUTOCORRELAÇÃO E RUNS
+--------------------------------------------------
+  Ano      ACF(1)  Run médio  Run máx
+  1985      0.261        1.0        1
+  1986      0.415        1.6        3
+  1987      0.323        1.3        2
+  1988      0.478        1.5        5
+  1989      0.307        1.0        1
+
+1.4 DANO ACUMULADO (phi_max)
+--------------------------------------------------
+  1985: 0.000
+  1986: 0.241
+  1987: 0.006
+  1988: 0.000
+  1989: 0.000
+
+======================================================================
+PARTE 2: CROSSINGS (após CALM)
+======================================================================
+
+persist_sens=2 | persist_confirm=5
+
+2.1 CROSSING Oh > 1.0 (absoluto)
+--------------------------------------------------
+  Sensível (p=2):     NONE
+  Confirmatório (p=5): NONE
+
+2.2 CROSSING Oh > P95(CALM) = 0.9804
+--------------------------------------------------
+  Sensível (p=2):     NONE
+  Confirmatório (p=5): NONE
+
+2.3 CROSSING phi > phi_c = 0.0000
+--------------------------------------------------
+  Sensível (p=2):     1986-07-08
+  Confirmatório (p=3): 1986-07-08
+
+======================================================================
+CONCLUSÃO
+======================================================================
+
+✓ INVERSÃO DE TENDÊNCIA: 1986 (↓) → 1987 (—)
+✓ AUMENTO DE FREQUÊNCIA: 1985=3.9% → 1986=7.5%
+✓ CROSSING DE DANO (phi>phi_c): 1986-07-08
+
+======================================================================

@@ -1,0 +1,86 @@
+======================================================================
+Kappa-FIN v0.1 — RELATÓRIO DE ANÁLISE
+======================================================================
+
+Período analisado: 2017-01-01 -> 2019-12-31
+CALM: 2017-02-03 -> 2017-09-29
+
+PARÂMETROS DE CALIBRAÇÃO:
+  eta_ref      = 0.198020
+  Xi_c         = 1.221980
+  Oh_pre       = 0.980392
+  phi_c        = 0.000001
+  [NOTE] phi_c is at the floor: the CALM period had zero drive
+  accumulation, which is the expected behavior of a well-identified
+  baseline. The meaningful threshold is Oh_pre + delta above which
+  damage begins to accumulate. phi_c does not inflate the crossing.
+  Oh P90(CALM) = 0.8183
+  Oh P95(CALM) = 0.8183
+
+CALM penalty_knee_phi_tail (v4.6):
+  knee_weight   = 1.000
+  tail_frac     = 0.25
+  ratio_thresh  = 1.50
+  slope_ann_thr = 0.000
+  mix           = 0.50
+
+======================================================================
+PARTE 1: INDICADORES DE AQUECIMENTO
+======================================================================
+
+1.1 TENDÊNCIA DO Oh (slope anualizado)
+--------------------------------------------------
+  2017: ↓ -0.193/ano ***
+  2018: — -0.057/ano 
+  2019: ↑ +0.157/ano ***
+
+1.2 FREQUÊNCIA ACIMA DOS LIMIARES
+--------------------------------------------------
+  Ano       %>P90    %>P95    %>1.0
+  2017       3.1%     3.1%     0.0%
+  2018       2.0%     2.0%     0.0%
+  2019       6.8%     6.8%     0.0%
+
+1.3 AUTOCORRELAÇÃO E RUNS
+--------------------------------------------------
+  Ano      ACF(1)  Run médio  Run máx
+  2017      0.736        2.3        3
+  2018      0.736        2.5        4
+  2019      0.765        4.2       14
+
+1.4 DANO ACUMULADO (phi_max)
+--------------------------------------------------
+  2017: 0.000
+  2018: 0.000
+  2019: 0.000
+
+======================================================================
+PARTE 2: CROSSINGS (após CALM)
+======================================================================
+
+persist_sens=2 | persist_confirm=5
+
+2.1 CROSSING Oh > 1.0 (absoluto)
+--------------------------------------------------
+  Sensível (p=2):     NONE
+  Confirmatório (p=5): NONE
+
+2.2 CROSSING Oh > P95(CALM) = 0.8183
+--------------------------------------------------
+  Sensível (p=2):     2018-10-29
+  Confirmatório (p=5): 2019-09-17
+
+2.3 CROSSING phi > phi_c = 0.0000
+--------------------------------------------------
+  Sensível (p=2):     NONE
+  Confirmatório (p=3): NONE
+
+======================================================================
+CONCLUSÃO
+======================================================================
+
+✓ INVERSÃO DE TENDÊNCIA: 2018 (—) → 2019 (↑)
+✓ AUMENTO DE FREQUÊNCIA: 2018=2.0% → 2019=6.8%
+✓ PRIMEIRO CROSSING CONFIRMATÓRIO (Oh>P95): 2019-09-17
+
+======================================================================

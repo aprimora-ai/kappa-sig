@@ -1,0 +1,16 @@
+CLASSIFICATION REPORT
+============================================================
+
+Cross-Validation Accuracy: 0.987 (+/- 0.000)
+
+              precision    recall  f1-score   support
+
+    artifact       1.00      1.00      1.00        22
+    baseline       0.99      1.00      0.99     21582
+       ictal       0.00      0.00      0.00        64
+   pos_ictal       0.00      0.00      0.00       124
+   pre_ictal       0.00      0.00      0.00        91
+
+    accuracy                           0.99     21883
+   macro avg       0.40      0.40      0.40     21883
+weighted avg       0.97      0.99      0.98     21883

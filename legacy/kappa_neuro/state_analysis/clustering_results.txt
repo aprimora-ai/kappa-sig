@@ -1,0 +1,17 @@
+CLUSTERING VALIDATION
+============================================================
+
+Clusters found: 2
+Noise points: 68921 (94.5%)
+
+True State Distribution in Clusters:
+------------------------------------------------------------
+
+Cluster 0 (n=52):
+  baseline: 52 (100.0%)
+
+Cluster 1 (n=3969):
+  baseline: 3951 (99.5%)
+  ictal: 4 (0.1%)
+  pos_ictal: 8 (0.2%)
+  pre_ictal: 6 (0.2%)

@@ -1,0 +1,63 @@
+========================================================================
+Kappa-FIN v4.0 — RELATÓRIO DE ANÁLISE COMPLETA
+Implementação exata do Método Kappa (README §IV–V)
+Autor: David Ohio <odavidohio@gmail.com>
+========================================================================
+
+Período:    2022-01-01 → 2026-03-16
+Tickers:    13  (22d janela, k=5)
+Retornos:   1051 dias úteis
+Distância:  d_ij = sqrt(2*(1 − C_ij))  ← distância angular v3
+CALM:       2022-03-17 → 2023-08-03
+
+────────────────────────────────────────────────────────────────────────
+PARÂMETROS DE CALIBRAÇÃO (S(t) = (Oh, Φ, η, Ξ, DEF))
+────────────────────────────────────────────────────────────────────────
+  η_ref (CALM q5 de η)        = 0.392157
+  Λ_c  (CALM q99 de Λ(η))    = 1.220000
+  Oh_c95 (CALM q95)         = 0.9322
+  Oh_pre (Φ baseline, q0.968) = 0.9804
+  Φ_c  (CALM q99 de Φ)      = 0.000001
+  Φ*   (irreversibilidade)  = 0.463973
+  h1_Ξ_c (CALM q95 de h1)   = 3.0000
+  γ    (dissipação Φ)       = 0.97
+  δ    (margem Oh→Φ)        = 0.08
+
+────────────────────────────────────────────────────────────────────────
+SPS — STRUCTURAL PRESSURIZATION SIGNATURE (v4)
+────────────────────────────────────────────────────────────────────────
+  τ_SPS (fração com 6 condições): definido em runtime
+  (Use kappa_v4_state.csv coluna 'sps' para análise)
+
+────────────────────────────────────────────────────────────────────────
+VISCOSIDADE ESTRUTURAL (ν_s)
+────────────────────────────────────────────────────────────────────────
+  ν_s = τ_Katashi_max × η_Katashi / (Ξ_Katashi + ε)
+      = 58 × 2.0357 / (0.5341 + ε)
+      = 136.1258
+  ∫Φ dt              = 19.5716
+  τ_Katashi_max      = 58 dias
+  τ_Katashi_mean     = 3.7 dias
+  Fração Nagare      = 0.0%
+  Fração Utsuroi     = 91.0%
+  Fração Katashi     = 9.0%
+
+────────────────────────────────────────────────────────────────────────
+CROSSINGS (após CALM)
+────────────────────────────────────────────────────────────────────────
+  Oh > 1.0   sens(p=2): 2025-12-24
+  Oh > 1.0   conf(p=5): NONE
+  Oh > q95   sens: 2024-05-28
+  Oh > q95   conf: 2025-12-18
+  Φ > Φ_c    sens: 2025-12-19
+  Φ > Φ_c    conf: 2025-12-19
+  Katashi    conf: 2025-12-18
+
+────────────────────────────────────────────────────────────────────────
+PROPOSIÇÃO B.15 — IRREVERSIBILIDADE
+────────────────────────────────────────────────────────────────────────
+  Φ* estimado (joelho): 0.463973
+  Φ_max real:           0.689383
+  Irreversibilidade:    ✅ ATINGIDA (Φ > Φ*)
+
+========================================================================
