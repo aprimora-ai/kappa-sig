@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-04-02T17:27:57",
+  "domain": "MET",
+  "substrate": "Atmospheric dynamics",
+  "method": "Pearson correlation between 30 US station daily temperatures, rolling 30-day window, eigenstructure -> Kappa state. Same pipeline as FIN (asset correlations).",
+  "data_source": "Open-Meteo Archive API (free, no auth)",
+  "stations": 30,
+  "period": "2022-01-01 to 2023-12-31",
+  "window": 30,
+  "baseline": {
+    "Oh": 12.1991,
+    "eta": 0.4446,
+    "mean_corr": 0.3922,
+    "DEF": 0.4489,
+    "Xi": 0.222
+  },
+  "events": {
+    "winter_storm_elliott": {
+      "event": "winter_storm_elliott",
+      "label": "Winter Storm Elliott (Dec 2022)",
+      "pre_mean": {
+        "Oh": 16.2763,
+        "eta": 0.5317,
+        "mean_corr": 0.5069,
+        "DEF": 0.6804,
+        "Xi": 0.1666
+      },
+      "during_mean": {
+        "Oh": 15.6487,
+        "eta": 0.4998,
+        "mean_corr": 0.4734,
+        "DEF": 0.705,
+        "Xi": 0.1809
+      },
+      "directions": {
+        "Oh": false,
+        "eta": false,
+        "mean_corr": false,
+        "DEF": true,
+        "Xi": false
+      },
+      "n_coherent": 1,
+      "confirmed": false,
+      "oc_pre": 0.2816,
+      "oc_during": 0.2595,
+      "oc_delta": -0.0221,
+      "n_pre_days": 31,
+      "n_dur_days": 9
+    },
+    "heat_dome_2023": {
+      "event": "heat_dome_2023",
+      "label": "July 2023 Heat Dome (Southwest US)",
+      "pre_mean": {
+        "Oh": 9.5881,
+        "eta": 0.3721,
+        "mean_corr": 0.316,
+        "DEF": 0.321,
+        "Xi": 0.2766
+      },
+      "during_mean": {
+        "Oh": 11.0509,
+        "eta": 0.3905,
+        "mean_corr": 0.3464,
+        "DEF": 0.5126,
+        "Xi": 0.2621
+      },
+      "directions": {
+        "Oh": true,
+        "eta": true,
+        "mean_corr": true,
+        "DEF": true,
+        "Xi": true
+      },
+      "n_coherent": 5,
+      "confirmed": true,
+      "oc_pre": -0.16,
+      "oc_during": -0.0174,
+      "oc_delta": 0.1426,
+      "n_pre_days": 30,
+      "n_dur_days": 22
+    },
+    "arctic_blast_jan2024": {
+      "event": "arctic_blast_jan2024",
+      "label": "Arctic Blast Jan 2023",
+      "pre_mean": {
+        "Oh": 14.7192,
+        "eta": 0.4815,
+        "mean_corr": 0.4448,
+        "DEF": 0.6585,
+        "Xi": 0.1941
+      },
+      "during_mean": {
+        "Oh": 13.6509,
+        "eta": 0.4941,
+        "mean_corr": 0.4347,
+        "DEF": 0.4638,
+        "Xi": 0.1857
+      },
+      "directions": {
+        "Oh": false,
+        "eta": true,
+        "mean_corr": false,
+        "DEF": false,
+        "Xi": true
+      },
+      "n_coherent": 2,
+      "confirmed": false,
+      "oc_pre": 0.1999,
+      "oc_during": 0.0839,
+      "oc_delta": -0.116,
+      "n_pre_days": 31,
+      "n_dur_days": 22
+    }
+  },
+  "n_confirmed": 1
+}

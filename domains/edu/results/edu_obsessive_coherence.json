@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-04-02T15:21:22",
+  "domain": "EDU",
+  "dataset": "OULAD (AAA 2014J)",
+  "method": "Spearman correlation between 9 activity channels, rolling window, eigenstructure -> Kappa state. Consistent with FIN (asset correlations) and LLM (head correlations).",
+  "parameters": {
+    "window": 10,
+    "step": 1,
+    "gamma": 0.97,
+    "n_channels": 9
+  },
+  "cohorts": {
+    "pass": {
+      "cohort": "pass",
+      "n_weeks": 43,
+      "n_steps": 34,
+      "n_degenerate": 0,
+      "mean_state": {
+        "Oh": 4.804531,
+        "phi": 4.024193,
+        "eta": 2.82936,
+        "mean_corr": 0.442468,
+        "DEF": 0.668738,
+        "Xi": 0.484236
+      },
+      "late_state": {
+        "Oh": 4.671386,
+        "phi": 5.807782,
+        "eta": 2.814281,
+        "mean_corr": 0.440196,
+        "DEF": 0.634819,
+        "Xi": 0.498869
+      },
+      "oc_score": 0.080403,
+      "late_oc_score": 0.047594,
+      "oh_drift": -0.521589
+    },
+    "fail": {
+      "cohort": "fail",
+      "n_weeks": 43,
+      "n_steps": 34,
+      "n_degenerate": 0,
+      "mean_state": {
+        "Oh": 4.280451,
+        "phi": 3.450949,
+        "eta": 2.756767,
+        "mean_corr": 0.401484,
+        "DEF": 0.613739,
+        "Xi": 0.535782
+      },
+      "late_state": {
+        "Oh": 4.306524,
+        "phi": 5.077676,
+        "eta": 2.767713,
+        "mean_corr": 0.382026,
+        "DEF": 0.617122,
+        "Xi": 0.534778
+      },
+      "oc_score": -0.022477,
+      "late_oc_score": -0.028564,
+      "oh_drift": -0.50503
+    },
+    "distinction": {
+      "cohort": "distinction",
+      "n_weeks": 43,
+      "n_steps": 34,
+      "n_degenerate": 0,
+      "mean_state": {
+        "Oh": 3.913877,
+        "phi": 3.026746,
+        "eta": 2.729919,
+        "mean_corr": 0.381207,
+        "DEF": 0.489068,
+        "Xi": 0.55343
+      },
+      "late_state": {
+        "Oh": 4.001969,
+        "phi": 4.404746,
+        "eta": 2.748227,
+        "mean_corr": 0.381616,
+        "DEF": 0.484155,
+        "Xi": 0.545075
+      },
+      "oc_score": -0.12414,
+      "late_oc_score": -0.11732,
+      "oh_drift": -0.095458
+    },
+    "withdrawn": {
+      "cohort": "withdrawn",
+      "n_weeks": 37,
+      "n_steps": 28,
+      "n_degenerate": 0,
+      "mean_state": {
+        "Oh": 4.49499,
+        "phi": 3.422042,
+        "eta": 2.760962,
+        "mean_corr": 0.469564,
+        "DEF": 0.693658,
+        "Xi": 0.496734
+      },
+      "late_state": {
+        "Oh": 3.727613,
+        "phi": 4.905959,
+        "eta": 2.671284,
+        "mean_corr": 0.365391,
+        "DEF": 0.562159,
+        "Xi": 0.572877
+      },
+      "oc_score": 0.082966,
+      "late_oc_score": -0.115574,
+      "oh_drift": -1.553941
+    }
+  }
+}

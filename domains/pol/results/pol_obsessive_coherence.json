@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-04-02T15:50:01",
+  "domain": "POL",
+  "dataset": "Political Blogosphere 2004 (Adamic & Glance)",
+  "method": "Adjacency matrix eigenstructure (SIG/v5.8c). Static network: adjacency = correlation analog.",
+  "conditions": {
+    "full_network": {
+      "Oh": 139.2012,
+      "eta": 0.0392,
+      "mean_corr": 0.015068,
+      "DEF": 0.1909,
+      "Xi": 0.8579,
+      "n_nodes": 1490,
+      "lambda_1": 74.08,
+      "eff_rank": 42.9
+    },
+    "echo_chamber": {
+      "Oh": 139.886,
+      "eta": 0.0419,
+      "mean_corr": 0.013648,
+      "DEF": 0.1329,
+      "Xi": 0.8487,
+      "n_nodes": 1490,
+      "lambda_1": 70.39,
+      "eff_rank": 42.43
+    },
+    "bridging": {
+      "Oh": 76.9785,
+      "eta": 0.0151,
+      "mean_corr": 0.00142,
+      "DEF": 0.0,
+      "Xi": 0.9427,
+      "n_nodes": 1490,
+      "lambda_1": 15.79,
+      "eff_rank": 47.14
+    },
+    "liberal_echo": {
+      "Oh": 91.7648,
+      "eta": 0.04,
+      "mean_corr": 0.025448,
+      "DEF": 0.6548,
+      "Xi": 0.8552,
+      "n_nodes": 758,
+      "lambda_1": 70.39,
+      "eff_rank": 42.76
+    },
+    "conservative_echo": {
+      "Oh": 73.0587,
+      "eta": 0.0303,
+      "mean_corr": 0.0293,
+      "DEF": 0.5495,
+      "Xi": 0.8882,
+      "n_nodes": 732,
+      "lambda_1": 61.03,
+      "eff_rank": 44.41
+    }
+  },
+  "hypothesis": {
+    "echo_vs_bridge": {
+      "Oh": true,
+      "eta": true,
+      "DEF": true,
+      "Xi": true,
+      "mean_corr": true
+    },
+    "n_coherent": 5,
+    "confirmed": true,
+    "oc_echo": -0.8041,
+    "oc_bridge": -0.9448
+  }
+}

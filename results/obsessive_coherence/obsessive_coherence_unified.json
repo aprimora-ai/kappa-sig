@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-04-02T17:38:07",
+  "thesis": "Systemic instability emerges from excessive structural coherence rather than noise (Law of Katashi)",
+  "n_domains": 5,
+  "n_confirmed": 5,
+  "verdict": "CONFIRMED",
+  "all_positive_delta": true,
+  "all_majority_directions": true,
+  "domains": [
+    {
+      "domain": "FIN",
+      "system": "Financial correlation networks",
+      "n_coherent": 5,
+      "n_total": 5,
+      "confirmed": true,
+      "oc_nominal": -0.345,
+      "oc_stressed": 0.8583,
+      "oc_delta": 1.2033,
+      "lead_time": "35-269 days",
+      "lscc_auc": 0.942
+    },
+    {
+      "domain": "LLM",
+      "system": "Attention head network (3 architectures, SIG inter-head)",
+      "n_coherent": 14,
+      "n_total": 15,
+      "confirmed": true,
+      "oc_nominal": 0.7977,
+      "oc_stressed": 0.8175,
+      "oc_delta": 0.0198,
+      "lead_time": "Token-level",
+      "lscc_auc": 0.786
+    },
+    {
+      "domain": "EDU",
+      "system": "Activity channel correlation (OULAD, 9 channels)",
+      "n_coherent": 5,
+      "n_total": 5,
+      "confirmed": true,
+      "oc_nominal": 0.080403,
+      "oc_stressed": 0.082966,
+      "oc_delta": 0.0026,
+      "lead_time": "Weeks",
+      "lscc_auc": "TBD"
+    },
+    {
+      "domain": "POL",
+      "system": "Blog adjacency network (polblogs 2004, 1491 nodes)",
+      "n_coherent": 5,
+      "n_total": 5,
+      "confirmed": true,
+      "oc_nominal": -0.9448,
+      "oc_stressed": -0.8041,
+      "oc_delta": 0.1407,
+      "lead_time": "Static",
+      "lscc_auc": "N/A"
+    },
+    {
+      "domain": "MET",
+      "system": "Temperature correlation (30 US stations, July 2023 Heat Dome (Southwest US))",
+      "n_coherent": 5,
+      "n_total": 5,
+      "confirmed": true,
+      "oc_nominal": -0.16,
+      "oc_stressed": -0.0174,
+      "oc_delta": 0.1426,
+      "lead_time": "Days-weeks",
+      "lscc_auc": "TBD"
+    }
+  ]
+}

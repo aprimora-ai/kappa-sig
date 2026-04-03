@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-04-02T15:12:59",
+  "domain": "LLM",
+  "method": "SIG inter-head correlation (Kappa v5.8c applied to attention head network)",
+  "softmax_note": "Post-softmax attention matrices are row-stochastic. This degenerates 3/5 per-head observables (phi->0, xi->1, delta->NaN). SIG inter-head correlation is invariant to per-row normalization and captures the obsessive coherence signal via second-order statistics. This is consistent with the Kappa framework which operates on correlation networks across all domains.",
+  "models": {
+    "phi3": {
+      "model": "phi3",
+      "sig_auc": 0.5426,
+      "coherence_directions": {
+        "head_Oh": true,
+        "head_eta": true,
+        "head_mean_corr": true,
+        "head_Xi": true,
+        "head_DEF": false
+      },
+      "n_coherent": 4,
+      "n_total": 5,
+      "obsessive_confirmed": true,
+      "oc_factual": 0.8035,
+      "oc_hallucination": 0.8053,
+      "oc_delta": 0.0018
+    },
+    "mistral": {
+      "model": "mistral",
+      "sig_auc": 0.7419,
+      "coherence_directions": {
+        "head_Oh": true,
+        "head_eta": true,
+        "head_mean_corr": true,
+        "head_Xi": true,
+        "head_DEF": true
+      },
+      "n_coherent": 5,
+      "n_total": 5,
+      "obsessive_confirmed": true,
+      "oc_factual": 0.7899,
+      "oc_hallucination": 0.8178,
+      "oc_delta": 0.0279
+    },
+    "llama": {
+      "model": "llama",
+      "sig_auc": 0.7863,
+      "coherence_directions": {
+        "head_Oh": true,
+        "head_eta": true,
+        "head_mean_corr": true,
+        "head_Xi": true,
+        "head_DEF": true
+      },
+      "n_coherent": 5,
+      "n_total": 5,
+      "obsessive_confirmed": true,
+      "oc_factual": 0.7997,
+      "oc_hallucination": 0.8293,
+      "oc_delta": 0.0296
+    }
+  },
+  "verified_data_source": "results/halueval_rerun/llm_experiment_results.json",
+  "all_confirmed": true
+}

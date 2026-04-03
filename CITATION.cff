@@ -1,0 +1,59 @@
+cff-version: 1.2.0
+message: "If you use Kappa-FIN or the Kappa Method in your research, please cite as below."
+type: software
+title: "Kappa-FIN: Topological Early Warning System for Financial Market Crises"
+version: "0.1.0"
+date-released: "2026-03-06"
+doi: 10.5281/zenodo.18883585
+license: CC-BY-4.0
+url: "https://github.com/odavidohio/kappa-fin"
+repository-code: "https://github.com/odavidohio/kappa-fin"
+
+authors:
+  - family-names: "Ohio"
+    given-names: "David"
+    email: "odavidohio@gmail.com"
+
+abstract: >
+  Kappa-FIN applies the Kappa Method — persistent homology H₁ of rolling
+  correlation networks (Spearman + Ledoit-Wolf shrinkage) combined with
+  Forman-Ricci curvature — to detect systemic risk precursors in financial
+  markets weeks to months before crises materialize. The system uses two
+  complementary criteria: the Rayleigh criterion (Ohio Number Oh(t), derived
+  from H₁ topological mass relative to a CALM baseline) and the Prandtl
+  criterion (structural memory Φ(t), a leaky integrator with γ=0.985 of
+  negative curvature accumulation). Dual crossing detection with automated
+  CALM baseline identification (KCPT anti-contamination penalty) avoids
+  false positives from exogenous shocks. Demonstrated case study: ~60-day
+  lead time on the 2008 Global Financial Crisis; correct negative on
+  COVID-19 exogenous shock. Part of the Kappa Method ecosystem validating
+  the Law of Ohio (Organized Hallucination In Optimization) across financial
+  markets, LLMs, and educational systems.
+
+keywords:
+  - topological data analysis
+  - persistent homology
+  - financial markets
+  - systemic risk
+  - early warning signals
+  - Forman-Ricci curvature
+  - correlation networks
+  - Kappa Method
+  - Law of Ohio
+  - 2008 financial crisis
+  - COVID-19 market crash
+  - regime detection
+
+references:
+  - type: software
+    title: "Kappa: A Method for Informational Regime Detection via Geometry and Dynamics"
+    url: "https://github.com/odavidohio/kappa-method"
+    authors:
+      - family-names: "Ohio"
+        given-names: "David"
+  - type: software
+    title: "Kappa-Attention-Regimes: Hallucination Detection in LLMs"
+    url: "https://github.com/odavidohio/kappa-attention-regimes"
+    authors:
+      - family-names: "Ohio"
+        given-names: "David"
