@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02T15:12:59",
+  "timestamp": "2026-04-03T14:33:33",
   "domain": "LLM",
   "method": "SIG inter-head correlation (Kappa v5.8c applied to attention head network)",
   "softmax_note": "Post-softmax attention matrices are row-stochastic. This degenerates 3/5 per-head observables (phi->0, xi->1, delta->NaN). SIG inter-head correlation is invariant to per-row normalization and captures the obsessive coherence signal via second-order statistics. This is consistent with the Kappa framework which operates on correlation networks across all domains.",

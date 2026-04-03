@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-03T14:25:13",
+  "timestamp": "2026-04-03T14:33:18",
   "domain": "EDU",
   "dataset": "OULAD (AAA 2014J)",
   "method": "Spearman correlation between 9 activity channels, rolling window, eigenstructure -> Kappa state. Consistent with FIN (asset correlations) and LLM (head correlations).",

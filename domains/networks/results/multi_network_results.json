@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02T16:44:55",
+  "timestamp": "2026-04-03T14:33:48",
   "experiment": "Multi-Network SIG (Real + Synthetic)",
   "method": "Adjacency eigenstructure, community intra vs inter",
   "real_results": {
@@ -11,9 +11,9 @@
       "comms": 5,
       "kappa_intra": {
         "Oh": 5.251,
-        "eta": 0.1362,
+        "eta": 0.1563,
         "DEF": 0.3501,
-        "Xi": 0.6916,
+        "Xi": 0.6484,
         "mean_corr": 0.12,
         "n": 26,
         "edges": 39,
@@ -48,9 +48,9 @@
       },
       "n_coherent": 4,
       "confirmed": true,
-      "oc_intra": -0.5098,
+      "oc_intra": -0.4882,
       "oc_inter": -0.6594,
-      "oc_delta": 0.1496
+      "oc_delta": 0.1712
     }
   },
   "synthetic_results": {
