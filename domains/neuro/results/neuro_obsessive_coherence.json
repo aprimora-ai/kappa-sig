@@ -1,68 +1,332 @@
 {
-  "timestamp": "2026-04-02T08:38:17",
+  "timestamp": "2026-04-04T00:45:00",
   "domain": "NEURO",
-  "dataset": "CHB-MIT (preliminary, 23 patients)",
-  "data_source": "preliminary",
-  "result": {
-    "interictal_state": {
-      "Oh": 0.35,
-      "eta": 0.42,
-      "mean_corr": 0.28,
-      "DEF": 0.31,
-      "Xi": 0.58
+  "framework": "SIG v5.8c (mapped from legacy katashi_state)",
+  "datasets": {
+    "epileptic": {
+      "source": "CHB-MIT Scalp EEG",
+      "n_patients": 10,
+      "n_channels": 23
     },
-    "preictal_state": {
-      "Oh": 0.52,
-      "eta": 0.61,
-      "mean_corr": 0.45,
-      "DEF": 0.48,
-      "Xi": 0.39
-    },
-    "deltas": {
-      "Oh": 0.17000000000000004,
-      "eta": 0.19,
-      "mean_corr": 0.16999999999999998,
-      "DEF": 0.16999999999999998,
-      "Xi": -0.18999999999999995
-    },
-    "coherence_directions": {
-      "Oh": true,
-      "eta": true,
-      "mean_corr": true,
-      "DEF": true,
-      "Xi": true
-    },
-    "n_coherent": 5,
-    "total_directions": 5,
-    "obsessive_confirmed": true,
-    "oc_interictal": {
-      "coherence": 0.36000000000000004,
-      "disorder": 0.6499999999999999,
-      "obsessive": -0.28999999999999987
-    },
-    "oc_preictal": {
-      "coherence": 0.5366666666666666,
-      "disorder": 0.47000000000000003,
-      "obsessive": 0.0666666666666666
+    "healthy": {
+      "source": "EEGMMIDB",
+      "n_subjects": 30,
+      "n_channels": 64
     }
   },
-  "lead_times": {
+  "sig_mapping": {
+    "Oh": "direct",
+    "eta": "1 - entropy / log2(n_channels)",
+    "DEF": "direct from legacy dominance",
+    "Xi": "legacy Xi / n_channels",
+    "mean_corr": "proxy: (Oh - 1) / (n - 1), exact for equicorrelation"
+  },
+  "group_comparison": {
+    "epileptic_mean": {
+      "Oh": 1.128569,
+      "eta": 0.699611,
+      "DEF": 0.503437,
+      "Xi": 0.386733,
+      "mean_corr": 0.006279,
+      "phi": 0.368213
+    },
+    "healthy_mean": {
+      "Oh": 1.024895,
+      "eta": 0.728169,
+      "DEF": 0.43841,
+      "Xi": 0.130384,
+      "mean_corr": 0.000931,
+      "phi": 0.150307
+    },
+    "direction_test": {
+      "Oh": true,
+      "eta": false,
+      "DEF": true,
+      "Xi": false,
+      "mean_corr": true
+    },
+    "n_coherent": 3,
+    "confirmed": false,
+    "oc_epileptic": -0.413974,
+    "oc_healthy": -0.323241,
+    "oc_delta": -0.090733
+  },
+  "ictal_analysis": {
+    "chb01": {
+      "inter_Oh": 1.0927949708612594,
+      "pre_Oh": 1.1133144558038746,
+      "ictal_Oh": 1.0945153112594224,
+      "inter_phi": 0.2542776171497811,
+      "pre_phi": 0.2881928316967003,
+      "pre_gt_inter": true
+    },
     "chb03": {
-      "lead_min": 30,
-      "pattern": "gradual Oh rise"
+      "inter_Oh": 1.0795979679371626,
+      "pre_Oh": 1.1104823617653117,
+      "ictal_Oh": 1.1282788758213018,
+      "inter_phi": 0.2388545099049523,
+      "pre_phi": 0.3144246067142256,
+      "pre_gt_inter": true
+    },
+    "chb04": {
+      "inter_Oh": 1.1612944308023996,
+      "pre_Oh": 1.2195798661467003,
+      "ictal_Oh": 1.1992247298919818,
+      "inter_phi": 0.4320303721187162,
+      "pre_phi": 0.5726561067609317,
+      "pre_gt_inter": true
     },
     "chb05": {
-      "lead_min": 45,
-      "pattern": "Phi accumulation + Oh spike"
+      "inter_Oh": 1.0193009501259338,
+      "pre_Oh": 1.0240157894177433,
+      "ictal_Oh": 1.036282253619055,
+      "inter_phi": 0.1124346250319892,
+      "pre_phi": 0.1269364831365655,
+      "pre_gt_inter": true
+    },
+    "chb06": {
+      "inter_Oh": 1.0767076165900362,
+      "pre_Oh": 1.0627156940801157,
+      "ictal_Oh": 1.1470047045970906,
+      "inter_phi": 0.21995075305723,
+      "pre_phi": 0.1949927249089073,
+      "pre_gt_inter": false
+    },
+    "chb07": {
+      "inter_Oh": 1.1294931287524772,
+      "pre_Oh": 1.1442778532399764,
+      "ictal_Oh": 1.112434100326149,
+      "inter_phi": 0.3528524232191521,
+      "pre_phi": 0.3732078142932947,
+      "pre_gt_inter": true
     },
     "chb08": {
-      "lead_min": 60,
-      "pattern": "DEF climb before Oh"
+      "inter_Oh": 1.0600491664311285,
+      "pre_Oh": 1.1186660488236737,
+      "ictal_Oh": 1.1296983733588606,
+      "inter_phi": 0.1733768169780499,
+      "pre_phi": 0.3594080213916526,
+      "pre_gt_inter": true
     },
-    "chb21": {
-      "lead_min": 90,
-      "pattern": "slow crystallization"
+    "chb09": {
+      "inter_Oh": 1.0008569144449622,
+      "pre_Oh": 0.9379086865304764,
+      "ictal_Oh": 0.959940216588484,
+      "inter_phi": 0.0944523852277382,
+      "pre_phi": 0.0277699598610393,
+      "pre_gt_inter": false
+    },
+    "chb10": {
+      "inter_Oh": 1.10361795112204,
+      "pre_Oh": 1.123473110793646,
+      "ictal_Oh": 1.105357968124501,
+      "inter_phi": 0.2777551223556219,
+      "pre_phi": 0.3294063342839559,
+      "pre_gt_inter": true
     }
   },
-  "obsessive_confirmed": true
+  "intra_patient_analysis": {
+    "method": "Top 25% Oh vs Bottom 25% Oh within same patient (same montage)",
+    "n_patients_tested": 10,
+    "n_confirmed": 10,
+    "patients": [
+      {
+        "patient": "chb01",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.378937,
+        "oc_low": -0.453109,
+        "oc_delta": 0.074172,
+        "high_Oh": 1.292,
+        "low_Oh": 0.9747
+      },
+      {
+        "patient": "chb02",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.374952,
+        "oc_low": -0.452697,
+        "oc_delta": 0.077745,
+        "high_Oh": 1.3421,
+        "low_Oh": 1.0036
+      },
+      {
+        "patient": "chb03",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.360396,
+        "oc_low": -0.444493,
+        "oc_delta": 0.084097,
+        "high_Oh": 1.3908,
+        "low_Oh": 1.0006
+      },
+      {
+        "patient": "chb04",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.369395,
+        "oc_low": -0.454211,
+        "oc_delta": 0.084816,
+        "high_Oh": 1.3364,
+        "low_Oh": 0.9665
+      },
+      {
+        "patient": "chb05",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.374319,
+        "oc_low": -0.455271,
+        "oc_delta": 0.080952,
+        "high_Oh": 1.319,
+        "low_Oh": 0.9759
+      },
+      {
+        "patient": "chb06",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.374525,
+        "oc_low": -0.44672,
+        "oc_delta": 0.072195,
+        "high_Oh": 1.1692,
+        "low_Oh": 0.8696
+      },
+      {
+        "patient": "chb07",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.362331,
+        "oc_low": -0.444318,
+        "oc_delta": 0.081987,
+        "high_Oh": 1.3578,
+        "low_Oh": 0.982
+      },
+      {
+        "patient": "chb08",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.381644,
+        "oc_low": -0.455741,
+        "oc_delta": 0.074097,
+        "high_Oh": 1.3096,
+        "low_Oh": 0.9961
+      },
+      {
+        "patient": "chb09",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.38625,
+        "oc_low": -0.456864,
+        "oc_delta": 0.070614,
+        "high_Oh": 1.2704,
+        "low_Oh": 0.9786
+      },
+      {
+        "patient": "chb10",
+        "n_coherent": 4,
+        "confirmed": true,
+        "oc_high": -0.367296,
+        "oc_low": -0.451874,
+        "oc_delta": 0.084577,
+        "high_Oh": 1.3788,
+        "low_Oh": 1.0022
+      }
+    ]
+  },
+  "consolidated_summary": {
+    "Oh_mean": {
+      "epileptic": 1.076097,
+      "healthy": 1.021362,
+      "delta": 0.054735
+    },
+    "Oh_max": {
+      "epileptic": 1.791459,
+      "healthy": 1.382748,
+      "delta": 0.408711
+    },
+    "Oh_p95": {
+      "epileptic": 1.25545,
+      "healthy": 1.205572,
+      "delta": 0.049879
+    },
+    "phi_mean": {
+      "epileptic": 0.231418,
+      "healthy": 0.141765,
+      "delta": 0.089653
+    },
+    "phi_max": {
+      "epileptic": 0.781683,
+      "healthy": 0.372633,
+      "delta": 0.409049
+    },
+    "pct_Oh_gt_threshold": {
+      "epileptic": 75.366249,
+      "healthy": 52.911905,
+      "delta": 22.454344
+    },
+    "max_consecutive_Oh_gt_threshold": {
+      "epileptic": 510.7,
+      "healthy": 48.091743,
+      "delta": 462.608257
+    }
+  },
+  "per_patient_epileptic": [
+    {
+      "Oh": 1.11806593868716,
+      "eta": 0.6994067588555162,
+      "DEF": 0.4907659187190406,
+      "Xi": 0.38096250952019833,
+      "mean_corr": 0.005697849714172341,
+      "phi": 0.3341220237844646,
+      "patient": "chb01",
+      "n_windows": 72942
+    },
+    {
+      "Oh": 1.157884555871009,
+      "eta": 0.6943428561871832,
+      "DEF": 0.49368432425647185,
+      "Xi": 0.38128039628537885,
+      "mean_corr": 0.007341748688844191,
+      "phi": 0.43045727374548326,
+      "patient": "chb02",
+      "n_windows": 61635
+    },
+    {
+      "Oh": 1.17532893510154,
+      "eta": 0.7190419743023027,
+      "DEF": 0.5358193158405397,
+      "Xi": 0.4026821522197549,
+      "mean_corr": 0.008167621537011706,
+      "phi": 0.4789861923018723,
+      "patient": "chb03",
+      "n_windows": 68356
+    },
+    {
+      "Oh": 1.1293758599863768,
+      "eta": 0.6965165519485447,
+      "DEF": 0.5023873170370979,
+      "Xi": 0.3861171518883885,
+      "mean_corr": 0.006289197979212303,
+      "phi": 0.36892305786568325,
+      "patient": "chb04",
+      "n_windows": 280863
+    },
+    {
+      "Oh": 1.13172058190045,
+      "eta": 0.6923529898350764,
+      "DEF": 0.4926561521332886,
+      "Xi": 0.3808838938991587,
+      "mean_corr": 0.006317370963546067,
+      "phi": 0.37044600861458266,
+      "patient": "chb05",
+      "n_windows": 70157
+    }
+  ],
+  "notes": [
+    "GROUP COMPARISON (epileptic vs healthy) is CONFOUNDED by channel count (23 vs 64)",
+    "INTRA-PATIENT ANALYSIS is the valid test: same patient, same montage, no confound",
+    "ICTAL ANALYSIS (pre-ictal vs inter-ictal) is valid: within-patient comparison",
+    "mean_corr is a proxy (equicorrelation assumption), not measured directly",
+    "CHB-MIT uses 23-channel bipolar montage; EEGMMIDB uses 64-channel BCI2000",
+    "This domain is DEFERRED to dedicated Kappa-NEURO paper for clinical validation"
+  ]
 }

@@ -1,339 +1,338 @@
 #!/usr/bin/env python3
 """
-Kappa-SIG NEURO: Obsessive Coherence in Epileptic Seizure Prediction
-======================================================================
-Applies the unified Kappa framework to EEG channel coherence data.
-
-Data: CHB-MIT Scalp EEG Database (PhysioNet, public)
-Requirements: pip install mne numpy scipy pandas scikit-learn
-
-David Ohio | odavidohio@gmail.com | Independent Researcher
-April 2026
+Kappa-SIG NEURO: Obsessive Coherence in EEG Seizure Prediction
+Inter-channel correlation eigenstructure, mapped to SIG 5-observable framework.
+Data: CHB-MIT Scalp EEG Database (21 epileptic patients) + EEGMMIDB (healthy controls)
+Reads pre-processed katashi_state.csv files from legacy pipeline.
+David Ohio | odavidohio@gmail.com | Independent Researcher | April 2026
 """
-import sys, json, time
+import json, time
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
 
 OUT_DIR = Path(__file__).parent / "results"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-BANDS = {
-    "delta": (0.5, 4),
-    "theta": (4, 8),
-    "alpha": (8, 13),
-    "beta": (13, 30),
-    "gamma": (30, 100),
-}
+# Default data paths (D:\TopoCML legacy)
+CHBMIT_DIR = Path(r"D:\TopoCML\scripts\kappa_eegs\out_chbmit_v2")
+EEGMMIDB_DIR = Path(r"D:\TopoCML\scripts\kappa_eegs\out_eegmmidb")
+LEGACY_DIR = Path(__file__).parent.parent.parent / "legacy" / "kappa_neuro"
 
-# Pre-ictal window: 30-120 minutes before seizure onset
-PRE_ICTAL_MIN = 30   # minutes
-PRE_ICTAL_MAX = 120  # minutes
-WINDOW_SEC = 2       # seconds per analysis window
+N_CHANNELS = 23  # CHB-MIT standard montage (23 bipolar channels)
+N_CHANNELS_EEGMMIDB = 64  # EEGMMIDB uses 64-channel BCI2000 montage
 
 
-def extract_band_power(psd, freqs, band):
-    """Extract relative power in a frequency band."""
-    from scipy.integrate import trapezoid
-    idx = np.logical_and(freqs >= band[0], freqs <= band[1])
-    bp = trapezoid(psd[idx], freqs[idx])
-    total = trapezoid(psd, freqs)
-    return bp / max(total, 1e-9)
+def map_legacy_to_sig(row, n_channels):
+    """Map legacy katashi_state columns to SIG 5-observable framework.
 
+    Legacy columns: Oh, eta(legacy), Xi(legacy=exp(H)), entropy(=H), dominance(=DEF), phi
+    SIG columns: Oh, eta_sig(=1-H/Hmax), DEF, Xi_sig(=exp(H)/n), mean_corr(=proxy from Oh)
 
-def process_eeg_window(raw_data, sfreq, channels):
+    Note: mean_corr is not directly available in legacy data.
+    We estimate it as: mean_corr_proxy = (Oh - 1) / (n - 1), clamped to [0, 1].
+    This is exact for equicorrelation matrices and approximate otherwise.
     """
-    Process one EEG window into Kappa-compatible features.
-    
-    Args:
-        raw_data: numpy array (n_channels, n_samples)
-        sfreq: sampling frequency
-        channels: list of channel names
-    Returns:
-        dict with band powers per channel + correlation matrix
-    """
-    from scipy.signal import welch
-    n_ch = raw_data.shape[0]
-    
-    # PSD per channel
-    band_powers = {}
-    for i in range(n_ch):
-        freqs, psd = welch(raw_data[i], fs=sfreq, nperseg=min(256, raw_data.shape[1]))
-        for band_name, (flo, fhi) in BANDS.items():
-            key = f"{channels[i]}_{band_name}"
-            band_powers[key] = extract_band_power(psd, freqs, (flo, fhi))
+    Oh = row["Oh"]
+    entropy_H = row.get("entropy", np.nan)
+    dominance = row.get("dominance", np.nan)
+    Xi_raw = row.get("Xi", np.nan)
 
-    # Channel correlation matrix (Pearson on raw signals)
-    if n_ch > 2:
-        C = np.corrcoef(raw_data)
-        C = np.nan_to_num(C, nan=0.0)
+    # SIG eta: spectral rigidity = 1 - H/H_max
+    H_max = np.log2(n_channels) if n_channels > 1 else 1.0
+    if np.isfinite(entropy_H) and H_max > 0:
+        eta_sig = 1.0 - entropy_H / H_max
     else:
-        C = np.eye(n_ch)
-    
-    return {"band_powers": band_powers, "corr_matrix": C, "n_channels": n_ch}
+        eta_sig = np.nan
 
+    # SIG DEF: eigenvalue dominance gap (direct from legacy "dominance")
+    DEF = dominance if np.isfinite(dominance) else np.nan
 
-def eeg_to_kappa_state(corr_matrix, band_powers_per_channel, n_channels):
-    """
-    Map EEG features to unified Kappa state S(t).
-    
-    Mapping:
-      Oh       = lambda_1 / n_channels (spectral concentration of channel coherence)
-      phi      = accumulated Oh (exponential memory, computed externally)
-      eta      = 1 - entropy of eigenvalues (rigidity of connectivity)
-      mean_corr= mean off-diagonal correlation (structural coupling)
-      DEF      = max eigenvalue ratio gap (dominance deficit)
-      Xi       = effective rank / n_channels (diversity of connectivity modes)
-    """
-    C = corr_matrix
-    n = C.shape[0]
-    
-    # Eigenvalues of correlation matrix
-    eigvals = np.sort(np.abs(np.linalg.eigvalsh(C)))[::-1]
-    eigvals = np.maximum(eigvals, 0)
-    total = eigvals.sum() + 1e-10
-
-    # Oh: spectral concentration (analogous to FIN)
-    Oh = float(eigvals[0] / total)
-    
-    # eta: rigidity (1 - normalized entropy of eigenvalue distribution)
-    eig_norm = eigvals / total
-    eig_norm = eig_norm[eig_norm > 1e-12]
-    from scipy.stats import entropy as sp_entropy
-    H = sp_entropy(eig_norm, base=2)
-    H_max = np.log2(n) if n > 1 else 1.0
-    eta = 1.0 - (H / H_max) if H_max > 0 else 0.0
-    
-    # mean_corr: mean off-diagonal correlation
-    mask = ~np.eye(n, dtype=bool)
-    mean_corr = float(np.mean(np.abs(C[mask])))
-    
-    # DEF: eigenvalue dominance (gap between lambda_1 and lambda_2)
-    if n > 1:
-        DEF = float((eigvals[0] - eigvals[1]) / (eigvals[0] + 1e-10))
+    # SIG Xi: normalized effective diversity = exp(H) / n
+    if np.isfinite(Xi_raw) and n_channels > 0:
+        Xi_sig = Xi_raw / n_channels
     else:
-        DEF = 0.0
-    
-    # Xi: effective diversity (effective rank / n)
-    eff_rank = np.exp(sp_entropy(eig_norm)) if len(eig_norm) > 0 else 1.0
-    Xi = float(eff_rank / n)
-    
-    return {"Oh": Oh, "phi": 0.0, "eta": eta, "mean_corr": mean_corr,
-            "DEF": DEF, "Xi": Xi}
+        Xi_sig = np.nan
 
-
-def process_chbmit_patient(patient_dir, seizure_times):
-    """
-    Process one CHB-MIT patient directory.
-    
-    Args:
-        patient_dir: Path to patient directory (e.g., chb01/)
-        seizure_times: List of (file, onset_sec, offset_sec) tuples
-    Returns:
-        Dict with pre-ictal and interictal Kappa states
-    """
-    import mne
-    
-    all_states = []
-    all_labels = []  # 0=interictal, 1=pre-ictal, 2=ictal
-    
-    for edf_file in sorted(patient_dir.glob("*.edf")):
-        try:
-            raw = mne.io.read_raw_edf(str(edf_file), preload=True, verbose=False)
-            raw.pick(picks='eeg', exclude='bads')
-            raw.filter(0.5, 100, verbose=False)
-            raw.notch_filter(60, verbose=False)
-        except Exception as e:
-            continue
-        
-        sfreq = raw.info['sfreq']
-        channels = raw.ch_names
-        data = raw.get_data()
-        n_samples = data.shape[1]
-        win_samples = int(WINDOW_SEC * sfreq)
-
-        # Check if this file has a seizure
-        file_seizures = [(on, off) for (f, on, off) in seizure_times 
-                         if Path(f).name == edf_file.name]
-        
-        for start in range(0, n_samples - win_samples, win_samples):
-            window_data = data[:, start:start + win_samples]
-            t_sec = start / sfreq
-            
-            feat = process_eeg_window(window_data, sfreq, channels)
-            state = eeg_to_kappa_state(feat["corr_matrix"], 
-                                       feat["band_powers"], feat["n_channels"])
-            
-            # Label: check if pre-ictal or ictal
-            label = 0  # interictal
-            for onset, offset in file_seizures:
-                if onset <= t_sec <= offset:
-                    label = 2  # ictal
-                elif (onset - PRE_ICTAL_MAX*60) <= t_sec <= (onset - PRE_ICTAL_MIN*60):
-                    label = 1  # pre-ictal
-            
-            all_states.append(state)
-            all_labels.append(label)
-    
-    return {"states": all_states, "labels": all_labels}
-
-
-# ══════════════════════════════════════════════════════════
-# PRELIMINARY RESULTS (from earlier CHB-MIT processing)
-# These were computed in January 2026 sessions
-# Source: process_eeg_v2_corrected.py on 23 patients
-# ══════════════════════════════════════════════════════════
-
-PRELIMINARY_RESULTS = {
-    "description": "CHB-MIT EEG pre-ictal vs interictal signatures",
-    "patients_processed": 23,
-    "seizures_total": 198,
-    "key_findings": {
-        "interictal_mean": {
-            "Oh": 0.35, "eta": 0.42, "mean_corr": 0.28,
-            "DEF": 0.31, "Xi": 0.58,
-        },
-        "preictal_mean": {
-            "Oh": 0.52, "eta": 0.61, "mean_corr": 0.45,
-            "DEF": 0.48, "Xi": 0.39,
-        },
-    },
-    "lead_times": {
-        "chb03": {"lead_min": 30, "pattern": "gradual Oh rise"},
-        "chb05": {"lead_min": 45, "pattern": "Phi accumulation + Oh spike"},
-        "chb08": {"lead_min": 60, "pattern": "DEF climb before Oh"},
-        "chb21": {"lead_min": 90, "pattern": "slow crystallization"},
-    },
-    "notes": "High inter-patient variability. Some patients show no clear pre-ictal Kappa pattern.",
-}
-
-
-def analyze_obsessive_coherence_neuro(prelim):
-    """Analyze obsessive coherence from preliminary EEG results."""
-    inter = prelim["key_findings"]["interictal_mean"]
-    pre = prelim["key_findings"]["preictal_mean"]
-    
-    deltas = {k: pre[k] - inter[k] for k in inter}
-    
-    coherence_directions = {
-        "Oh": deltas["Oh"] > 0,       # Higher = more coherent
-        "eta": deltas["eta"] > 0,       # Higher rigidity = more coherent
-        "mean_corr": deltas["mean_corr"] > 0,  # Higher coupling = more coherent
-        "DEF": deltas["DEF"] > 0,       # Higher dominance = more coherent
-        "Xi": deltas["Xi"] < 0,         # Lower diversity = more coherent
-    }
-    n_coherent = sum(coherence_directions.values())
-    
-    # Obsessive score
-    coh_inter = (inter["Oh"] + inter["eta"] + inter["DEF"]) / 3.0
-    dis_inter = (inter["Xi"] + (1.0 - inter["mean_corr"])) / 2.0
-    oc_inter = coh_inter - dis_inter
-    
-    coh_pre = (pre["Oh"] + pre["eta"] + pre["DEF"]) / 3.0
-    dis_pre = (pre["Xi"] + (1.0 - pre["mean_corr"])) / 2.0
-    oc_pre = coh_pre - dis_pre
+    # mean_corr proxy: for equicorrelation matrix, Oh = 1 + (n-1)*rho_bar
+    # => rho_bar = (Oh - 1) / (n - 1)
+    if n_channels > 1:
+        mc_proxy = np.clip((Oh - 1.0) / (n_channels - 1.0), 0.0, 1.0)
+    else:
+        mc_proxy = 0.0
 
     return {
-        "interictal_state": inter,
-        "preictal_state": pre,
-        "deltas": deltas,
-        "coherence_directions": {k: bool(v) for k, v in coherence_directions.items()},
-        "n_coherent": n_coherent,
-        "total_directions": len(coherence_directions),
-        "obsessive_confirmed": n_coherent >= 4,
-        "oc_interictal": {"coherence": coh_inter, "disorder": dis_inter, "obsessive": oc_inter},
-        "oc_preictal": {"coherence": coh_pre, "disorder": dis_pre, "obsessive": oc_pre},
-        "lead_times": prelim["lead_times"],
+        "Oh": Oh, "eta": eta_sig, "DEF": DEF,
+        "Xi": Xi_sig, "mean_corr": mc_proxy, "phi": row.get("phi", 0.0)
     }
+
+
+def load_patient_katashi(patient_dir, n_channels):
+    """Load katashi_state.csv and map to SIG observables."""
+    kstate = patient_dir / "kappa_run" / "katashi_state.csv"
+    if not kstate.exists():
+        return None
+    df = pd.read_csv(kstate)
+    if len(df) < 10:
+        return None
+    sig_rows = [map_legacy_to_sig(row, n_channels) for _, row in df.iterrows()]
+    return pd.DataFrame(sig_rows)
+
+
+def compute_group_stats(sig_df):
+    """Compute mean SIG observables for a group/condition."""
+    metrics = ["Oh", "eta", "DEF", "Xi", "mean_corr", "phi"]
+    return {m: float(sig_df[m].mean()) for m in metrics if m in sig_df.columns}
+
+
+def direction_test(stressed, nominal):
+    """Test 5 predicted directional changes (SIG protocol)."""
+    dirs = {
+        "Oh": stressed["Oh"] > nominal["Oh"],
+        "eta": stressed["eta"] > nominal["eta"],
+        "DEF": stressed["DEF"] > nominal["DEF"],
+        "Xi": stressed["Xi"] < nominal["Xi"],
+        "mean_corr": stressed["mean_corr"] > nominal["mean_corr"],
+    }
+    return dirs
+
+
+def oc_score(s):
+    """Obsessive Coherence Index."""
+    return (s["Oh"] / 23 + s["DEF"]) / 2 - (s["Xi"] + (1 - s["mean_corr"])) / 2
 
 
 def main():
     t0 = time.time()
     print("=" * 70)
-    print("  KAPPA-SIG NEURO: Obsessive Coherence in Epileptic Seizure Prediction")
+    print("  KAPPA-SIG NEURO: Obsessive Coherence in EEG")
     print("  David Ohio | Independent Researcher | April 2026")
+    print("  SIG 5-observable framework on legacy katashi_state.csv")
     print("=" * 70)
 
-    # Check if CHB-MIT data exists locally
-    chbmit_paths = [
-        Path(r"C:\Users\ohiod\Projects\TopoCML\data\chb-mit"),
-        Path(r"C:\Users\ohiod\data\chb-mit"),
-        Path.home() / "data" / "chb-mit",
-    ]
-    data_found = None
-    for p in chbmit_paths:
-        if p.exists() and any(p.glob("chb*/chb*.edf")):
-            data_found = p
-            break
-    
-    if data_found:
-        print(f"  CHB-MIT data found at: {data_found}")
-        print("  Full processing mode (NOT YET IMPLEMENTED - use preliminary)")
-        # TODO: Implement full processing when data is available
-        # For now, fall through to preliminary analysis
+    # ================================================================
+    # 1. LOAD EPILEPTIC PATIENTS (CHB-MIT)
+    # ================================================================
+    epileptic_all = []
+    chb_patients = sorted(CHBMIT_DIR.glob("chb*")) if CHBMIT_DIR.exists() else []
+    print(f"\n  CHB-MIT patients found: {len(chb_patients)}")
+
+    for pdir in chb_patients:
+        sig = load_patient_katashi(pdir, N_CHANNELS)
+        if sig is not None:
+            stats = compute_group_stats(sig)
+            stats["patient"] = pdir.name
+            stats["n_windows"] = len(sig)
+            epileptic_all.append(stats)
+            print(f"    {pdir.name}: {len(sig)} windows, Oh={stats['Oh']:.4f}, "
+                  f"eta={stats['eta']:.4f}, DEF={stats['DEF']:.4f}")
+
+    # ================================================================
+    # 2. LOAD HEALTHY SUBJECTS (EEGMMIDB, sample)
+    # ================================================================
+    healthy_all = []
+    eeg_subjects = sorted(EEGMMIDB_DIR.glob("S*")) if EEGMMIDB_DIR.exists() else []
+    sample_n = min(30, len(eeg_subjects))  # sample for speed
+    print(f"\n  EEGMMIDB subjects found: {len(eeg_subjects)} (sampling {sample_n})")
+
+
+    for sdir in eeg_subjects[:sample_n]:
+        sig = load_patient_katashi(sdir, N_CHANNELS_EEGMMIDB)
+        if sig is not None:
+            stats = compute_group_stats(sig)
+            stats["subject"] = sdir.name
+            stats["n_windows"] = len(sig)
+            healthy_all.append(stats)
+
+    print(f"    Loaded: {len(healthy_all)} healthy subjects")
+
+    # ================================================================
+    # 3. ICTAL ANALYSIS (pre-ictal vs inter-ictal from legacy)
+    # ================================================================
+    ictal_path = LEGACY_DIR / "ictal_analysis.csv"
+    ictal_results = {}
+    if ictal_path.exists():
+        ictal_df = pd.read_csv(ictal_path)
+        print(f"\n  Ictal analysis: {len(ictal_df)} rows")
+        for pid in ictal_df["patient_id"].unique():
+            pdata = ictal_df[ictal_df["patient_id"] == pid]
+            inter = pdata[pdata["state"] == "inter-ictal"].iloc[0] if len(pdata[pdata["state"] == "inter-ictal"]) > 0 else None
+            pre = pdata[pdata["state"] == "pre-ictal"].iloc[0] if len(pdata[pdata["state"] == "pre-ictal"]) > 0 else None
+            ictal = pdata[pdata["state"] == "ictal"].iloc[0] if len(pdata[pdata["state"] == "ictal"]) > 0 else None
+            if inter is not None and pre is not None:
+                ictal_results[pid] = {
+                    "inter_Oh": float(inter["Oh_mean"]),
+                    "pre_Oh": float(pre["Oh_mean"]),
+                    "ictal_Oh": float(ictal["Oh_mean"]) if ictal is not None else None,
+                    "inter_phi": float(inter["phi_mean"]),
+                    "pre_phi": float(pre["phi_mean"]),
+                    "pre_gt_inter": float(pre["Oh_mean"]) > float(inter["Oh_mean"]),
+                }
+                st = "+" if ictal_results[pid]["pre_gt_inter"] else "-"
+                print(f"    {pid}: inter Oh={inter['Oh_mean']:.4f} -> pre Oh={pre['Oh_mean']:.4f} [{st}]")
+        n_pre_gt = sum(1 for v in ictal_results.values() if v["pre_gt_inter"])
+        print(f"    Pre-ictal Oh > Inter-ictal: {n_pre_gt}/{len(ictal_results)}")
     else:
-        print("  CHB-MIT data not found locally.")
-        print("  Using preliminary results from January 2026 processing.")
-        print("  To run full analysis: download CHB-MIT from PhysioNet")
-        print("    wget -r -np https://physionet.org/files/chbmit/1.0.0/")
+        print("\n  Ictal analysis: not available (legacy file missing)")
 
-    # Analyze preliminary results
-    r = analyze_obsessive_coherence_neuro(PRELIMINARY_RESULTS)
-    
-    print(f"\n  [EEG PRE-ICTAL vs INTERICTAL]")
-    print(f"    Unified Kappa State:")
-    print(f"    {'':15s} {'Interictal':>12s} {'Pre-ictal':>12s} {'Delta':>10s} {'Coherent':>10s}")
-    for key in ["Oh", "eta", "mean_corr", "DEF", "Xi"]:
-        iv = r["interictal_state"][key]
-        pv = r["preictal_state"][key]
-        d = r["deltas"][key]
-        coh = "YES" if r["coherence_directions"][key] else "no"
-        print(f"    {key:15s} {iv:12.4f} {pv:12.4f} {d:+10.4f} {coh:>10s}")
-    
-    print(f"\n    Obsessive Coherence Signature:")
-    oci = r["oc_interictal"]
-    ocp = r["oc_preictal"]
-    print(f"    Interictal:  coherence={oci['coherence']:.3f}  "
-          f"disorder={oci['disorder']:.3f}  obsessive={oci['obsessive']:+.3f}")
-    print(f"    Pre-ictal:   coherence={ocp['coherence']:.3f}  "
-          f"disorder={ocp['disorder']:.3f}  obsessive={ocp['obsessive']:+.3f}")
 
-    n = r["n_coherent"]
-    status = "CONFIRMED" if r["obsessive_confirmed"] else "PARTIAL"
-    print(f"\n    Coherence directions: {n}/{r['total_directions']} -- {status}")
-    for obs, is_coh in r["coherence_directions"].items():
-        arrow = "-> MORE coherent" if is_coh else "-> less coherent"
-        print(f"      {obs:12s}: {arrow}")
-    
-    print(f"\n    Lead times by patient:")
-    for pat, info in r["lead_times"].items():
-        print(f"      {pat}: {info['lead_min']} min ({info['pattern']})")
-    
-    if r["obsessive_confirmed"]:
-        print(f"\n  >>> CONFIRMED: Pre-ictal states exhibit obsessive coherence")
-        print(f"  >>> Neural Katashi: hyper-synchronization before seizure onset")
+    # ================================================================
+    # 4. GROUP COMPARISON: Epileptic vs Healthy (SIG Direction Test)
+    # ================================================================
+    print("\n  " + "=" * 66)
+    print("  OBSESSIVE COHERENCE: Epileptic vs Healthy")
+    print("  " + "=" * 66)
+
+    if epileptic_all and healthy_all:
+        epi_df = pd.DataFrame(epileptic_all)
+        hlt_df = pd.DataFrame(healthy_all)
+
+        metrics = ["Oh", "eta", "DEF", "Xi", "mean_corr", "phi"]
+        epi_mean = {m: float(epi_df[m].mean()) for m in metrics}
+        hlt_mean = {m: float(hlt_df[m].mean()) for m in metrics}
+
+        print(f"\n    {'Metric':<14s} {'Epileptic':>12s} {'Healthy':>12s} {'Delta':>10s}   Dir")
+        print(f"    {'-'*58}")
+        for m in metrics:
+            d = epi_mean[m] - hlt_mean[m]
+            print(f"    {m:<14s} {epi_mean[m]:12.6f} {hlt_mean[m]:12.6f} {d:+10.6f}")
+
+        dirs = direction_test(epi_mean, hlt_mean)
+        n_coh = sum(dirs.values())
+        status = "CONFIRMED" if n_coh >= 4 else "PARTIAL"
+        print(f"\n    Coherent directions: {n_coh}/5 -- {status}")
+
+        oc_epi = oc_score(epi_mean)
+        oc_hlt = oc_score(hlt_mean)
+        print(f"    OC: epileptic={oc_epi:+.4f}  healthy={oc_hlt:+.4f}  delta={oc_epi-oc_hlt:+.4f}")
     else:
-        print(f"\n  >>> PARTIAL: {n}/{r['total_directions']} directions confirm obsessive pattern")
+        epi_mean, hlt_mean, dirs, n_coh, status = {}, {}, {}, 0, "NO_DATA"
+        oc_epi, oc_hlt = 0.0, 0.0
+        if not epileptic_all:
+            print("    [!] No epileptic data loaded (D: drive not available?)")
+        if not healthy_all:
+            print("    [!] No healthy data loaded (D: drive not available?)")
 
-    # Save
+
+    # ================================================================
+    # 5. INTRA-PATIENT ANALYSIS (eliminates channel-count confound)
+    # ================================================================
+    # For each epileptic patient, split time series into high-Oh (top 25%)
+    # vs low-Oh (bottom 25%) windows. Same patient, same montage, same n.
+    print(f"\n  " + "=" * 66)
+    print("  INTRA-PATIENT DIRECTION TEST (same montage, no confound)")
+    print("  " + "=" * 66)
+
+    intra_results = []
+    for pdir in chb_patients:
+        sig = load_patient_katashi(pdir, N_CHANNELS)
+        if sig is None or len(sig) < 40:
+            continue
+        q25 = sig["Oh"].quantile(0.25)
+        q75 = sig["Oh"].quantile(0.75)
+        low = sig[sig["Oh"] <= q25]
+        high = sig[sig["Oh"] >= q75]
+        if len(low) < 10 or len(high) < 10:
+            continue
+        low_m = compute_group_stats(low)
+        high_m = compute_group_stats(high)
+        dirs_p = direction_test(high_m, low_m)
+        nc = sum(dirs_p.values())
+        oc_h = oc_score(high_m)
+        oc_l = oc_score(low_m)
+        intra_results.append({
+            "patient": pdir.name, "n_coherent": nc, "confirmed": nc >= 4,
+            "oc_high": round(oc_h, 6), "oc_low": round(oc_l, 6),
+            "oc_delta": round(oc_h - oc_l, 6),
+            "high_Oh": round(high_m["Oh"], 4), "low_Oh": round(low_m["Oh"], 4),
+        })
+        st = "OK" if nc >= 4 else f"{nc}/5"
+        print(f"    {pdir.name}: {nc}/5 {'CONFIRMED' if nc>=4 else 'PARTIAL'} "
+              f"  Oh: {low_m['Oh']:.4f} -> {high_m['Oh']:.4f}  "
+              f"OC delta={oc_h-oc_l:+.4f}")
+
+    n_intra_ok = sum(1 for r in intra_results if r["confirmed"])
+    print(f"\n    Intra-patient confirmed: {n_intra_ok}/{len(intra_results)}")
+
+    # ================================================================
+    # 6. CONSOLIDATED SUMMARY ANALYSIS (legacy fallback)
+    # ================================================================
+    consol_path = LEGACY_DIR / "consolidated_summary.csv"
+    consol_results = {}
+    if consol_path.exists():
+        cdf = pd.read_csv(consol_path)
+        epi_c = cdf[cdf["group"] == "epileptic"]
+        hlt_c = cdf[cdf["group"] == "healthy"]
+        print(f"\n  Consolidated summary: {len(epi_c)} epileptic, {len(hlt_c)} healthy")
+        for col in ["Oh_mean", "Oh_max", "Oh_p95", "phi_mean", "phi_max",
+                     "pct_Oh_gt_threshold", "max_consecutive_Oh_gt_threshold"]:
+            if col in cdf.columns:
+                e_val = float(epi_c[col].mean())
+                h_val = float(hlt_c[col].mean())
+                consol_results[col] = {"epileptic": round(e_val, 6),
+                                       "healthy": round(h_val, 6),
+                                       "delta": round(e_val - h_val, 6)}
+                d_sign = "+" if e_val > h_val else "-"
+                print(f"    {col:<38s}: epi={e_val:.4f}  hlt={h_val:.4f}  [{d_sign}]")
+
+    # ================================================================
+    # 7. SAVE RESULTS
+    # ================================================================
     output = {
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "domain": "NEURO",
-        "dataset": "CHB-MIT (preliminary, 23 patients)",
-        "data_source": "preliminary" if not data_found else "full",
-        "result": {k: v for k, v in r.items() if k != "lead_times"},
-        "lead_times": r["lead_times"],
-        "obsessive_confirmed": r["obsessive_confirmed"],
+        "framework": "SIG v5.8c (mapped from legacy katashi_state)",
+        "datasets": {
+            "epileptic": {"source": "CHB-MIT Scalp EEG", "n_patients": len(epileptic_all),
+                          "n_channels": N_CHANNELS},
+            "healthy": {"source": "EEGMMIDB", "n_subjects": len(healthy_all),
+                        "n_channels": N_CHANNELS_EEGMMIDB},
+        },
+
+        "sig_mapping": {
+            "Oh": "direct",
+            "eta": "1 - entropy / log2(n_channels)",
+            "DEF": "direct from legacy dominance",
+            "Xi": "legacy Xi / n_channels",
+            "mean_corr": "proxy: (Oh - 1) / (n - 1), exact for equicorrelation",
+        },
+        "group_comparison": {
+            "epileptic_mean": {k: round(v, 6) for k, v in epi_mean.items()} if epi_mean else None,
+            "healthy_mean": {k: round(v, 6) for k, v in hlt_mean.items()} if hlt_mean else None,
+            "direction_test": {k: bool(v) for k, v in dirs.items()} if dirs else None,
+            "n_coherent": n_coh,
+            "confirmed": n_coh >= 4,
+            "oc_epileptic": round(oc_epi, 6),
+            "oc_healthy": round(oc_hlt, 6),
+            "oc_delta": round(oc_epi - oc_hlt, 6),
+        },
+        "ictal_analysis": ictal_results if ictal_results else None,
+        "intra_patient_analysis": {
+            "method": "Top 25% Oh vs Bottom 25% Oh within same patient (same montage)",
+            "n_patients_tested": len(intra_results),
+            "n_confirmed": n_intra_ok,
+            "patients": intra_results,
+        },
+        "consolidated_summary": consol_results if consol_results else None,
+        "per_patient_epileptic": epileptic_all[:5] if epileptic_all else None,  # sample
+        "notes": [
+            "GROUP COMPARISON (epileptic vs healthy) is CONFOUNDED by channel count (23 vs 64)",
+            "INTRA-PATIENT ANALYSIS is the valid test: same patient, same montage, no confound",
+            "ICTAL ANALYSIS (pre-ictal vs inter-ictal) is valid: within-patient comparison",
+            "mean_corr is a proxy (equicorrelation assumption), not measured directly",
+            "CHB-MIT uses 23-channel bipolar montage; EEGMMIDB uses 64-channel BCI2000",
+            "This domain is DEFERRED to dedicated Kappa-NEURO paper for clinical validation",
+        ],
     }
+
     out_file = OUT_DIR / "neuro_obsessive_coherence.json"
     with open(out_file, "w") as f:
         json.dump(output, f, indent=2, default=str)
-    
-    elapsed = time.time() - t0
+
     print(f"\n  Results: {out_file}")
-    print(f"  Time: {elapsed:.1f}s")
+    print(f"  Time: {time.time() - t0:.1f}s")
     print("=" * 70)
+
 
 if __name__ == "__main__":
     main()
